@@ -1,0 +1,2043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TroysExploit's Bypasser | Roblox Bypass Tool</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505;--card-bg:#0c0c0c;--card2:#0f0f0f;
+  --border:#282828;--border2:#1e1e1e;
+  --accent:#fff;--accent-rgb:255,255,255;
+  --text:#d0d0d0;--text-muted:#777;--text-dim:#555;
+  --orange:#ff8500;--danger:#ff4455;--success:#44ff88;
+  --mono:'JetBrains Mono',monospace;--display:'Syne',sans-serif;
+  --r:8px;--r-sm:5px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--text);font-family:var(--mono);
+  display:flex;flex-direction:column;align-items:center;
+  min-height:100vh;padding:36px 18px 70px;
+  background-image:
+    radial-gradient(ellipse 70% 35% at 50% -5%,rgba(255,255,255,.035) 0%,transparent 70%),
+    linear-gradient(var(--border2) 1px,transparent 1px),
+    linear-gradient(90deg,var(--border2) 1px,transparent 1px);
+  background-size:100% 100%,36px 36px,36px 36px;
+  background-attachment:fixed;
+}
+/* ─ Layout ─ */
+.card{
+  background:var(--card-bg);border:1px solid var(--border);
+  border-radius:var(--r);width:100%;max-width:920px;
+  box-shadow:0 25px 55px rgba(0,0,0,.65);margin-bottom:28px;overflow:hidden;
+}
+.card-head{padding:28px 36px 0}
+.card-body{padding:0 36px 36px}
+.divider{width:100%;max-width:720px;border:0;border-top:1px solid var(--border);margin:18px 0;opacity:.4}
+
+/* ─ Brand ─ */
+.brand-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:4px;flex-wrap:nowrap}
+.badge{font-size:.55rem;font-weight:800;background:var(--accent);color:#000;padding:2px 7px;border-radius:2px;letter-spacing:2px}
+h1{font-family:var(--display);font-size:clamp(1.2rem,4vw,2.1rem);font-weight:900;text-transform:uppercase;letter-spacing:-1px;background:linear-gradient(150deg,#fff 30%,#444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
+.subtitle{color:var(--text-muted);font-size:.65rem;margin:4px 0 26px;text-transform:uppercase;letter-spacing:3px;font-weight:600}
+.sec-label{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--text-dim);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border2);display:block}
+
+/* ─ Tabs ─ */
+.tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:26px;background:var(--card2)}
+.tab-btn{flex:1;background:0 0;border:0;border-bottom:2px solid transparent;color:var(--text-muted);padding:13px;cursor:pointer;font-weight:700;font-size:.65rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:1.5px;transition:.22s}
+.tab-btn:hover{color:var(--text)}
+.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent);background:rgba(var(--accent-rgb),.02)}
+.section-content{display:none;animation:fi .28s ease}
+.section-content.active{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─ Buttons ─ */
+.label{font-size:.62rem;color:var(--text-muted);text-transform:uppercase;margin-bottom:9px;display:block;font-weight:700;letter-spacing:1.5px;font-family:var(--mono)}
+.controls,.sub-controls{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:20px}
+.btn{background:rgba(255,255,255,.025);border:1px solid var(--border);color:var(--text-muted);padding:8px 14px;border-radius:var(--r-sm);cursor:pointer;font-size:.65rem;font-weight:700;font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;transition:.18s}
+.btn:hover{border-color:#3a3a3a;color:#fff;transform:translateY(-1px)}
+.btn.active{background:var(--accent);color:#000;border-color:var(--accent)}
+.main-btn{background:var(--accent);color:#000;padding:10px 22px;font-weight:800;font-family:var(--mono);border:0;border-radius:var(--r-sm);cursor:pointer;text-transform:uppercase;font-size:.7rem;letter-spacing:1px;transition:.18s}
+.main-btn:hover{opacity:.82;box-shadow:0 0 18px rgba(var(--accent-rgb),.22)}
+.sec-btn{background:0 0;color:#bbb;border:1px solid var(--border);padding:10px 20px;border-radius:var(--r-sm);font-weight:700;font-family:var(--mono);cursor:pointer;text-transform:uppercase;font-size:.7rem;letter-spacing:1px;transition:.18s}
+.sec-btn:hover{border-color:#444}
+.exp-btn{background:#0e0e0e;color:#fff;border:1px solid var(--border);padding:13px 18px;border-radius:var(--r-sm);font-weight:800;font-size:.72rem;font-family:var(--mono);cursor:pointer;text-transform:uppercase;letter-spacing:1px;transition:.18s;width:100%}
+.exp-btn:hover{background:var(--accent);color:#000;border-color:var(--accent)}
+.icon-btn{background:rgba(255,255,255,.03);border:1px solid var(--border);color:var(--text-muted);padding:6px 10px;border-radius:var(--r-sm);cursor:pointer;font-size:.65rem;font-family:var(--mono);font-weight:700;transition:.18s}
+.icon-btn:hover{border-color:#444;color:#fff}
+.danger{border-color:var(--danger)!important;color:var(--danger)!important}
+.danger:hover{background:var(--danger)!important;color:#000!important}
+
+/* ─ Upload row ─ */
+.upload-row{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:26px;padding-top:20px;border-top:1px solid var(--border)}
+.action-wrap{width:100%;margin-top:16px;display:none;flex-direction:column;gap:7px}
+.export-opts{display:flex;gap:9px;align-items:center;flex-wrap:wrap;justify-content:center;padding:10px;background:var(--card2);border:1px solid var(--border);border-radius:var(--r-sm);margin-bottom:8px}
+select{background:#0a0a0a;border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:var(--r-sm);font-family:var(--mono);font-size:.65rem;outline:0;cursor:pointer;transition:.18s}
+select:hover{border-color:#333}
+
+/* ─ Preview ─ */
+#preview-area,#preview-area *{box-sizing:border-box}
+#preview-area{background:repeating-conic-gradient(#0d0d0d 0% 25%,#101010 0% 50%) 50%/14px 14px;padding:16px;border:1px solid var(--border);border-radius:var(--r-sm);margin-top:20px;display:none;overflow:auto}
+#canvas{max-width:100%;height:auto;display:block;margin:0 auto;box-shadow:0 6px 24px rgba(0,0,0,.6)}
+#bulk-grid{display:none;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin-top:20px;padding:12px;border:1px solid var(--border);border-radius:var(--r-sm);max-height:360px;overflow-y:auto}
+.bulk-item{border:1px solid var(--border);background:#000;padding:3px;border-radius:3px}
+.bulk-item span{font-size:.52rem;color:var(--text-muted);display:block;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#filename-tag{font-size:.6rem;color:var(--text-muted);margin-bottom:8px;font-family:var(--mono);display:block}
+
+/* ─ Sliders ─ */
+.srow{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+.srow .label{margin:0;white-space:nowrap;min-width:88px;text-align:right;font-size:.58rem}
+.sval{font-size:.6rem;color:var(--accent);font-weight:700;min-width:36px;text-align:right;font-family:var(--mono)}
+input[type=range]{-webkit-appearance:none;flex:1;height:3px;background:#282828;border-radius:2px;outline:0;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;background:var(--accent);border-radius:50%;cursor:pointer;transition:.15s}
+input[type=range]:hover{background:#333}
+.adj-panel{background:var(--card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px 18px;margin-top:16px;text-align:left;display:none}
+.adj-panel.open{display:block}
+
+/* ─ Dim inputs ─ */
+.dim-row{display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:14px;flex-wrap:wrap}
+.dim-in{background:#080808;border:1px solid var(--border);color:var(--text);padding:7px 10px;border-radius:var(--r-sm);font-family:var(--mono);font-size:.7rem;width:82px;text-align:center;outline:0;transition:.18s}
+.dim-in:focus{border-color:#333}
+
+/* ─ Bait ─ */
+.bait-section{margin-top:18px;padding-top:16px;border-top:1px solid var(--border);display:none}
+.bait-custom-row{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:9px;flex-wrap:wrap}
+
+/* ─ Settings bar ─ */
+.settings-bar{display:flex;align-items:center;justify-content:space-between;padding:9px 16px;background:var(--card2);border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px}
+.sbar-left{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.sbar-item{display:flex;align-items:center;gap:7px}
+.color-row{display:flex;gap:5px;align-items:center}
+.swatch{width:18px;height:18px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:.18s;flex-shrink:0}
+.swatch:hover{transform:scale(1.2)}
+.swatch.sel{border-color:#fff}
+#cust-col{width:18px;height:18px;border-radius:50%;cursor:pointer;border:2px dashed #2a2a2a;background:transparent;padding:0;overflow:hidden;flex-shrink:0}
+
+/* ─ Notification ─ */
+#notif{position:fixed;bottom:26px;right:26px;background:#111;border:1px solid var(--border);border-radius:var(--r-sm);padding:10px 16px;font-size:.65rem;font-family:var(--mono);color:var(--text);opacity:0;transform:translateY(8px);transition:.28s;z-index:9999;pointer-events:none;max-width:260px}
+#notif.show{opacity:1;transform:translateY(0)}
+
+/* ─ Coming soon ─ */
+.coming-box{padding:38px;border:1px dashed var(--border);border-radius:var(--r-sm);background:rgba(255,255,255,.008);color:var(--text-muted);font-style:italic}
+.hi{color:var(--accent);font-weight:700;font-style:normal;display:block;margin-top:7px}
+
+/* ══════════════════════════════════
+   TOP BYPASSERS SECTION
+════════════════════════════════════ */
+.methods-grid{display:flex;flex-direction:column;gap:0}
+
+.method-card{
+  border-bottom:1px solid var(--border);
+  overflow:hidden;
+  transition:background .2s;
+}
+.method-card:last-child{border-bottom:0}
+.method-card:hover{background:rgba(255,255,255,.008)}
+
+.method-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 24px;cursor:pointer;gap:12px;
+  user-select:none;
+}
+.method-meta{display:flex;align-items:center;gap:14px;flex:1;min-width:0}
+.method-num{
+  font-size:.55rem;font-weight:700;color:#484848;
+  font-family:var(--mono);letter-spacing:1px;
+  min-width:22px;text-align:right;
+}
+.method-name{
+  font-family:var(--display);font-size:.95rem;font-weight:800;
+  text-transform:uppercase;letter-spacing:.5px;color:#e0e0e0;
+  white-space:nowrap;
+}
+.method-tag{
+  font-size:.52rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  padding:2px 7px;border-radius:2px;
+  background:rgba(255,255,255,.05);color:#606060;border:1px solid #252525;
+  white-space:nowrap;
+}
+.method-tag.hot{background:rgba(255,133,0,.08);color:var(--orange);border-color:rgba(255,133,0,.2)}
+.method-tag.new{background:rgba(68,255,136,.06);color:var(--success);border-color:rgba(68,255,136,.15)}
+.method-chevron{font-size:.65rem;color:#555;transition:transform .22s;flex-shrink:0}
+.method-card.open .method-chevron{transform:rotate(180deg)}
+
+.method-body{
+  display:none;
+  padding:0 24px 22px;
+  animation:fi .22s ease;
+}
+.method-card.open .method-body{display:block}
+
+/* method body inner layout */
+.mb-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+@media(max-width:600px){.mb-cols{grid-template-columns:1fr}}
+
+.mb-params{background:var(--card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px 16px}
+.mb-preview{background:repeating-conic-gradient(#0c0c0c 0% 25%,#0f0f0f 0% 50%) 50%/12px 12px;border:1px solid var(--border);border-radius:var(--r-sm);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:140px;overflow:hidden;position:relative}
+.mb-canvas-wrap{width:100%;text-align:center}
+.mb-canvas-wrap canvas{max-width:100%;height:auto;display:block;margin:0 auto}
+.mb-placeholder{color:#484848;font-size:.62rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:1px;font-weight:700;padding:24px}
+
+.mb-actions{margin-top:12px;display:flex;flex-direction:column;gap:7px}
+
+/* bait sub-section inside method */
+.bait-sub{margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.bait-btns{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
+.bait-btn{font-size:.58rem;padding:5px 10px}
+.bait-preview-thumb{width:28px;height:28px;border-radius:3px;border:1px solid var(--border);object-fit:cover;vertical-align:middle}
+.upload-label-sm{font-size:.6rem;padding:6px 12px;cursor:pointer}
+.custom-bait-name{font-size:.55rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px}
+
+footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-family:var(--mono)}
+
+/* ─ DAW ─ */
+#daw-wrapper{background:#080808;border:1px solid var(--border);border-radius:var(--r-sm);overflow:hidden;margin-top:18px;user-select:none}
+.daw-head{padding:9px 12px;border-bottom:1px solid var(--border);display:flex;flex-wrap:wrap;gap:7px;align-items:center;justify-content:space-between;background:#0f0f0f}
+#daw-tl-container{position:relative;height:260px;overflow-x:auto;overflow-y:hidden;background:#050505}
+#daw-tl{height:100%;position:relative;min-width:100%;background-image:linear-gradient(#111 1px,transparent 1px),linear-gradient(90deg,#111 1px,transparent 1px);background-size:50px 50px}
+#playhead{position:absolute;top:0;bottom:0;width:2px;background:var(--danger);z-index:100;pointer-events:none}
+#playhead::after{content:'';position:absolute;top:0;left:-4px;border:5px solid transparent;border-top-color:var(--danger);border-left-color:var(--danger)}
+.audio-clip{position:absolute;height:76px;background:rgba(255,133,0,.12);border:1px solid var(--orange);border-radius:3px;cursor:grab;overflow:hidden;z-index:10}
+.audio-clip:active{cursor:grabbing}
+.audio-clip.sel{border-color:#fff;background:rgba(255,133,0,.28);box-shadow:0 0 10px rgba(255,133,0,.18)}
+.clip-name{position:absolute;top:2px;left:4px;font-size:.48rem;color:rgba(255,133,0,.7);font-family:var(--mono);font-weight:700;text-transform:uppercase;overflow:hidden;white-space:nowrap;max-width:90%}
+.clip-waveform{width:100%;height:100%;pointer-events:none}
+#mixer-panel{background:#070707;border-top:1px solid var(--border);padding:16px;display:none;text-align:left}
+.mixer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.mixer-param{background:#0c0c0c;border:1px solid var(--border);border-radius:var(--r-sm);padding:11px 13px;display:flex;flex-direction:column}
+.daw-time{font-size:.65rem;font-family:var(--mono);font-weight:700;color:var(--orange);background:#000;padding:3px 9px;border-radius:3px;border:1px solid var(--border);min-width:64px;text-align:center}
+
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:#080808}
+::-webkit-scrollbar-thumb{background:#1e1e1e;border-radius:2px}
+::-webkit-scrollbar-thumb:hover{background:#2a2a2a}
+
+/* ─ Audacity Macros Section ─ */
+.macros-section{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.macros-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:14px}
+.macro-card{background:#080808;border:1px solid var(--border);border-radius:var(--r-sm);padding:16px}
+.macro-card-name{font-family:var(--display);font-size:.82rem;font-weight:800;color:#fff;margin-bottom:4px}
+.macro-card-desc{font-size:.58rem;color:var(--text-muted);margin-bottom:11px;line-height:1.55}
+.macro-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:11px}
+.macro-tag{font-size:.5rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:2px 7px;border-radius:3px;font-family:var(--mono);background:rgba(150,100,255,.1);color:#b8a0ff}
+.macro-dl{width:100%;background:rgba(150,100,255,.08);border:1px solid rgba(150,100,255,.25);color:#b8a0ff;padding:9px 14px;border-radius:var(--r-sm);font-size:.65rem;font-weight:700;font-family:var(--mono);text-transform:uppercase;cursor:pointer;transition:.2s;text-align:center}
+.macro-dl:hover{background:rgba(150,100,255,.2);border-color:#b8a0ff;color:#fff}
+.skip-box{background:rgba(255,68,85,.03);border:1px solid rgba(255,68,85,.18);border-radius:var(--r-sm);padding:14px 16px;margin-top:16px}
+.skip-title{font-size:.6rem;font-weight:700;color:var(--danger);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;font-family:var(--mono)}
+.skip-item{font-size:.6rem;color:#777;margin-bottom:7px;padding-left:16px;position:relative;line-height:1.55}
+.skip-item::before{content:'✗';position:absolute;left:0;color:var(--danger);font-size:.55rem;font-weight:700}
+.skip-item b{color:#bbb}
+
+/* ─ Nagisa Chop preview ─ */
+.nagisa-tile-grid{display:flex;flex-wrap:wrap;gap:2px;margin-top:8px;max-height:200px;overflow:auto}
+.nagisa-tile-grid canvas{border:1px solid #1a1a1a}
+
+/* ─ In-browser audio processors ─ */
+.ap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:12px;margin-top:14px}
+.ap-card{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:var(--r-sm);padding:16px;display:flex;flex-direction:column;gap:9px}
+.ap-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.ap-name{font-family:var(--display);font-size:.88rem;font-weight:800;color:#fff;margin-bottom:3px}
+.ap-badge{font-size:.47rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:3px 8px;border-radius:3px;font-family:var(--mono);white-space:nowrap;flex-shrink:0}
+.ap-badge.rec{background:rgba(255,133,0,.15);color:var(--orange);border:1px solid rgba(255,133,0,.4)}
+.ap-badge.best{background:rgba(68,255,136,.12);color:#44ff88;border:1px solid rgba(68,255,136,.4)}
+.ap-badge.distro{background:rgba(150,100,255,.12);color:#c8b0ff;border:1px solid rgba(150,100,255,.4)}
+.ap-steps{font-size:.55rem;color:#888;line-height:1.75;font-family:var(--mono);letter-spacing:.3px}
+.ap-ul{display:block;width:100%;text-align:center;cursor:pointer;background:rgba(255,255,255,.04);border:1px dashed #333;color:#777;padding:10px;border-radius:var(--r-sm);font-size:.65rem;font-weight:700;font-family:var(--mono);text-transform:uppercase;transition:.2s}
+.ap-ul:hover{border-color:#666;color:#ccc;background:rgba(255,255,255,.07)}
+.ap-row{display:flex;gap:7px;align-items:center}
+.ap-run{flex:1;background:var(--accent);color:#000;border:0;padding:9px;border-radius:var(--r-sm);font-weight:800;font-size:.68rem;font-family:var(--mono);text-transform:uppercase;cursor:pointer;transition:.2s;letter-spacing:.5px}
+.ap-run:hover{opacity:.85}.ap-run:disabled{opacity:.4;cursor:wait}
+.ap-stat{font-size:.58rem;color:#666;font-family:var(--mono);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ap-prev{display:none;flex-direction:column;gap:8px;border-top:1px solid #1e1e1e;padding-top:10px}
+.ap-prev.vis{display:flex}
+.ap-wave{width:100%;height:52px;display:block;border-radius:3px;border:1px solid #222;background:#080808}
+.ap-pbtn{flex:1;background:#141414;color:#aaa;border:1px solid #2a2a2a;padding:8px;border-radius:var(--r-sm);font-size:.63rem;font-weight:700;font-family:var(--mono);text-transform:uppercase;cursor:pointer;transition:.2s}
+.ap-pbtn:hover{background:var(--accent);color:#000;border-color:var(--accent)}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ MAIN CARD ═══════════ -->
+<div class="card">
+  <div class="settings-bar">
+    <div class="sbar-left">
+      <div class="sbar-item">
+        <span class="label" style="margin:0;font-size:.58rem">Accent</span>
+        <div class="color-row">
+          <div class="swatch sel" style="background:#fff" onclick="setAccent('#fff',this)"></div>
+          <div class="swatch" style="background:#ff8500" onclick="setAccent('#ff8500',this)"></div>
+          <div class="swatch" style="background:#00d4ff" onclick="setAccent('#00d4ff',this)"></div>
+          <div class="swatch" style="background:#44ff88" onclick="setAccent('#44ff88',this)"></div>
+          <div class="swatch" style="background:#cc44ff" onclick="setAccent('#cc44ff',this)"></div>
+          <div class="swatch" style="background:#ff4455" onclick="setAccent('#ff4455',this)"></div>
+          <input type="color" id="cust-col" title="Custom" oninput="setAccent(this.value,null)">
+        </div>
+      </div>
+    </div>
+    <div style="font-size:.55rem;color:#444;font-family:var(--mono)">TROYSEXPLOIT v4.1</div>
+  </div>
+
+  <div class="card-head">
+    <div class="brand-row"><span class="badge">v4</span><h1>TroysExploit's Bypasser</h1></div>
+    <div class="subtitle">Made by TroysExploit · Image &amp; Audio</div>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('decals')">Decals</button>
+      <button class="tab-btn" onclick="switchTab('shirts')">Shirts</button>
+      <button class="tab-btn" onclick="switchTab('models')">Models</button>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <!-- DECALS -->
+    <div id="decals-section" class="section-content active">
+      <span class="sec-label">Method</span>
+      <div class="controls" id="method-controls">
+        <button class="btn active" onclick="setMode('stretchWide',this)">2000×50 Wide</button>
+        <button class="btn" onclick="setMode('stretchTall',this)">200×2100 Tall</button>
+        <button class="btn" onclick="setMode('blackOnly',this)">512 Black</button>
+        <button class="btn" onclick="setMode('whiteOnly',this)">512 White</button>
+        <button class="btn" onclick="setMode('noise',this)">Noise Grain</button>
+        <button class="btn" onclick="setMode('invert',this)">Invert Alpha</button>
+      </div>
+      <div id="stretch-options" class="sub-controls" style="display:none">
+        <button class="btn" id="convBlack" onclick="toggleConv('black')">→ Black</button>
+        <button class="btn" id="convWhite" onclick="toggleConv('white')">→ White</button>
+      </div>
+      <div id="bait-ui" class="bait-section">
+        <span class="label">Bait Overlay</span>
+        <div class="sub-controls">
+          <button class="btn active" onclick="setBait('none',this)">None</button>
+          <button class="btn" onclick="setBait('duck',this)">🦆 Duck</button>
+          <button class="btn" onclick="setBait('funny',this)">😂 Funny</button>
+          <button class="btn" onclick="setBait('gang',this)">Gang</button>
+          <button class="btn" id="main-bait-custom-btn" onclick="setBait('custom',this)">Custom…</button>
+        </div>
+        <div id="main-bait-custom-row" style="display:none;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:8px">
+          <label for="main-bait-upload" class="btn upload-label-sm">Upload Bait</label>
+          <input type="file" id="main-bait-upload" accept="image/*" style="display:none">
+          <span id="main-bait-name" style="font-size:.58rem;color:var(--text-muted)">no file</span>
+        </div>
+        <div class="srow" style="margin-top:10px;max-width:340px;margin-left:auto;margin-right:auto">
+          <span class="label" style="min-width:88px">Bait Opacity</span>
+          <input type="range" id="bait-opacity" min="0" max="1" step="0.05" value="0.2" oninput="$('bait-op-val').textContent=parseFloat(this.value).toFixed(2);processQueue()">
+          <span class="sval" id="bait-op-val">0.20</span>
+        </div>
+      </div>
+    </div>
+    <!-- SHIRTS -->
+    <div id="shirts-section" class="section-content">
+      <p style="color:var(--text-muted);font-size:.75rem;margin-bottom:18px">Optimized for Shirt Templates. Clears whites + normalizes colors.</p>
+      <div class="controls">
+        <button class="btn active" onclick="setShirt('ghost',this)">Ghost Mode</button>
+        <button class="btn" onclick="setShirt('stretch',this)">Full Stretch</button>
+      </div>
+    </div>
+    <!-- MODELS -->
+    <div id="models-section" class="section-content">
+      <div class="coming-box">Coming Soon! <span class="hi">( This will be the best option yet! )</span></div>
+    </div>
+
+    <!-- Adjustments toggle -->
+    <div style="margin-top:16px;text-align:left">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <span class="sec-label" style="margin:0;border:0;padding:0">Image Adjustments</span>
+        <div style="display:flex;gap:6px">
+          <button class="icon-btn" onclick="$('adj-panel').classList.toggle('open')">⚙ Tweak</button>
+          <button class="icon-btn" onclick="toggleDims()">⤡ Dims</button>
+        </div>
+      </div>
+      <div id="custom-dims" style="display:none;margin-bottom:14px">
+        <div class="dim-row">
+          <input type="number" class="dim-in" id="dimW" placeholder="W" value="2000">
+          <span style="color:var(--text-muted);font-size:.8rem;font-weight:700">×</span>
+          <input type="number" class="dim-in" id="dimH" placeholder="H" value="50">
+          <button class="icon-btn" onclick="applyDims()">Apply</button>
+          <button class="icon-btn" onclick="resetDims()">Reset</button>
+        </div>
+      </div>
+      <div class="adj-panel" id="adj-panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <span class="label" style="margin:0">Adjustments</span>
+          <button class="icon-btn" onclick="resetAdj()" style="font-size:.58rem;padding:3px 8px">Reset</button>
+        </div>
+        <div class="srow"><span class="label">Brightness</span><input type="range" id="adj-b" min="-100" max="100" value="0" oninput="onAdj()"><span class="sval" id="vb">0</span></div>
+        <div class="srow"><span class="label">Contrast</span><input type="range" id="adj-c" min="-100" max="100" value="0" oninput="onAdj()"><span class="sval" id="vc">0</span></div>
+        <div class="srow"><span class="label">Saturation</span><input type="range" id="adj-s" min="-100" max="100" value="0" oninput="onAdj()"><span class="sval" id="vs">0</span></div>
+        <div class="srow"><span class="label">Hue Shift</span><input type="range" id="adj-h" min="0" max="360" value="0" oninput="onAdj()"><span class="sval" id="vh">0°</span></div>
+        <div class="srow"><span class="label">Blur</span><input type="range" id="adj-bl" min="0" max="20" step="0.5" value="0" oninput="onAdj()"><span class="sval" id="vbl">0px</span></div>
+        <div class="srow"><span class="label">Alpha</span><input type="range" id="adj-a" min="0" max="1" step="0.05" value="0.51" oninput="onAdj()"><span class="sval" id="va">0.51</span></div>
+      </div>
+    </div>
+
+    <!-- Upload / actions -->
+    <div class="upload-row" id="main-upload-controls">
+      <label for="upload" class="main-btn">Upload Image</label>
+      <button id="bulkToggle" class="sec-btn" onclick="activateBulk()">Bulk Mode</button>
+      <button id="bulkDeactivate" class="sec-btn danger" style="display:none" onclick="deactivateBulk()">Disable Bulk</button>
+      <input type="file" id="upload" accept="image/*" style="display:none">
+    </div>
+    <div id="preview-area"><span id="filename-tag"></span><canvas id="canvas"></canvas></div>
+    <div id="bulk-grid"></div>
+    <div class="action-wrap" id="action-wrap">
+      <div class="export-opts">
+        <span class="label" style="margin:0;font-size:.58rem">Format</span>
+        <select id="exp-fmt"><option value="png">PNG</option><option value="jpeg">JPEG</option><option value="webp">WebP</option></select>
+        <span class="label" style="margin:0;font-size:.58rem">Quality</span>
+        <input type="range" id="exp-q" min="0.1" max="1" step="0.05" value="0.95" style="width:90px" oninput="$('exp-q-val').textContent=Math.round(this.value*100)+'%'">
+        <span class="sval" id="exp-q-val">95%</span>
+      </div>
+      <button id="exportBtn" class="exp-btn">↓ Export Image</button>
+      <button id="bulkExportBtn" class="exp-btn" style="display:none">↓ Export All (.ZIP)</button>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════ TOP BYPASSERS ═══════════ -->
+<div class="card">
+  <div class="card-head">
+    <div class="brand-row" style="justify-content:flex-start;gap:10px">
+      <span class="badge" style="background:var(--orange);color:#000">10</span>
+      <div>
+        <div class="extra-title" style="font-family:var(--display);font-size:1.1rem;font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:.5px">Top Bypassers Methods</div>
+        <div class="subtitle" style="margin:2px 0 0">Community bypass techniques — all customizable</div>
+      </div>
+    </div>
+    <div style="font-size:.6rem;color:#222;font-family:var(--mono);padding:8px 0 16px">Click any method to expand · Upload your own bait image · Tweak parameters · Export result</div>
+  </div>
+  <div class="card-body" style="padding-top:0">
+    <div class="methods-grid">
+
+      <!-- ─────── 1. JosephLB / BNW ─────── -->
+      <div class="method-card" id="mc-joseph">
+        <div class="method-header" onclick="toggleMethod('joseph')">
+          <div class="method-meta">
+            <span class="method-num">01</span>
+            <span class="method-name">JosephLB / BNW</span>
+            <span class="method-tag hot">Popular</span>
+          </div>
+          <span class="method-chevron">▼</span>
+        </div>
+        <div class="method-body" id="mb-joseph">
+          <div class="mb-cols">
+            <div>
+              <div class="mb-params">
+                <span class="sec-label">Parameters</span>
+                <div class="srow"><span class="label">Blur Passes</span><input type="range" id="j-blur" min="0" max="20" step="0.5" value="8" oninput="$('j-blur-v').textContent=this.value+'px';runMethod('joseph')"><span class="sval" id="j-blur-v">8px</span></div>
+                <div class="srow"><span class="label">Layer Alpha 1</span><input type="range" id="j-a1" min="0" max="255" value="190" oninput="$('j-a1-v').textContent=this.value;runMethod('joseph')"><span class="sval" id="j-a1-v">190</span></div>
+                <div class="srow"><span class="label">Layer Alpha 2</span><input type="range" id="j-a2" min="0" max="255" value="165" oninput="$('j-a2-v').textContent=this.value;runMethod('joseph')"><span class="sval" id="j-a2-v">165</span></div>
+                <div class="srow"><span class="label">Overlay Alpha</span><input type="range" id="j-oa" min="0" max="255" value="130" oninput="$('j-oa-v').textContent=this.value;runMethod('joseph')"><span class="sval" id="j-oa-v">130</span></div>
+                <div class="srow"><span class="label">Size</span><input type="range" id="j-size" min="64" max="512" step="8" value="300" oninput="$('j-size-v').textContent=this.value+'px';runMethod('joseph')"><span class="sval" id="j-size-v">300px</span></div>
+                <div class="bait-sub" id="bait-sub-joseph">
+                  <span class="label" style="margin-bottom:7px">Bait Image</span>
+                  <div class="bait-btns">
+                    <button class="btn bait-btn active" data-method="joseph" data-bait="duck" onclick="setMethodBait('joseph','duck',this)">🦆 Duck</button>
+                    <button class="btn bait-btn" data-method="joseph" data-bait="funny" onclick="setMethodBait('joseph','funny',this)">😂 Funny</button>
+                    <button class="btn bait-btn" data-method="joseph" data-bait="gang" onclick="setMethodBait('joseph','gang',this)">Gang</button>
+                    <button class="btn bait-btn" data-method="joseph" data-bait="none" onclick="setMethodBait('joseph','none',this)">None</button>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+                    <label for="bait-joseph" class="btn upload-label-sm">Upload Custom</label>
+                    <input type="file" id="bait-joseph" accept="image/*" style="display:none" onchange="loadMethodBait('joseph',this)">
+                    <span class="custom-bait-name" id="bait-joseph-name">no file</span>
+                  </div>
+                  <div class="srow" style="margin-top:9px"><span class="label">Opacity</span><input type="range" id="j-bop" min="0" max="1" step="0.05" value="1" oninput="$('j-bop-v').textContent=parseFloat(this.value).toFixed(2);runMethod('joseph')"><span class="sval" id="j-bop-v">1.00</span></div>
+                </div>
+              </div>
+              <div class="mb-actions">
+                <label for="img-joseph" class="exp-btn" style="display:block;text-align:center;cursor:pointer">Upload Image</label>
+                <input type="file" id="img-joseph" accept="image/*" style="display:none" onchange="loadMethodImg('joseph',this)">
+                <button class="exp-btn" onclick="exportMethod('joseph','JosephLB_Bypass.png')">↓ Export PNG</button>
+              </div>
+            </div>
+            <div class="mb-preview" id="prev-joseph">
+              <div class="mb-canvas-wrap" id="cwrap-joseph" style="display:none"><canvas id="mc-joseph-canvas"></canvas></div>
+              <div class="mb-placeholder" id="ph-joseph">Upload an image to preview</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────── 2. Kevin / Bread ─────── -->
+      <div class="method-card" id="mc-kevin">
+        <div class="method-header" onclick="toggleMethod('kevin')">
+          <div class="method-meta">
+            <span class="method-num">02</span>
+            <span class="method-name">Kevin / Bread</span>
+            <span class="method-tag">Classic</span>
+          </div>
+          <span class="method-chevron">▼</span>
+        </div>
+        <div class="method-body" id="mb-kevin">
+          <div class="mb-cols">
+            <div>
+              <div class="mb-params">
+                <span class="sec-label">Parameters</span>
+                <div class="srow"><span class="label">Gray Level</span><input type="range" id="k-gray" min="0" max="255" value="127" oninput="$('k-gray-v').textContent=this.value;runMethod('kevin')"><span class="sval" id="k-gray-v">127</span></div>
+                <div class="srow"><span class="label">Size</span><input type="range" id="k-size" min="64" max="1024" step="8" value="512" oninput="$('k-size-v').textContent=this.value+'px';runMethod('kevin')"><span class="sval" id="k-size-v">512px</span></div>
+                <div class="srow"><span class="label">Contrast</span><input type="range" id="k-con" min="-100" max="100" value="0" oninput="$('k-con-v').textContent=this.value;runMethod('kevin')"><span class="sval" id="k-con-v">0</span></div>
+                <div class="bait-sub">
+                  <span class="label" style="margin-bottom:7px">Bait Image</span>
+                  <div class="bait-btns">
+                    <button class="btn bait-btn active" data-method="kevin" data-bait="none" onclick="setMethodBait('kevin','none',this)">None</button>
+                    <button class="btn bait-btn" data-method="kevin" data-bait="duck" onclick="setMethodBait('kevin','duck',this)">🦆 Duck</button>
+                    <button class="btn bait-btn" data-method="kevin" data-bait="funny" onclick="setMethodBait('kevin','funny',this)">😂 Funny</button>
+                    <button class="btn bait-btn" data-method="kevin" data-bait="gang" onclick="setMethodBait('kevin','gang',this)">Gang</button>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+                    <label for="bait-kevin" class="btn upload-label-sm">Upload Custom</label>
+                    <input type="file" id="bait-kevin" accept="image/*" style="display:none" onchange="loadMethodBait('kevin',this)">
+                    <span class="custom-bait-name" id="bait-kevin-name">no file</span>
+                  </div>
+                  <div class="srow" style="margin-top:9px"><span class="label">Opacity</span><input type="range" id="k-bop" min="0" max="1" step="0.05" value="0.2" oninput="$('k-bop-v').textContent=parseFloat(this.value).toFixed(2);runMethod('kevin')"><span class="sval" id="k-bop-v">0.20</span></div>
+                </div>
+              </div>
+              <div class="mb-actions">
+                <label for="img-kevin" class="exp-btn" style="display:block;text-align:center;cursor:pointer">Upload Image</label>
+                <input type="file" id="img-kevin" accept="image/*" style="display:none" onchange="loadMethodImg('kevin',this)">
+                <button class="exp-btn" onclick="exportMethod('kevin','Kevin_Bread_Bypass.png')">↓ Export PNG</button>
+              </div>
+            </div>
+            <div class="mb-preview" id="prev-kevin">
+              <div class="mb-canvas-wrap" id="cwrap-kevin" style="display:none"><canvas id="mc-kevin-canvas"></canvas></div>
+              <div class="mb-placeholder" id="ph-kevin">Upload an image to preview</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────── 3. Dither ─────── -->
+      <div class="method-card" id="mc-dither">
+        <div class="method-header" onclick="toggleMethod('dither')">
+          <div class="method-meta">
+            <span class="method-num">03</span>
+            <span class="method-name">Dither</span>
+            <span class="method-tag new">New</span>
+          </div>
+          <span class="method-chevron">▼</span>
+        </div>
+        <div class="method-body" id="mb-dither">
+          <div class="mb-cols">
+            <div>
+              <div class="mb-params">
+                <span class="sec-label">Parameters</span>
+                <div class="srow"><span class="label">Type</span>
+                  <select id="d-type" style="flex:1" onchange="runMethod('dither')">
+                    <option value="fs">Floyd-Steinberg</option>
+                    <option value="ordered">Ordered (Bayer)</option>
+                    <option value="random">Random</option>
+                  </select>
+                </div>
+                <div class="srow"><span class="label">Threshold</span><input type="range" id="d-thr" min="64" max="192" value="128" oninput="$('d-thr-v').textContent=this.value;runMethod('dither')"><span class="sval" id="d-thr-v">128</span></div>
+                <div class="srow"><span class="label">Scale</span><input type="range" id="d-scale" min="1" max="8" step="1" value="1" oninput="$('d-scale-v').textContent=this.value+'×';runMethod('dither')"><span class="sval" id="d-scale-v">1×</span></div>
+                <div class="srow"><span class="label">Alpha</span><input type="range" id="d-alpha" min="0" max="1" step="0.05" value="0.8" oninput="$('d-alpha-v').textContent=parseFloat(this.value).toFixed(2);runMethod('dither')"><span class="sval" id="d-alpha-v">0.80</span></div>
+                <div class="bait-sub">
+                  <span class="label" style="margin-bottom:7px">Bait Image</span>
+                  <div class="bait-btns">
+                    <button class="btn bait-btn active" data-method="dither" data-bait="none" onclick="setMethodBait('dither','none',this)">None</button>
+                    <button class="btn bait-btn" data-method="dither" data-bait="duck" onclick="setMethodBait('dither','duck',this)">🦆 Duck</button>
+                    <button class="btn bait-btn" data-method="dither" data-bait="funny" onclick="setMethodBait('dither','funny',this)">😂 Funny</button>
+                    <button class="btn bait-btn" data-method="dither" data-bait="gang" onclick="setMethodBait('dither','gang',this)">Gang</button>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+                    <label for="bait-dither" class="btn upload-label-sm">Upload Custom</label>
+                    <input type="file" id="bait-dither" accept="image/*" style="display:none" onchange="loadMethodBait('dither',this)">
+                    <span class="custom-bait-name" id="bait-dither-name">no file</span>
+                  </div>
+                  <div class="srow" style="margin-top:9px"><span class="label">Opacity</span><input type="range" id="dith-bop" min="0" max="1" step="0.05" value="0.15" oninput="$('dith-bop-v').textContent=parseFloat(this.value).toFixed(2);runMethod('dither')"><span class="sval" id="dith-bop-v">0.15</span></div>
+                </div>
+              </div>
+              <div class="mb-actions">
+                <label for="img-dither" class="exp-btn" style="display:block;text-align:center;cursor:pointer">Upload Image</label>
+                <input type="file" id="img-dither" accept="image/*" style="display:none" onchange="loadMethodImg('dither',this)">
+                <button class="exp-btn" onclick="exportMethod('dither','Dither_Bypass.png')">↓ Export PNG</button>
+              </div>
+            </div>
+            <div class="mb-preview" id="prev-dither">
+              <div class="mb-canvas-wrap" id="cwrap-dither" style="display:none"><canvas id="mc-dither-canvas"></canvas></div>
+              <div class="mb-placeholder" id="ph-dither">Upload an image to preview</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────── 4. Threshold ─────── -->
+      <div class="method-card" id="mc-threshold">
+        <div class="method-header" onclick="toggleMethod('threshold')">
+          <div class="method-meta">
+            <span class="method-num">04</span>
+            <span class="method-name">Threshold</span>
+            <span class="method-tag">Sharp B&amp;W</span>
+          </div>
+          <span class="method-chevron">▼</span>
+        </div>
+        <div class="method-body" id="mb-threshold">
+          <div class="mb-cols">
+            <div>
+              <div class="mb-params">
+                <span class="sec-label">Parameters</span>
+                <div class="srow"><span class="label">Threshold</span><input type="range" id="th-thr" min="0" max="255" value="128" oninput="$('th-thr-v').textContent=this.value;runMethod('threshold')"><span class="sval" id="th-thr-v">128</span></div>
+                <div class="srow"><span class="label">On Color</span>
+                  <select id="th-col" style="flex:1" onchange="runMethod('threshold')">
+                    <option value="white">White pixels</option>
+                    <option value="black">Black pixels</option>
+                    <option value="both">Both</option>
+                  </select>
+                </div>
+                <div class="srow"><span class="label">Alpha (On)</span><input type="range" id="th-aon" min="0" max="255" value="200" oninput="$('th-aon-v').textContent=this.value;runMethod('threshold')"><span class="sval" id="th-aon-v">200</span></div>
+                <div class="srow"><span class="label">Alpha (Off)</span><input type="range" id="th-aoff" min="0" max="255" value="0" oninput="$('th-aoff-v').textContent=this.value;runMethod('threshold')"><span class="sval" id="th-aoff-v">0</span></div>
+                <div class="srow"><span class="label">Size</span><input type="range" id="th-size" min="64" max="1024" step="8" value="512" oninput="$('th-size-v').textContent=this.value+'px';runMethod('threshold')"><span class="sval" id="th-size-v">512px</span></div>
+                <div class="bait-sub">
+                  <span class="label" style="margin-bottom:7px">Bait Image</span>
+                  <div class="bait-btns">
+                    <button class="btn bait-btn active" data-method="threshold" data-bait="none" onclick="setMethodBait('threshold','none',this)">None</button>
+                    <button class="btn bait-btn" data-method="threshold" data-bait="duck" onclick="setMethodBait('threshold','duck',this)">🦆 Duck</button>
+                    <button class="btn bait-btn" data-method="threshold" data-bait="funny" onclick="setMethodBait('threshold','funny',this)">😂 Funny</button>
+                    <button class="btn bait-btn" data-method="threshold" data-bait="gang" onclick="setMethodBait('threshold','gang',this)">Gang</button>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+                    <label for="bait-threshold" class="btn upload-label-sm">Upload Custom</label>
+                    <input type="file" id="bait-threshold" accept="image/*" style="display:none" onchange="loadMethodBait('threshold',this)">
+                    <span class="custom-bait-name" id="bait-threshold-name">no file</span>
+                  </div>
+                  <div class="srow" style="margin-top:9px"><span class="label">Opacity</span><input type="range" id="th-bop" min="0" max="1" step="0.05" value="0.15" oninput="$('th-bop-v').textContent=parseFloat(this.value).toFixed(2);runMethod('threshold')"><span class="sval" id="th-bop-v">0.15</span></div>
+                </div>
+              </div>
+              <div class="mb-actions">
+                <label for="img-threshold" class="exp-btn" style="display:block;text-align:center;cursor:pointer">Upload Image</label>
+                <input type="file" id="img-threshold" accept="image/*" style="display:none" onchange="loadMethodImg('threshold',this)">
+                <button class="exp-btn" onclick="exportMethod('threshold','Threshold_Bypass.png')">↓ Export PNG</button>
+              </div>
+            </div>
+            <div class="mb-preview" id="prev-threshold">
+              <div class="mb-canvas-wrap" id="cwrap-threshold" style="display:none"><canvas id="mc-threshold-canvas"></canvas></div>
+              <div class="mb-placeholder" id="ph-threshold">Upload an image to preview</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────── 5. Chromatic Split ─────── -->
+      <div class="method-card" id="mc-chroma">
+        <div class="method-header" onclick="toggleMethod('chroma')">
+          <div class="method-meta">
+            <span class="method-num">05</span>
+            <span class="method-name">Chromatic Split</span>
+            <span class="method-tag new">New</span>
+          </div>
+          <span class="method-chevron">▼</span>
+        </div>
+        <div class="method-body" id="mb-chroma">
+          <div class="mb-cols">
+            <div>
+              <div class="mb-params">
+                <span class="sec-label">Parameters</span>
+                <div class="srow"><span class="label">R Offset X</span><input type="range" id="ch-rx" min="-30" max="30" value="6" oninput="$('ch-rx-v').textContent=this.value+'px';runMethod('chroma')"><span class="sval" id="ch-rx-v">6px</span></div>
+                <div class="srow"><span class="label">B Offset X</span><input type="range" id="ch-bx" min="-30" max="30" value="-6" oninput="$('ch-bx-v').textContent=this.value+'px';runMethod('chroma')"><span class="sval" id="ch-bx-v">-6px</span></div>
+                <div class="srow"><span class="label">R Offset Y</span><input type="range" id="ch-ry" min="-30" max="30" value="0" oninput="$('ch-ry-v').textContent=this.value+'px';runMethod('chroma')"><span class="sval" id="ch-ry-v">0px</span></div>
+                <div class="srow"><span class="label">B Offset Y</span><input type="range" id="ch-by" min="-30" max="30" value="0" oninput="$('ch-by-v').textContent=this.value+'px';runMethod('chroma')"><span class="sval" id="ch-by-v">0px</span></div>
+                <div class="srow"><span class="label">Alpha</span><input type="range" id="ch-alpha" min="0" max="1" step="0.05" value="0.7" oninput="$('ch-alpha-v').textContent=parseFloat(this.value).toFixed(2);runMethod('chroma')"><span class="sval" id="ch-alpha-v">0.70</span></div>
+                <div class="bait-sub">
+                  <span class="label" style="margin-bottom:7px">Bait Image</span>
+                  <div class="bait-btns">
+                    <button class="btn bait-btn active" data-method="chroma" data-bait="none" onclick="setMethodBait('chroma','none',this)">None</button>
+                    <button class="btn bait-btn" data-method="chroma" data-bait="duck" onclick="setMethodBait('chroma','duck',this)">🦆 Duck</button>
+                    <button class="btn bait-btn" data-method="chroma" data-bait="funny" onclick="setMethodBait('chroma','funny',this)">😂 Funny</button>
+                    <button class="btn bait-btn" data-method="chroma" data-bait="gang" onclick="setMethodBait('chroma','gang',this)">Gang</button>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+                    <label for="bait-chroma" class="btn upload-label-sm">Upload Custom</label>
+                    <input type="file" id="bait-chroma" accept="image/*" style="display:none" onchange="loadMethodBait('chroma',this)">
+                    <span class="custom-bait-name" id="bait-chroma-name">no file</span>
+                  </div>
+                  <div class="srow" style="margin-top:9px"><span class="label">Opacity</span><input type="range" id="ch-bop" min="0" max="1" step="0.05" value="0.15" oninput="$('ch-bop-v').textContent=parseFloat(this.value).toFixed(2);runMethod('chroma')"><span class="sval" id="ch-bop-v">0.15</span></div>
+                </div>
+              </div>
+              <div class="mb-actions">
+                <label for="img-chroma" class="exp-btn" style="display:block;text-align:center;cursor:pointer">Upload Image</label>
+                <input type="file" id="img-chroma" accept="image/*" style="display:none" onchange="loadMethodImg('chroma',this)">
+                <button class="exp-btn" onclick="exportMethod('chroma','Chroma_Bypass.png')">↓ Export PNG</button>
+              </div>
+            </div>
+            <div class="mb-preview" id="prev-chroma">
+              <div class="mb-canvas-wrap" id="cwrap-chroma" style="display:none"><canvas id="mc-chroma-canvas"></canvas></div>
+              <div class="mb-placeholder" id="ph-chroma">Upload an image to preview</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────── 6. Scanline ─────── -->
+      <div class="method-card" id="mc-scanline">
+        <div class="method-header" onclick="toggleMethod('scanline')">
+          <div class="method-meta">
+            <span class="method-num">06</span>
+            <span class="method-name">Scanline</span>
+            <span class="method-tag">Retro</span>
+          </div>
+          <span class="method-chevron">▼</span>
+        </div>
+        <div class="method-body" id="mb-scanline">
+          <div class="mb-cols">
+            <div>
+              <div class="mb-params">
+                <span class="sec-label">Parameters</span>
+                <div class="srow"><span class="label">Line Gap</span><input type="range" id="sl-gap" min="1" max="12" step="1" value="3" oninput="$('sl-gap-v').textContent=this.value+'px';runMethod('scanline')"><span class="sval" id="sl-gap-v">3px</span></div>
+                <div class="srow"><span class="label">Line Width</span><input type="range" id="sl-lw" min="1" max="6" step="1" value="1" oninput="$('sl-lw-v').textContent=this.value+'px';runMethod('scanline')"><span class="sval" id="sl-lw-v">1px</span></div>
+                <div class="srow"><span class="label">Line Alpha</span><input type="range" id="sl-la" min="0" max="1" step="0.05" value="0.4" oninput="$('sl-la-v').textContent=parseFloat(this.value).toFixed(2);runMethod('scanline')"><span class="sval" id="sl-la-v">0.40</span></div>
+                <div class="srow"><span class="label">Image Alpha</span><input type="range" id="sl-ia" min="0" max="1" step="0.05" value="0.65" oninput="$('sl-ia-v').textContent=parseFloat(this.value).toFixed(2);runMethod('scanline')"><span class="sval" id="sl-ia-v">0.65</span></div>
+                <div class="srow"><span class="label">Size</span><input type="range" id="sl-size" min="64" max="1024" step="8" value="512" oninput="$('sl-size-v').textContent=this.value+'px';runMethod('scanline')"><span class="sval" id="sl-size-v">512px</span></div>
+                <div class="bait-sub">
+                  <span class="label" style="margin-bottom:7px">Bait Image</span>
+                  <div class="bait-btns">
+                    <button class="btn bait-btn active" data-method="scanline" data-bait="none" onclick="setMethodBait('scanline','none',this)">None</button>
+                    <button class="btn bait-btn" data-method="scanline" data-bait="duck" onclick="setMethodBait('scanline','duck',this)">🦆 Duck</button>
+                    <button class="btn bait-btn" data-method="scanline" data-bait="funny" onclick="setMethodBait('scanline','funny',this)">😂 Funny</button>
+                    <button class="btn bait-btn" data-method="scanline" data-bait="gang" onclick="setMethodBait('scanline','gang',this)">Gang</button>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+                    <label for="bait-scanline" class="btn upload-label-sm">Upload Custom</label>
+                    <input type="file" id="bait-scanline" accept="image/*" style="display:none" onchange="loadMethodBait('scanline',this)">
+                    <span class="custom-bait-name" id="bait-scanline-name">no file</span>
+                  </div>
+                  <div class="srow" style="margin-top:9px"><span class="label">Opacity</span><input type="range" id="sl-bop" min="0" max="1" step="0.05" value="0.15" oninput="$('sl-bop-v').textContent=parseFloat(this.value).toFixed(2);runMethod('scanline')"><span class="sval" id="sl-bop-v">0.15</span></div>
+                </div>
+              </div>
+              <div class="mb-actions">
+                <label for="img-scanline" class="exp-btn" style="display:block;text-align:center;cursor:pointer">Upload Image</label>
+                <input type="file" id="img-scanline" accept="image/*" style="display:none" onchange="loadMethodImg('scanline',this)">
+                <button class="exp-btn" onclick="exportMethod('scanline','Scanline_Bypass.png')">↓ Export PNG</button>
+              </div>
+            </div>
+            <div class="mb-preview" id="prev-scanline">
+              <div class="mb-canvas-wrap" id="cwrap-scanline" style="display:none"><canvas id="mc-scanline-canvas"></canvas></div>
+              <div class="mb-placeholder" id="ph-scanline">Upload an image to preview</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────── 7. Edge Detect ─────── -->
+      <div class="method-card" id="mc-edge">
+        <div class="method-header" onclick="toggleMethod('edge')">
+          <div class="method-meta">
+            <span class="method-num">07</span>
+            <span class="method-name">Edge Glow</span>
+            <span class="method-tag new">New</span>
+          </div>
+          <span class="method-chevron">▼</span>
+        </div>
+        <div class="method-body" id="mb-edge">
+          <div class="mb-cols">
+            <div>
+              <div class="mb-params">
+                <span class="sec-label">Parameters</span>
+                <div class="srow"><span class="label">Threshold</span><input type="range" id="ed-thr" min="1" max="200" value="40" oninput="$('ed-thr-v').textContent=this.value;runMethod('edge')"><span class="sval" id="ed-thr-v">40</span></div>
+                <div class="srow"><span class="label">Edge Color</span>
+                  <select id="ed-col" style="flex:1" onchange="runMethod('edge')">
+                    <option value="white">White</option>
+                    <option value="orange">Orange</option>
+                    <option value="cyan">Cyan</option>
+                    <option value="green">Green</option>
+                    <option value="red">Red</option>
+                  </select>
+                </div>
+                <div class="srow"><span class="label">Glow</span><input type="range" id="ed-glow" min="0" max="10" step="0.5" value="2" oninput="$('ed-glow-v').textContent=this.value+'px';runMethod('edge')"><span class="sval" id="ed-glow-v">2px</span></div>
+                <div class="srow"><span class="label">Alpha</span><input type="range" id="ed-alpha" min="0" max="1" step="0.05" value="0.85" oninput="$('ed-alpha-v').textContent=parseFloat(this.value).toFixed(2);runMethod('edge')"><span class="sval" id="ed-alpha-v">0.85</span></div>
+                <div class="srow"><span class="label">Size</span><input type="range" id="ed-size" min="64" max="1024" step="8" value="512" oninput="$('ed-size-v').textContent=this.value+'px';runMethod('edge')"><span class="sval" id="ed-size-v">512px</span></div>
+                <div class="bait-sub">
+                  <span class="label" style="margin-bottom:7px">Bait Image</span>
+                  <div class="bait-btns">
+                    <button class="btn bait-btn active" data-method="edge" data-bait="none" onclick="setMethodBait('edge','none',this)">None</button>
+                    <button class="btn bait-btn" data-method="edge" data-bait="duck" onclick="setMethodBait('edge','duck',this)">🦆 Duck</button>
+                    <button class="btn bait-btn" data-method="edge" data-bait="funny" onclick="setMethodBait('edge','funny',this)">😂 Funny</button>
+                    <button class="btn bait-btn" data-method="edge" data-bait="gang" onclick="setMethodBait('edge','gang',this)">Gang</button>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+                    <label for="bait-edge" class="btn upload-label-sm">Upload Custom</label>
+                    <input type="file" id="bait-edge" accept="image/*" style="display:none" onchange="loadMethodBait('edge',this)">
+                    <span class="custom-bait-name" id="bait-edge-name">no file</span>
+                  </div>
+                  <div class="srow" style="margin-top:9px"><span class="label">Opacity</span><input type="range" id="ed-bop" min="0" max="1" step="0.05" value="0.15" oninput="$('ed-bop-v').textContent=parseFloat(this.value).toFixed(2);runMethod('edge')"><span class="sval" id="ed-bop-v">0.15</span></div>
+                </div>
+              </div>
+              <div class="mb-actions">
+                <label for="img-edge" class="exp-btn" style="display:block;text-align:center;cursor:pointer">Upload Image</label>
+                <input type="file" id="img-edge" accept="image/*" style="display:none" onchange="loadMethodImg('edge',this)">
+                <button class="exp-btn" onclick="exportMethod('edge','EdgeGlow_Bypass.png')">↓ Export PNG</button>
+              </div>
+            </div>
+            <div class="mb-preview" id="prev-edge">
+              <div class="mb-canvas-wrap" id="cwrap-edge" style="display:none"><canvas id="mc-edge-canvas"></canvas></div>
+              <div class="mb-placeholder" id="ph-edge">Upload an image to preview</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────── 8. Half Pixel ─────── -->
+      <div class="method-card" id="mc-pixel">
+        <div class="method-header" onclick="toggleMethod('pixel')">
+          <div class="method-meta">
+            <span class="method-num">08</span>
+            <span class="method-name">Half Pixel</span>
+            <span class="method-tag">Blocky</span>
+          </div>
+          <span class="method-chevron">▼</span>
+        </div>
+        <div class="method-body" id="mb-pixel">
+          <div class="mb-cols">
+            <div>
+              <div class="mb-params">
+                <span class="sec-label">Parameters</span>
+                <div class="srow"><span class="label">Pixel Size</span><input type="range" id="px-size" min="2" max="32" step="1" value="8" oninput="$('px-size-v').textContent=this.value+'px';runMethod('pixel')"><span class="sval" id="px-size-v">8px</span></div>
+                <div class="srow"><span class="label">Output Size</span><input type="range" id="px-out" min="64" max="1024" step="8" value="512" oninput="$('px-out-v').textContent=this.value+'px';runMethod('pixel')"><span class="sval" id="px-out-v">512px</span></div>
+                <div class="srow"><span class="label">Alpha</span><input type="range" id="px-alpha" min="0" max="1" step="0.05" value="0.75" oninput="$('px-alpha-v').textContent=parseFloat(this.value).toFixed(2);runMethod('pixel')"><span class="sval" id="px-alpha-v">0.75</span></div>
+                <div class="bait-sub">
+                  <span class="label" style="margin-bottom:7px">Bait Image</span>
+                  <div class="bait-btns">
+                    <button class="btn bait-btn active" data-method="pixel" data-bait="none" onclick="setMethodBait('pixel','none',this)">None</button>
+                    <button class="btn bait-btn" data-method="pixel" data-bait="duck" onclick="setMethodBait('pixel','duck',this)">🦆 Duck</button>
+                    <button class="btn bait-btn" data-method="pixel" data-bait="funny" onclick="setMethodBait('pixel','funny',this)">😂 Funny</button>
+                    <button class="btn bait-btn" data-method="pixel" data-bait="gang" onclick="setMethodBait('pixel','gang',this)">Gang</button>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+                    <label for="bait-pixel" class="btn upload-label-sm">Upload Custom</label>
+                    <input type="file" id="bait-pixel" accept="image/*" style="display:none" onchange="loadMethodBait('pixel',this)">
+                    <span class="custom-bait-name" id="bait-pixel-name">no file</span>
+                  </div>
+                  <div class="srow" style="margin-top:9px"><span class="label">Opacity</span><input type="range" id="px-bop" min="0" max="1" step="0.05" value="0.15" oninput="$('px-bop-v').textContent=parseFloat(this.value).toFixed(2);runMethod('pixel')"><span class="sval" id="px-bop-v">0.15</span></div>
+                </div>
+              </div>
+              <div class="mb-actions">
+                <label for="img-pixel" class="exp-btn" style="display:block;text-align:center;cursor:pointer">Upload Image</label>
+                <input type="file" id="img-pixel" accept="image/*" style="display:none" onchange="loadMethodImg('pixel',this)">
+                <button class="exp-btn" onclick="exportMethod('pixel','HalfPixel_Bypass.png')">↓ Export PNG</button>
+              </div>
+            </div>
+            <div class="mb-preview" id="prev-pixel">
+              <div class="mb-canvas-wrap" id="cwrap-pixel" style="display:none"><canvas id="mc-pixel-canvas"></canvas></div>
+              <div class="mb-placeholder" id="ph-pixel">Upload an image to preview</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────── 9. Alpha Scatter ─────── -->
+      <div class="method-card" id="mc-scatter">
+        <div class="method-header" onclick="toggleMethod('scatter')">
+          <div class="method-meta">
+            <span class="method-num">09</span>
+            <span class="method-name">Alpha Scatter</span>
+            <span class="method-tag new">New</span>
+          </div>
+          <span class="method-chevron">▼</span>
+        </div>
+        <div class="method-body" id="mb-scatter">
+          <div class="mb-cols">
+            <div>
+              <div class="mb-params">
+                <span class="sec-label">Parameters</span>
+                <div class="srow"><span class="label">Min Alpha</span><input type="range" id="sc-min" min="0" max="255" value="80" oninput="$('sc-min-v').textContent=this.value;runMethod('scatter')"><span class="sval" id="sc-min-v">80</span></div>
+                <div class="srow"><span class="label">Max Alpha</span><input type="range" id="sc-max" min="0" max="255" value="200" oninput="$('sc-max-v').textContent=this.value;runMethod('scatter')"><span class="sval" id="sc-max-v">200</span></div>
+                <div class="srow"><span class="label">Pattern</span>
+                  <select id="sc-pat" style="flex:1" onchange="runMethod('scatter')">
+                    <option value="full">Full Random</option>
+                    <option value="luma">Luma Based</option>
+                    <option value="checker">Checkerboard</option>
+                    <option value="stripe">Stripe</option>
+                  </select>
+                </div>
+                <div class="srow"><span class="label">Size</span><input type="range" id="sc-size" min="64" max="1024" step="8" value="512" oninput="$('sc-size-v').textContent=this.value+'px';runMethod('scatter')"><span class="sval" id="sc-size-v">512px</span></div>
+                <div class="bait-sub">
+                  <span class="label" style="margin-bottom:7px">Bait Image</span>
+                  <div class="bait-btns">
+                    <button class="btn bait-btn active" data-method="scatter" data-bait="none" onclick="setMethodBait('scatter','none',this)">None</button>
+                    <button class="btn bait-btn" data-method="scatter" data-bait="duck" onclick="setMethodBait('scatter','duck',this)">🦆 Duck</button>
+                    <button class="btn bait-btn" data-method="scatter" data-bait="funny" onclick="setMethodBait('scatter','funny',this)">😂 Funny</button>
+                    <button class="btn bait-btn" data-method="scatter" data-bait="gang" onclick="setMethodBait('scatter','gang',this)">Gang</button>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+                    <label for="bait-scatter" class="btn upload-label-sm">Upload Custom</label>
+                    <input type="file" id="bait-scatter" accept="image/*" style="display:none" onchange="loadMethodBait('scatter',this)">
+                    <span class="custom-bait-name" id="bait-scatter-name">no file</span>
+                  </div>
+                  <div class="srow" style="margin-top:9px"><span class="label">Opacity</span><input type="range" id="sc-bop" min="0" max="1" step="0.05" value="0.15" oninput="$('sc-bop-v').textContent=parseFloat(this.value).toFixed(2);runMethod('scatter')"><span class="sval" id="sc-bop-v">0.15</span></div>
+                </div>
+              </div>
+              <div class="mb-actions">
+                <label for="img-scatter" class="exp-btn" style="display:block;text-align:center;cursor:pointer">Upload Image</label>
+                <input type="file" id="img-scatter" accept="image/*" style="display:none" onchange="loadMethodImg('scatter',this)">
+                <button class="exp-btn" onclick="exportMethod('scatter','AlphaScatter_Bypass.png')">↓ Export PNG</button>
+              </div>
+            </div>
+            <div class="mb-preview" id="prev-scatter">
+              <div class="mb-canvas-wrap" id="cwrap-scatter" style="display:none"><canvas id="mc-scatter-canvas"></canvas></div>
+              <div class="mb-placeholder" id="ph-scatter">Upload an image to preview</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────── 10. Color Burn ─────── -->
+      <div class="method-card" id="mc-burn">
+        <div class="method-header" onclick="toggleMethod('burn')">
+          <div class="method-meta">
+            <span class="method-num">10</span>
+            <span class="method-name">Color Burn Blend</span>
+            <span class="method-tag new">New</span>
+          </div>
+          <span class="method-chevron">▼</span>
+        </div>
+        <div class="method-body" id="mb-burn">
+          <div class="mb-cols">
+            <div>
+              <div class="mb-params">
+                <span class="sec-label">Parameters</span>
+                <div class="srow"><span class="label">Mode</span>
+                  <select id="bn-mode" style="flex:1" onchange="runMethod('burn')">
+                    <option value="burn">Color Burn</option>
+                    <option value="dodge">Color Dodge</option>
+                    <option value="screen">Screen</option>
+                    <option value="overlay">Overlay</option>
+                    <option value="hardlight">Hard Light</option>
+                  </select>
+                </div>
+                <div class="srow"><span class="label">Intensity</span><input type="range" id="bn-int" min="0" max="1" step="0.05" value="0.7" oninput="$('bn-int-v').textContent=parseFloat(this.value).toFixed(2);runMethod('burn')"><span class="sval" id="bn-int-v">0.70</span></div>
+                <div class="srow"><span class="label">Alpha</span><input type="range" id="bn-alpha" min="0" max="1" step="0.05" value="0.6" oninput="$('bn-alpha-v').textContent=parseFloat(this.value).toFixed(2);runMethod('burn')"><span class="sval" id="bn-alpha-v">0.60</span></div>
+                <div class="srow"><span class="label">Size</span><input type="range" id="bn-size" min="64" max="1024" step="8" value="512" oninput="$('bn-size-v').textContent=this.value+'px';runMethod('burn')"><span class="sval" id="bn-size-v">512px</span></div>
+                <div class="bait-sub">
+                  <span class="label" style="margin-bottom:7px">Bait Image</span>
+                  <div class="bait-btns">
+                    <button class="btn bait-btn active" data-method="burn" data-bait="none" onclick="setMethodBait('burn','none',this)">None</button>
+                    <button class="btn bait-btn" data-method="burn" data-bait="duck" onclick="setMethodBait('burn','duck',this)">🦆 Duck</button>
+                    <button class="btn bait-btn" data-method="burn" data-bait="funny" onclick="setMethodBait('burn','funny',this)">😂 Funny</button>
+                    <button class="btn bait-btn" data-method="burn" data-bait="gang" onclick="setMethodBait('burn','gang',this)">Gang</button>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+                    <label for="bait-burn" class="btn upload-label-sm">Upload Custom</label>
+                    <input type="file" id="bait-burn" accept="image/*" style="display:none" onchange="loadMethodBait('burn',this)">
+                    <span class="custom-bait-name" id="bait-burn-name">no file</span>
+                  </div>
+                  <div class="srow" style="margin-top:9px"><span class="label">Opacity</span><input type="range" id="bn-bop" min="0" max="1" step="0.05" value="0.15" oninput="$('bn-bop-v').textContent=parseFloat(this.value).toFixed(2);runMethod('burn')"><span class="sval" id="bn-bop-v">0.15</span></div>
+                </div>
+              </div>
+              <div class="mb-actions">
+                <label for="img-burn" class="exp-btn" style="display:block;text-align:center;cursor:pointer">Upload Image</label>
+                <input type="file" id="img-burn" accept="image/*" style="display:none" onchange="loadMethodImg('burn',this)">
+                <button class="exp-btn" onclick="exportMethod('burn','ColorBurn_Bypass.png')">↓ Export PNG</button>
+              </div>
+            </div>
+            <div class="mb-preview" id="prev-burn">
+              <div class="mb-canvas-wrap" id="cwrap-burn" style="display:none"><canvas id="mc-burn-canvas"></canvas></div>
+              <div class="mb-placeholder" id="ph-burn">Upload an image to preview</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────── 11. Nagisa Chop ─────── -->
+      <div class="method-card" id="mc-nagisa">
+        <div class="method-header" onclick="toggleMethod('nagisa')">
+          <div class="method-meta">
+            <span class="method-num">11</span>
+            <span class="method-name">Nagisa Chop</span>
+            <span class="method-tag new">New</span>
+          </div>
+          <span class="method-chevron">▼</span>
+        </div>
+        <div class="method-body" id="mb-nagisa">
+          <p style="font-size:.6rem;color:var(--text-muted);margin-bottom:14px;line-height:1.6">
+            Splits your image into N×M tiles and exports them as a ZIP. Upload each tile as its own Roblox decal — each piece is tiny and avoids detection. Reassemble using a SurfaceGui grid in-game. 
+          </p>
+          <div class="mb-cols">
+            <div>
+              <div class="mb-params">
+                <span class="sec-label">Parameters</span>
+                <div class="srow"><span class="label">Columns</span><input type="range" id="ng-cx" min="2" max="20" value="10" oninput="$('ng-cx-v').textContent=this.value;nagisaRender()"><span class="sval" id="ng-cx-v">10</span></div>
+                <div class="srow"><span class="label">Rows</span><input type="range" id="ng-cy" min="2" max="20" value="15" oninput="$('ng-cy-v').textContent=this.value;nagisaRender()"><span class="sval" id="ng-cy-v">15</span></div>
+                <div class="srow"><span class="label">Tile Alpha</span><input type="range" id="ng-al" min="0.1" max="1" step="0.05" value="1" oninput="$('ng-al-v').textContent=parseFloat(this.value).toFixed(2);nagisaRender()"><span class="sval" id="ng-al-v">1.00</span></div>
+                <div class="srow"><span class="label">Output Quality</span>
+                  <select id="ng-fmt" style="flex:1" onchange="nagisaRender()">
+                    <option value="png">PNG (lossless)</option>
+                    <option value="jpeg">JPEG (smaller)</option>
+                    <option value="webp">WebP (best)</option>
+                  </select>
+                </div>
+                <p id="ng-info" style="font-size:.57rem;color:#555;margin-top:8px"></p>
+              </div>
+              <div class="mb-actions">
+                <label for="img-nagisa" class="exp-btn" style="display:block;text-align:center;cursor:pointer">Upload Image</label>
+                <input type="file" id="img-nagisa" accept="image/*" style="display:none" onchange="nagisaLoad(this)">
+                <button class="exp-btn" onclick="nagisaExport()">↓ Export All Tiles (.ZIP)</button>
+                <button class="exp-btn" style="background:rgba(150,100,255,.08);border-color:rgba(150,100,255,.3);color:#b8a0ff" onclick="nagisaCopyScript()">Copy Roblox Script</button>
+              </div>
+            </div>
+            <div class="mb-preview" id="prev-nagisa">
+              <div id="cwrap-nagisa" style="display:none">
+                <div style="font-size:.52rem;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px">Preview (first 30 tiles)</div>
+                <div class="nagisa-tile-grid" id="ng-tile-grid"></div>
+              </div>
+              <div class="mb-placeholder" id="ph-nagisa">Upload an image to split</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /methods-grid -->
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════ AUDIO ═══════════ -->
+<div class="card">
+  <div class="card-head">
+    <div class="brand-row" style="justify-content:flex-start;gap:10px">
+      <div>
+        <div class="extra-title" style="font-family:var(--display);font-size:1.1rem;font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:.5px">Audio Bypass V4</div>
+        <div class="subtitle" style="margin:2px 0 0">Multi-track · Pitch · Reverb · Echo · Pan · Export WAV</div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div id="daw-wrapper">
+      <div class="daw-head">
+        <div style="display:flex;gap:7px;align-items:center">
+          <label for="audio-import" class="btn" style="background:var(--orange);color:#000;padding:5px 11px;cursor:pointer;border-color:var(--orange);font-size:.62rem">+ Add Audio</label>
+          <input type="file" id="audio-import" accept="audio/*" style="display:none" multiple>
+          <button id="play-btn" class="btn" onclick="togglePlay()" style="font-size:.62rem">▶ PLAY</button>
+          <button class="btn" onclick="stopPlay()" style="font-size:.62rem">■ STOP</button>
+          <span class="daw-time" id="daw-time">0:00.0</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="label" style="margin:0;font-size:.55rem">ZOOM</span>
+          <input type="range" id="zoom-sl" min="10" max="300" value="50" style="width:75px;margin:0" oninput="pxPerSec=parseInt(this.value);$('zoom-v').textContent=this.value;renderDAW()">
+          <span class="sval" id="zoom-v" style="font-size:.58rem">50</span>
+        </div>
+        <div style="display:flex;gap:6px">
+          <button class="btn" onclick="exportDAW()" style="font-size:.62rem">⬇ WAV</button>
+          <button class="btn danger" onclick="clearAll()" style="font-size:.62rem">✕ Clear</button>
+        </div>
+      </div>
+      <div id="daw-tl-container">
+        <div id="daw-tl"><div id="playhead"></div></div>
+      </div>
+      <div id="mixer-panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <div id="mx-name" class="label" style="color:var(--orange);margin:0;font-size:.65rem">Selected: None</div>
+          <button class="btn danger" style="font-size:.6rem;padding:4px 9px" onclick="deleteSelected()">Remove</button>
+        </div>
+        <div class="mixer-grid">
+          <div class="mixer-param"><span class="label">Loudness <span id="v-vol" style="float:right;color:var(--orange)">1.0</span></span><input type="range" id="p-vol" min="0" max="10" step="0.1" value="1"></div>
+          <div class="mixer-param"><span class="label">Saturation <span id="v-dist" style="float:right;color:var(--orange)">0</span></span><input type="range" id="p-dist" min="0" max="100" value="0"></div>
+          <div class="mixer-param"><span class="label">Pitch <span id="v-pitch" style="float:right;color:var(--orange)">1.0</span></span><input type="range" id="p-pitch" min="0.25" max="4" step="0.01" value="1"></div>
+          <div class="mixer-param"><span class="label">Reverb <span id="v-rev" style="float:right;color:var(--orange)">0</span></span><input type="range" id="p-rev" min="0" max="1" step="0.05" value="0"></div>
+          <div class="mixer-param"><span class="label">Echo <span id="v-echo" style="float:right;color:var(--orange)">0</span></span><input type="range" id="p-echo" min="0" max="1" step="0.05" value="0"></div>
+          <div class="mixer-param"><span class="label">Pan <span id="v-pan" style="float:right;color:var(--orange)">C</span></span><input type="range" id="p-pan" min="-1" max="1" step="0.05" value="0"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─ In-Browser Audio Bypass ─ -->
+    <div class="macros-section">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+        <span class="sec-label" style="margin:0">In-Browser Audio Bypass</span>
+        <span style="font-size:.48rem;background:rgba(68,255,136,.08);color:#44ff88;border:1px solid rgba(68,255,136,.2);padding:2px 8px;border-radius:3px;font-family:var(--mono);font-weight:700;text-transform:uppercase;letter-spacing:1px">100% In-Browser · No Audacity</span>
+      </div>
+      <p style="font-size:.6rem;color:var(--text-muted);line-height:1.6;margin-bottom:4px">Upload your audio file — all processing runs entirely in your browser using Web Audio API. Nothing external needed.</p>
+      <div class="ap-grid">
+
+        <!-- Method 1 -->
+        <div class="ap-card">
+          <div class="ap-head">
+            <div><div class="ap-name">Method 1</div>
+            <div class="ap-steps">Amp ×8.81 → Dup×4 → Compress → Amp ×0.71 → Mix → Bass/Treble cut → Limiter HardClip → HardClip Dist → Speed −50%</div></div>
+          </div>
+          <label for="ap-m1-ul" class="ap-ul">Upload Audio</label>
+          <input type="file" id="ap-m1-ul" accept="audio/*" style="display:none" onchange="apLoad('m1',this)">
+          <div class="ap-row">
+            <button id="ap-m1-run" class="ap-run" onclick="apRun('m1')">▶ Process</button>
+            <span class="ap-stat" id="ap-m1-stat">No file loaded</span>
+          </div>
+          <div class="ap-prev" id="ap-m1-prev">
+            <canvas id="ap-m1-wave" class="ap-wave"></canvas>
+            <div class="ap-row">
+              <button id="ap-m1-play" class="ap-pbtn" onclick="apTogglePlay('m1')">▶ Play</button>
+              <button class="ap-pbtn" onclick="apExport('m1')">↓ Export WAV</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Method 2 -->
+        <div class="ap-card">
+          <div class="ap-head">
+            <div><div class="ap-name">Method 2</div>
+            <div class="ap-steps">Amp ×35.5 → Bass −24dB / Treble −9dB → Amp ×8 → Dup → Mix</div></div>
+          </div>
+          <label for="ap-m2-ul" class="ap-ul">Upload Audio</label>
+          <input type="file" id="ap-m2-ul" accept="audio/*" style="display:none" onchange="apLoad('m2',this)">
+          <div class="ap-row">
+            <button id="ap-m2-run" class="ap-run" onclick="apRun('m2')">▶ Process</button>
+            <span class="ap-stat" id="ap-m2-stat">No file loaded</span>
+          </div>
+          <div class="ap-prev" id="ap-m2-prev">
+            <canvas id="ap-m2-wave" class="ap-wave"></canvas>
+            <div class="ap-row">
+              <button id="ap-m2-play" class="ap-pbtn" onclick="apTogglePlay('m2')">▶ Play</button>
+              <button class="ap-pbtn" onclick="apExport('m2')">↓ Export WAV</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Method 3 -->
+        <div class="ap-card">
+          <div class="ap-head">
+            <div><div class="ap-name">Method 3</div>
+            <div class="ap-steps">Amp → Compress → Bass +30 → Dup → Mix → SoftClip → Amp → Limiter → Bass +11 → Dup×2 → Mix → Limiter</div></div>
+          </div>
+          <label for="ap-m3-ul" class="ap-ul">Upload Audio</label>
+          <input type="file" id="ap-m3-ul" accept="audio/*" style="display:none" onchange="apLoad('m3',this)">
+          <div class="ap-row">
+            <button id="ap-m3-run" class="ap-run" onclick="apRun('m3')">▶ Process</button>
+            <span class="ap-stat" id="ap-m3-stat">No file loaded</span>
+          </div>
+          <div class="ap-prev" id="ap-m3-prev">
+            <canvas id="ap-m3-wave" class="ap-wave"></canvas>
+            <div class="ap-row">
+              <button id="ap-m3-play" class="ap-pbtn" onclick="apTogglePlay('m3')">▶ Play</button>
+              <button class="ap-pbtn" onclick="apExport('m3')">↓ Export WAV</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Method 4 — gothism -->
+        <div class="ap-card">
+          <div class="ap-head">
+            <div><div class="ap-name">Method 4 — gothism</div>
+            <div class="ap-steps">Bass/Treble shape → Amp cycles → Compress ×3 → SoftClip → LowCut → Amp → Dup×3 → Mix → Sub-bass cut EQ</div></div>
+            <span class="ap-badge rec">⭐ Recommended</span>
+          </div>
+          <label for="ap-m4-ul" class="ap-ul">Upload Audio</label>
+          <input type="file" id="ap-m4-ul" accept="audio/*" style="display:none" onchange="apLoad('m4',this)">
+          <div class="ap-row">
+            <button id="ap-m4-run" class="ap-run" onclick="apRun('m4')">▶ Process</button>
+            <span class="ap-stat" id="ap-m4-stat">No file loaded</span>
+          </div>
+          <div class="ap-prev" id="ap-m4-prev">
+            <canvas id="ap-m4-wave" class="ap-wave"></canvas>
+            <div class="ap-row">
+              <button id="ap-m4-play" class="ap-pbtn" onclick="apTogglePlay('m4')">▶ Play</button>
+              <button class="ap-pbtn" onclick="apExport('m4')">↓ Export WAV</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Method 5 Full -->
+        <div class="ap-card">
+          <div class="ap-head">
+            <div><div class="ap-name">Method 5 — Full</div>
+            <div class="ap-steps">Limiter → Compress → HardClip → Dup×3 → Limiter×2 → Compress → Mix → SoftOverdrive → Amp → Tempo+1% → Pitch−1% → Dup → Mix → Amp → SoftOverdrive → Amp → Dup×2 → Mix</div></div>
+            <span class="ap-badge best">⭐ Works Best</span>
+          </div>
+          <label for="ap-m5-ul" class="ap-ul">Upload Audio</label>
+          <input type="file" id="ap-m5-ul" accept="audio/*" style="display:none" onchange="apLoad('m5',this)">
+          <div class="ap-row">
+            <button id="ap-m5-run" class="ap-run" onclick="apRun('m5')">▶ Process</button>
+            <span class="ap-stat" id="ap-m5-stat">No file loaded</span>
+          </div>
+          <div class="ap-prev" id="ap-m5-prev">
+            <canvas id="ap-m5-wave" class="ap-wave"></canvas>
+            <div class="ap-row">
+              <button id="ap-m5-play" class="ap-pbtn" onclick="apTogglePlay('m5')">▶ Play</button>
+              <button class="ap-pbtn" onclick="apExport('m5')">↓ Export WAV</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Method 5 Simple -->
+        <div class="ap-card">
+          <div class="ap-head">
+            <div><div class="ap-name">Method 5 — Simple</div>
+            <div class="ap-steps">Amp ×0.89 → Limiter → Dup×3 → Limiter → Mix → Amp ×1.88 → Dup → Mix → Amp ×1.29 → Amp ×1.12 ×2</div></div>
+          </div>
+          <label for="ap-m5s-ul" class="ap-ul">Upload Audio</label>
+          <input type="file" id="ap-m5s-ul" accept="audio/*" style="display:none" onchange="apLoad('m5s',this)">
+          <div class="ap-row">
+            <button id="ap-m5s-run" class="ap-run" onclick="apRun('m5s')">▶ Process</button>
+            <span class="ap-stat" id="ap-m5s-stat">No file loaded</span>
+          </div>
+          <div class="ap-prev" id="ap-m5s-prev">
+            <canvas id="ap-m5s-wave" class="ap-wave"></canvas>
+            <div class="ap-row">
+              <button id="ap-m5s-play" class="ap-pbtn" onclick="apTogglePlay('m5s')">▶ Play</button>
+              <button class="ap-pbtn" onclick="apExport('m5s')">↓ Export WAV</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- CR Method — BigNoseMonkey -->
+        <div class="ap-card">
+          <div class="ap-head">
+            <div><div class="ap-name">CR Method — BigNoseMonkey</div>
+            <div class="ap-steps">BandReject 600–1100 Hz (SpectralDelete) → ChangeTempo +5%</div></div>
+            <span class="ap-badge distro">⭐ Works for Distrokid</span>
+          </div>
+          <p style="font-size:.58rem;color:#888;line-height:1.6;margin:0">Removes the 600–1100 Hz band and speeds up tempo 5% — confuses waveform fingerprinting. Guaranteed to work per BigNoseMonkey.</p>
+          <label for="ap-cr-ul" class="ap-ul">Upload Audio</label>
+          <input type="file" id="ap-cr-ul" accept="audio/*" style="display:none" onchange="apLoad('cr',this)">
+          <div class="ap-row">
+            <button id="ap-cr-run" class="ap-run" onclick="apRun('cr')">▶ Process</button>
+            <span class="ap-stat" id="ap-cr-stat">No file loaded</span>
+          </div>
+          <div class="ap-prev" id="ap-cr-prev">
+            <canvas id="ap-cr-wave" class="ap-wave"></canvas>
+            <div class="ap-row">
+              <button id="ap-cr-play" class="ap-pbtn" onclick="apTogglePlay('cr')">▶ Play</button>
+              <button class="ap-pbtn" onclick="apExport('cr')">↓ Export WAV</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tempo/Pitch -->
+        <div class="ap-card">
+          <div class="ap-head">
+            <div><div class="ap-name">Tempo / Pitch Shift</div>
+            <div class="ap-steps">Tempo +4% → Speed +1% → Pitch −16 semitones → Tempo +4%</div></div>
+            <span class="ap-badge rec">⭐ Pitch Bypass</span>
+          </div>
+          <p style="font-size:.58rem;color:#888;line-height:1.6;margin:0">Shifts pitch down 16 semitones + speeds up tempo. Defeats pitch-based fingerprinting like ContentID.</p>
+          <label for="ap-tp-ul" class="ap-ul">Upload Audio</label>
+          <input type="file" id="ap-tp-ul" accept="audio/*" style="display:none" onchange="apLoad('tp',this)">
+          <div class="ap-row">
+            <button id="ap-tp-run" class="ap-run" onclick="apRun('tp')">▶ Process</button>
+            <span class="ap-stat" id="ap-tp-stat">No file loaded</span>
+          </div>
+          <div class="ap-prev" id="ap-tp-prev">
+            <canvas id="ap-tp-wave" class="ap-wave"></canvas>
+            <div class="ap-row">
+              <button id="ap-tp-play" class="ap-pbtn" onclick="apTogglePlay('tp')">▶ Play</button>
+              <button class="ap-pbtn" onclick="apExport('tp')">↓ Export WAV</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /ap-grid -->
+
+      <!-- Skipped / fake methods -->
+
+    </div><!-- /macros-section -->
+
+  </div>
+</div>
+<div id="notif"></div>
+
+<script>
+// ─── Globals ──────────────────────────────────────────────────────────────
+const $=id=>document.getElementById(id);
+function notify(m,d=2400){const n=$('notif');n.textContent=m;n.classList.add('show');clearTimeout(n._t);n._t=setTimeout(()=>n.classList.remove('show'),d)}
+
+// Accent
+function setAccent(c,el){
+  document.documentElement.style.setProperty('--accent',c);
+  const r=parseInt(c.slice(1,3),16),g=parseInt(c.slice(3,5),16),b=parseInt(c.slice(5,7),16);
+  document.documentElement.style.setProperty('--accent-rgb',`${r},${g},${b}`);
+  document.querySelectorAll('.swatch').forEach(s=>s.classList.toggle('sel',s===el));
+}
+
+// Bait images
+const BAITS={};
+['duck','funny','gang'].forEach((n,i)=>{
+  BAITS[n]=new Image();BAITS[n].crossOrigin='anonymous';
+  BAITS[n].src=['https://files.catbox.moe/x0zpmq.png','https://files.catbox.moe/zgbuf8.png','https://files.catbox.moe/03v9ii.png'][i];
+});
+
+// Per-method state
+const methodState={};
+['joseph','kevin','dither','threshold','chroma','scanline','edge','pixel','scatter','burn','nagisa'].forEach(id=>{
+  methodState[id]={img:null,bait:'duck'/* joseph default */,customBait:null};
+});
+methodState.joseph.bait='duck';
+['kevin','dither','threshold','chroma','scanline','edge','pixel','scatter','burn','nagisa'].forEach(id=>methodState[id].bait='none');
+
+function loadMethodImg(id,input){
+  const f=input.files[0];if(!f)return;
+  const r=new FileReader();r.onload=ev=>{const i=new Image();i.onload=()=>{methodState[id].img=i;runMethod(id)};i.src=ev.target.result};r.readAsDataURL(f);input.value='';
+}
+function loadMethodBait(id,input){
+  const f=input.files[0];if(!f)return;
+  const r=new FileReader();r.onload=ev=>{const i=new Image();i.onload=()=>{methodState[id].customBait=i;setMethodBait(id,'custom',null);notify('Custom bait loaded')};i.src=ev.target.result};r.readAsDataURL(f);
+  $('bait-'+id+'-name').textContent=f.name;input.value='';
+}
+function setMethodBait(id,bait,btn){
+  methodState[id].bait=bait;
+  if(btn){document.querySelectorAll(`#mb-${id} .bait-btn`).forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
+  runMethod(id);
+}
+function getBaitImg(id){
+  const s=methodState[id];
+  if(s.bait==='custom')return s.customBait;
+  if(s.bait==='none')return null;
+  return BAITS[s.bait]||null;
+}
+
+// ─── Method toggle ─────────────────────────────────────────────────────────
+function toggleMethod(id){
+  const card=$('mc-'+id);card.classList.toggle('open');
+}
+
+// ─── Draw bait overlay ─────────────────────────────────────────────────────
+function drawBait(ctx,w,h,baitImg,opacity){
+  if(!baitImg||opacity<=0)return;
+  ctx.globalAlpha=opacity;ctx.drawImage(baitImg,0,0,w,h);ctx.globalAlpha=1;
+}
+
+// ─── Export method ─────────────────────────────────────────────────────────
+function exportMethod(id,filename){
+  const c=$(`mc-${id}-canvas`);if(!c||c.width===0)return notify('Process an image first');
+  const a=document.createElement('a');a.download=filename;a.href=c.toDataURL('image/png');a.click();notify(`Exported: ${filename}`);
+}
+
+// ──────────────────────────────────────────────────────────────────────────
+// runMethod dispatcher
+// ──────────────────────────────────────────────────────────────────────────
+function runMethod(id){
+  const s=methodState[id];if(!s.img)return;
+  const c=$(`mc-${id}-canvas`),ctx=c.getContext('2d',{willReadFrequently:true});
+  $(`cwrap-${id}`).style.display='block';$(`ph-${id}`).style.display='none';
+  methods[id](s.img,c,ctx);
+}
+
+const methods={
+
+  // ── 1. Joseph ──────────────────────────────────────────────────────────
+  joseph(img,tc,ctx){
+    const sz=parseInt($('j-size').value);
+    const blurAmt=parseFloat($('j-blur').value),a1=parseInt($('j-a1').value),a2=parseInt($('j-a2').value),oa=parseInt($('j-oa').value);
+    const bop=parseFloat($('j-bop').value);
+    tc.width=tc.height=sz;
+    // draw bait as background
+    const baitImg=getBaitImg('joseph');
+    if(baitImg){ctx.globalAlpha=bop;ctx.drawImage(baitImg,0,0,sz,sz);ctx.globalAlpha=1;}
+    // generate grayscale-to-white layers
+    const gc=document.createElement('canvas');gc.width=gc.height=sz;const gctx=gc.getContext('2d');
+    const lay=()=>{
+      const lc=document.createElement('canvas');lc.width=lc.height=sz;const lctx=lc.getContext('2d');
+      lctx.drawImage(img,0,0,sz,sz);const id=lctx.getImageData(0,0,sz,sz);const d=id.data;
+      for(let i=0;i<d.length;i+=4){const g=(d[i]+d[i+1]+d[i+2])/3;d[i]=d[i+1]=d[i+2]=255;d[i+3]=g}
+      lctx.putImageData(id,0,0);return lc;
+    };
+    gctx.globalAlpha=a1/255;gctx.filter=`blur(${blurAmt}px)`;gctx.drawImage(lay(),0,0);
+    gctx.filter='none';gctx.globalAlpha=a2/255;gctx.drawImage(lay(),0,0);
+    gctx.globalAlpha=a1/255;gctx.drawImage(lay(),0,0);
+    ctx.globalAlpha=oa/255;ctx.drawImage(gc,0,0);ctx.globalAlpha=1;
+  },
+
+  // ── 2. Kevin ───────────────────────────────────────────────────────────
+  kevin(img,tc,ctx){
+    const sz=parseInt($('k-size').value),gray=parseInt($('k-gray').value),con=parseInt($('k-con').value);
+    const bop=parseFloat($('k-bop').value);
+    tc.width=tc.height=sz;ctx.drawImage(img,0,0,sz,sz);
+    const id=ctx.getImageData(0,0,sz,sz);const d=id.data;
+    const cf=(259*(con+255))/(255*(259-con));
+    for(let i=0;i<d.length;i+=4){
+      let r=cf*(d[i]-128)+128,g=cf*(d[i+1]-128)+128,b=cf*(d[i+2]-128)+128;
+      const luma=(r+g+b)/3;d[i]=d[i+1]=d[i+2]=gray;d[i+3]=Math.max(0,Math.min(255,luma));
+    }
+    ctx.putImageData(id,0,0);
+    drawBait(ctx,sz,sz,getBaitImg('kevin'),bop);
+  },
+
+  // ── 3. Dither ──────────────────────────────────────────────────────────
+  dither(img,tc,ctx){
+    const type=$('d-type').value,thr=parseInt($('d-thr').value),scale=parseInt($('d-scale').value),alpha=parseFloat($('d-alpha').value);
+    const bop=parseFloat($('dith-bop').value);
+    const iw=Math.max(1,Math.floor(img.naturalWidth/scale)),ih=Math.max(1,Math.floor(img.naturalHeight/scale));
+    tc.width=img.naturalWidth||512;tc.height=img.naturalHeight||512;
+    const small=document.createElement('canvas');small.width=iw;small.height=ih;
+    const sctx=small.getContext('2d');sctx.drawImage(img,0,0,iw,ih);
+    const id=sctx.getImageData(0,0,iw,ih);const d=id.data;
+    // to grayscale
+    const gray=new Float32Array(iw*ih);
+    for(let i=0;i<d.length;i+=4)gray[i/4]=(d[i]*0.299+d[i+1]*0.587+d[i+2]*0.114);
+    const bayer=[[0,8,2,10],[12,4,14,6],[3,11,1,9],[15,7,13,5]];
+    for(let y=0;y<ih;y++){for(let x=0;x<iw;x++){
+      const idx=y*iw+x;let g=gray[idx];
+      let on;
+      if(type==='fs'){
+        on=g>=thr;const err=g-(on?255:0);
+        if(x+1<iw)gray[idx+1]+=err*7/16;
+        if(y+1<ih){if(x>0)gray[idx+iw-1]+=err*3/16;gray[idx+iw]+=err*5/16;if(x+1<iw)gray[idx+iw+1]+=err*1/16;}
+      }else if(type==='ordered'){on=(g/255)>(bayer[y%4][x%4]/16)}
+      else{on=g+((Math.random()-.5)*80)>=thr}
+      const di=idx*4;d[di]=d[di+1]=d[di+2]=on?255:0;d[di+3]=on?Math.round(alpha*255):0;
+    }}
+    sctx.putImageData(id,0,0);
+    ctx.clearRect(0,0,tc.width,tc.height);ctx.imageSmoothingEnabled=false;ctx.drawImage(small,0,0,tc.width,tc.height);
+    drawBait(ctx,tc.width,tc.height,getBaitImg('dither'),bop);
+  },
+
+  // ── 4. Threshold ───────────────────────────────────────────────────────
+  threshold(img,tc,ctx){
+    const thr=parseInt($('th-thr').value),col=$('th-col').value;
+    const aon=parseInt($('th-aon').value),aoff=parseInt($('th-aoff').value),sz=parseInt($('th-size').value);
+    const bop=parseFloat($('th-bop').value);
+    tc.width=tc.height=sz;ctx.drawImage(img,0,0,sz,sz);
+    const id=ctx.getImageData(0,0,sz,sz);const d=id.data;
+    for(let i=0;i<d.length;i+=4){
+      const luma=(d[i]*0.299+d[i+1]*0.587+d[i+2]*0.114);const bright=luma>=thr;
+      if(col==='white'){d[i]=d[i+1]=d[i+2]=255;d[i+3]=bright?aon:aoff}
+      else if(col==='black'){d[i]=d[i+1]=d[i+2]=0;d[i+3]=bright?aon:aoff}
+      else{d[i]=d[i+1]=d[i+2]=bright?255:0;d[i+3]=bright?aon:aoff}
+    }
+    ctx.putImageData(id,0,0);
+    drawBait(ctx,sz,sz,getBaitImg('threshold'),bop);
+  },
+
+  // ── 5. Chromatic ───────────────────────────────────────────────────────
+  chroma(img,tc,ctx){
+    const rx=parseInt($('ch-rx').value),bx=parseInt($('ch-bx').value);
+    const ry=parseInt($('ch-ry').value),by=parseInt($('ch-by').value);
+    const alpha=parseFloat($('ch-alpha').value),bop=parseFloat($('ch-bop').value);
+    const w=img.naturalWidth||512,h=img.naturalHeight||512;
+    tc.width=w;tc.height=h;
+    // draw base
+    const tmp=document.createElement('canvas');tmp.width=w;tmp.height=h;
+    tmp.getContext('2d').drawImage(img,0,0,w,h);
+    const src=tmp.getContext('2d').getImageData(0,0,w,h).data;
+    const out=ctx.createImageData(w,h);const d=out.data;
+    for(let y=0;y<h;y++){for(let x=0;x<w;x++){
+      const i=(y*w+x)*4;
+      const ri=((y+ry)*w+(x+rx))*4,bi=((y+by)*w+(x+bx))*4;
+      const gi=i;
+      d[i]=(ri>=0&&ri<src.length)?src[ri]:src[i];
+      d[i+1]=src[gi+1];
+      d[i+2]=(bi>=0&&bi<src.length)?src[bi+2]:src[i+2];
+      d[i+3]=Math.round(alpha*255);
+    }}
+    ctx.putImageData(out,0,0);
+    drawBait(ctx,w,h,getBaitImg('chroma'),bop);
+  },
+
+  // ── 6. Scanline ────────────────────────────────────────────────────────
+  scanline(img,tc,ctx){
+    const gap=parseInt($('sl-gap').value),lw=parseInt($('sl-lw').value);
+    const la=parseFloat($('sl-la').value),ia=parseFloat($('sl-ia').value);
+    const sz=parseInt($('sl-size').value),bop=parseFloat($('sl-bop').value);
+    tc.width=tc.height=sz;ctx.drawImage(img,0,0,sz,sz);
+    // set image alpha
+    const id=ctx.getImageData(0,0,sz,sz);const d=id.data;
+    for(let i=0;i<d.length;i+=4)d[i+3]=Math.round(d[i+3]*ia);
+    ctx.putImageData(id,0,0);
+    // draw scanlines
+    ctx.fillStyle=`rgba(0,0,0,${la})`;
+    for(let y=0;y<sz;y+=gap+lw)ctx.fillRect(0,y,sz,lw);
+    drawBait(ctx,sz,sz,getBaitImg('scanline'),bop);
+  },
+
+  // ── 7. Edge ────────────────────────────────────────────────────────────
+  edge(img,tc,ctx){
+    const thr=parseInt($('ed-thr').value),col=$('ed-col').value;
+    const glow=parseFloat($('ed-glow').value),alpha=parseFloat($('ed-alpha').value);
+    const sz=parseInt($('ed-size').value),bop=parseFloat($('ed-bop').value);
+    tc.width=tc.height=sz;ctx.drawImage(img,0,0,sz,sz);
+    const src=ctx.getImageData(0,0,sz,sz);const s=src.data;
+    const out=ctx.createImageData(sz,sz);const d=out.data;
+    const colMap={white:[255,255,255],orange:[255,133,0],cyan:[0,212,255],green:[68,255,136],red:[255,68,85]};
+    const [er,eg,eb]=colMap[col]||[255,255,255];
+    for(let y=1;y<sz-1;y++){for(let x=1;x<sz-1;x++){
+      const idx=(y*sz+x)*4;
+      const luma=c=>(s[c]*0.299+s[c+1]*0.587+s[c+2]*0.114);
+      const gx=luma((y*sz+x+1)*4)-luma((y*sz+x-1)*4);
+      const gy=luma(((y+1)*sz+x)*4)-luma(((y-1)*sz+x)*4);
+      const mag=Math.sqrt(gx*gx+gy*gy);
+      if(mag>thr){d[idx]=er;d[idx+1]=eg;d[idx+2]=eb;d[idx+3]=Math.round(Math.min(1,mag/255)*alpha*255)}
+      else{d[idx]=d[idx+1]=d[idx+2]=0;d[idx+3]=0}
+    }}
+    ctx.clearRect(0,0,sz,sz);ctx.putImageData(out,0,0);
+    if(glow>0){const tmp=document.createElement('canvas');tmp.width=sz;tmp.height=sz;const tctx=tmp.getContext('2d');tctx.filter=`blur(${glow}px)`;tctx.drawImage(tc,0,0);ctx.globalAlpha=0.6;ctx.drawImage(tmp,0,0);ctx.globalAlpha=1;ctx.putImageData(out,0,0);}
+    drawBait(ctx,sz,sz,getBaitImg('edge'),bop);
+  },
+
+  // ── 8. Pixel ───────────────────────────────────────────────────────────
+  pixel(img,tc,ctx){
+    const ps=parseInt($('px-size').value),out=parseInt($('px-out').value),alpha=parseFloat($('px-alpha').value);
+    const bop=parseFloat($('px-bop').value);
+    const s=Math.max(1,Math.floor(out/ps));
+    const small=document.createElement('canvas');small.width=small.height=s;
+    small.getContext('2d').drawImage(img,0,0,s,s);
+    tc.width=tc.height=out;ctx.imageSmoothingEnabled=false;ctx.drawImage(small,0,0,out,out);
+    const id=ctx.getImageData(0,0,out,out);const d=id.data;
+    for(let i=0;i<d.length;i+=4)d[i+3]=Math.round(d[i+3]*alpha);
+    ctx.putImageData(id,0,0);
+    drawBait(ctx,out,out,getBaitImg('pixel'),bop);
+  },
+
+  // ── 9. Scatter ─────────────────────────────────────────────────────────
+  scatter(img,tc,ctx){
+    const mn=parseInt($('sc-min').value),mx=parseInt($('sc-max').value);
+    const pat=$('sc-pat').value,sz=parseInt($('sc-size').value),bop=parseFloat($('sc-bop').value);
+    tc.width=tc.height=sz;ctx.drawImage(img,0,0,sz,sz);
+    const id=ctx.getImageData(0,0,sz,sz);const d=id.data;
+    for(let i=0,y=0;i<d.length;i+=4,y=Math.floor(i/4/sz)){
+      const x=(i/4)%sz;let a;
+      if(pat==='full')a=mn+Math.random()*(mx-mn);
+      else if(pat==='luma'){const l=(d[i]*0.299+d[i+1]*0.587+d[i+2]*0.114)/255;a=mn+(mx-mn)*l}
+      else if(pat==='checker')a=(((x>>2)+(y>>2))&1)?(mx):(mn);
+      else a=(y%8<4)?mx:mn;
+      d[i+3]=Math.round(Math.max(0,Math.min(255,a)));
+    }
+    ctx.putImageData(id,0,0);
+    drawBait(ctx,sz,sz,getBaitImg('scatter'),bop);
+  },
+
+  // ── 10. Burn ───────────────────────────────────────────────────────────
+  burn(img,tc,ctx){
+    const mode=$('bn-mode').value,intensity=parseFloat($('bn-int').value);
+    const alpha=parseFloat($('bn-alpha').value),sz=parseInt($('bn-size').value),bop=parseFloat($('bn-bop').value);
+    tc.width=tc.height=sz;ctx.drawImage(img,0,0,sz,sz);
+    const id=ctx.getImageData(0,0,sz,sz);const d=id.data;
+    for(let i=0;i<d.length;i+=4){
+      let r=d[i]/255,g=d[i+1]/255,b=d[i+2]/255;
+      const blend=(a,t)=>{
+        if(mode==='burn')return 1-Math.min(1,(1-a)/Math.max(0.001,t));
+        if(mode==='dodge')return Math.min(1,a/Math.max(0.001,1-t));
+        if(mode==='screen')return 1-(1-a)*(1-t);
+        if(mode==='overlay')return a<0.5?2*a*t:1-2*(1-a)*(1-t);
+        if(mode==='hardlight')return t<0.5?2*a*t:1-2*(1-a)*(1-t);
+        return a;
+      };
+      const t=intensity;
+      r=blend(r,t);g=blend(g,t);b=blend(b,t);
+      d[i]=Math.round(Math.max(0,Math.min(1,r))*255);
+      d[i+1]=Math.round(Math.max(0,Math.min(1,g))*255);
+      d[i+2]=Math.round(Math.max(0,Math.min(1,b))*255);
+      d[i+3]=Math.round(alpha*255);
+    }
+    ctx.putImageData(id,0,0);
+    drawBait(ctx,sz,sz,getBaitImg('burn'),bop);
+  }
+};
+
+// ─── Main decals tab ─────────────────────────────────────────────────────
+let activeTab='decals',currentMode='stretchWide',convMode='none',isBulk=false,imageQueue=[],
+    shirtMode='ghost',mainCustomBait=null,mainCurrentBait='none';
+const adj={b:0,c:0,s:0,h:0,bl:0,a:0.51};
+const duckImg=BAITS.duck,funnyImg=BAITS.funny,gangImg=BAITS.gang;
+
+function switchTab(t){
+  activeTab=t;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.getAttribute('onclick').includes(`'${t}'`)));
+  ['decals','shirts','models'].forEach(s=>$(s+'-section').classList.toggle('active',t===s));
+  updateVis();if(t!=='models')processQueue();
+}
+function updateVis(){
+  const isM=activeTab==='models',isS=activeTab==='shirts';
+  const showBait=!isS&&!isM&&(currentMode.includes('Only')||convMode!=='none'||currentMode==='noise'||currentMode==='invert');
+  $('bait-ui').style.display=showBait?'block':'none';
+  $('stretch-options').style.display=(!isS&&!isM&&currentMode.includes('stretch'))?'flex':'none';
+  $('main-upload-controls').style.display=isM?'none':'flex';
+  if(imageQueue.length&&!isM)$('action-wrap').style.display='flex';
+}
+function setMode(m,b){currentMode=m;document.querySelectorAll('#method-controls .btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');updateVis();processQueue()}
+function toggleConv(t){convMode=convMode===t?'none':t;$('convBlack').classList.toggle('active',convMode==='black');$('convWhite').classList.toggle('active',convMode==='white');updateVis();processQueue()}
+function setBait(bT,b){mainCurrentBait=bT;document.querySelectorAll('#bait-ui .btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');$('main-bait-custom-row').style.display=bT==='custom'?'flex':'none';processQueue()}
+function setShirt(m,b){shirtMode=m;document.querySelectorAll('#shirts-section .btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');processQueue()}
+$('main-bait-upload').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{mainCustomBait=new Image();mainCustomBait.onload=()=>processQueue();mainCustomBait.src=ev.target.result;$('main-bait-name').textContent=f.name};r.readAsDataURL(f)};
+$('bait-opacity').oninput=()=>processQueue();
+
+function toggleDims(){const p=$('custom-dims');p.style.display=p.style.display==='none'?'block':'none'}
+function applyDims(){processQueue();notify(`Dims: ${$('dimW').value}×${$('dimH').value}`)}
+function resetDims(){$('dimW').value=2000;$('dimH').value=50;processQueue()}
+
+function onAdj(){
+  adj.b=parseInt($('adj-b').value);adj.c=parseInt($('adj-c').value);adj.s=parseInt($('adj-s').value);
+  adj.h=parseInt($('adj-h').value);adj.bl=parseFloat($('adj-bl').value);adj.a=parseFloat($('adj-a').value);
+  $('vb').textContent=adj.b;$('vc').textContent=adj.c;$('vs').textContent=adj.s;
+  $('vh').textContent=adj.h+'°';$('vbl').textContent=adj.bl+'px';$('va').textContent=adj.a.toFixed(2);
+  processQueue();
+}
+function resetAdj(){['adj-b','adj-c','adj-s'].forEach(id=>$(id).value=0);$('adj-h').value=0;$('adj-bl').value=0;$('adj-a').value=0.51;onAdj()}
+
+function activateBulk(){isBulk=true;$('upload').multiple=true;$('bulkToggle').style.display='none';$('bulkDeactivate').style.display='inline-block';$('preview-area').style.display='none';$('bulk-grid').style.display='grid';$('exportBtn').style.display='none';$('bulkExportBtn').style.display='block'}
+function deactivateBulk(){isBulk=false;$('upload').multiple=false;$('bulkToggle').style.display='inline-block';$('bulkDeactivate').style.display='none';$('bulk-grid').style.display='none';$('bulk-grid').innerHTML='';imageQueue=imageQueue.slice(0,1);if(imageQueue.length)$('preview-area').style.display='block';$('exportBtn').style.display='block';$('bulkExportBtn').style.display='none';processQueue()}
+
+$('upload').onchange=e=>{
+  const files=Array.from(e.target.files);if(!isBulk)imageQueue=[];let loaded=0;
+  files.forEach(f=>{const r=new FileReader();r.onload=ev=>{const i=new Image();i.onload=()=>{imageQueue.push({img:i,name:f.name});if(++loaded===files.length)processQueue()};i.src=ev.target.result};r.readAsDataURL(f)});e.target.value='';
+};
+function processQueue(){
+  if(!imageQueue.length||activeTab==='models')return;
+  $('action-wrap').style.display='flex';
+  if(isBulk){
+    $('bulk-grid').innerHTML='';
+    imageQueue.forEach(item=>{const d=document.createElement('div');d.className='bulk-item';const t=document.createElement('span');t.textContent=item.name;const c=document.createElement('canvas');d.append(t,c);$('bulk-grid').appendChild(d);renderToCanvas(item.img,c)});
+  }else{
+    $('preview-area').style.display='block';const item=imageQueue[imageQueue.length-1];
+    $('filename-tag').textContent='▸ '+item.name;renderToCanvas(item.img,$('canvas'));
+  }
+}
+function applyAdjPixels(ctx,w,h){
+  const id=ctx.getImageData(0,0,w,h);const d=id.data;
+  const b=adj.b,co=adj.c,s=adj.s,hue=adj.h*(Math.PI/180);
+  const cf=(259*(co+255))/(255*(259-co));
+  for(let i=0;i<d.length;i+=4){
+    let r=cf*(d[i]+b-128)+128,g=cf*(d[i+1]+b-128)+128,bl=cf*(d[i+2]+b-128)+128;
+    r=Math.max(0,Math.min(255,r));g=Math.max(0,Math.min(255,g));bl=Math.max(0,Math.min(255,bl));
+    if(s!==0||hue!==0){
+      let R=r/255,G=g/255,B=bl/255;
+      const max=Math.max(R,G,B),min=Math.min(R,G,B),l=(max+min)/2;
+      let h2=0,sv=0;
+      if(max!==min){const dv=max-min;sv=l>0.5?dv/(2-max-min):dv/(max+min);if(max===R)h2=((G-B)/dv+(G<B?6:0))/6;else if(max===G)h2=((B-R)/dv+2)/6;else h2=((R-G)/dv+4)/6}
+      h2+=hue/(2*Math.PI);sv=Math.max(0,Math.min(1,sv*(1+s/100)));
+      const q=l<0.5?l*(1+sv):l+sv-l*sv,p2=2*l-q;
+      const h2r=(p,q,t)=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<0.5)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p};
+      if(sv===0){r=g=bl=l*255}else{r=h2r(p2,q,h2+1/3)*255;g=h2r(p2,q,h2)*255;bl=h2r(p2,q,h2-1/3)*255}
+    }
+    d[i]=Math.max(0,Math.min(255,r));d[i+1]=Math.max(0,Math.min(255,g));d[i+2]=Math.max(0,Math.min(255,bl));
+  }
+  ctx.putImageData(id,0,0);
+}
+function renderToCanvas(img,tc){
+  const ctx=tc.getContext('2d',{willReadFrequently:true});
+  if(activeTab==='shirts'){
+    if(shirtMode==='ghost'){tc.width=585;tc.height=559;const tmp=document.createElement('canvas');tmp.width=tmp.height=128;const tctx=tmp.getContext('2d');tctx.drawImage(img,0,0,128,128);const id=tctx.getImageData(0,0,128,128);const d=id.data;for(let i=0;i<d.length;i+=4){const m=Math.max(d[i],d[i+1],d[i+2])/255;if(m>0){d[i]/=m;d[i+1]/=m;d[i+2]/=m;d[i+3]=m*d[i+3]}}tctx.putImageData(id,0,0);ctx.clearRect(0,0,585,559);ctx.drawImage(tmp,230,74,128,128);}
+    else{tc.width=585;tc.height=559;ctx.drawImage(img,0,0,585,559);}return;
+  }
+  let w=parseInt($('dimW').value)||2000,h=parseInt($('dimH').value)||50;
+  if(currentMode==='stretchTall'){w=200;h=2100}else if(currentMode.includes('Only')||currentMode==='noise'||currentMode==='invert'){w=512;h=512}
+  tc.width=w;tc.height=h;
+  if(adj.bl>0){const t=document.createElement('canvas');t.width=w;t.height=h;t.getContext('2d').filter=`blur(${adj.bl}px)`;t.getContext('2d').drawImage(img,0,0,w,h);ctx.drawImage(t,0,0);}
+  else ctx.drawImage(img,0,0,w,h);
+  if(adj.b||adj.c||adj.s||adj.h)applyAdjPixels(ctx,w,h);
+  const m=currentMode.includes('Only')?currentMode:convMode;
+  const id=ctx.getImageData(0,0,w,h);const d=id.data;
+  const aVal=adj.a;
+  if(currentMode==='noise'){for(let i=0;i<d.length;i+=4){const noise=(Math.random()-.5)*60;d[i]=Math.max(0,Math.min(255,d[i]+noise));d[i+1]=Math.max(0,Math.min(255,d[i+1]+noise));d[i+2]=Math.max(0,Math.min(255,d[i+2]+noise));d[i+3]=Math.round(aVal*255)}}
+  else if(currentMode==='invert'){for(let i=0;i<d.length;i+=4){d[i]=255-d[i];d[i+1]=255-d[i+1];d[i+2]=255-d[i+2];d[i+3]=Math.round(aVal*255)}}
+  else if(m.includes('black')){for(let i=0;i<d.length;i+=4){const g=(d[i]+d[i+1]+d[i+2])/3;d[i]=d[i+1]=d[i+2]=255;d[i+3]=Math.round(g*.7)}}
+  else if(m.includes('white')){for(let i=0;i<d.length;i+=4){const g=(d[i]+d[i+1]+d[i+2])/3;d[i]=d[i+1]=d[i+2]=0;d[i+3]=Math.round((255-g)*.7)}}
+  else{for(let i=0;i<d.length;i+=4)d[i+3]=Math.round(aVal*255)}
+  ctx.putImageData(id,0,0);
+  const bop=parseFloat($('bait-opacity').value);
+  if(mainCurrentBait!=='none'){const bm={duck:duckImg,funny:funnyImg,gang:gangImg,custom:mainCustomBait};const bi=bm[mainCurrentBait];if(bi){ctx.globalAlpha=bop;ctx.drawImage(bi,0,0,w,h);ctx.globalAlpha=1}}
+}
+$('exportBtn').onclick=()=>{const fmt=$('exp-fmt').value,q=parseFloat($('exp-q').value),ext=fmt==='jpeg'?'jpg':fmt;const n=activeTab==='shirts'?`Shirt_Ghost.${ext}`:`Decal_Bypass.${ext}`;const a=document.createElement('a');a.download=n;a.href=$('canvas').toDataURL('image/'+fmt,q);a.click();notify(`Exported ${n}`)};
+$('bulkExportBtn').onclick=async()=>{notify('Packing ZIP…',4000);const zip=new JSZip();const fmt=$('exp-fmt').value,q=parseFloat($('exp-q').value),ext=fmt==='jpeg'?'jpg':fmt;document.querySelectorAll('#bulk-grid canvas').forEach((c,i)=>{const b64=c.toDataURL('image/'+fmt,q).split(',')[1];zip.file(`bypass_${i+1}.${ext}`,b64,{base64:true})});const blob=await zip.generateAsync({type:'blob'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Bypass_Bulk.zip';a.click();notify('ZIP downloaded!')};
+
+// ─── DAW ──────────────────────────────────────────────────────────────────
+const audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+let clips=[],selClip=null,isPlaying=false,startTime=0,pausedAt=0,animFrame=null,pxPerSec=50,activeNodes=[];
+$('daw-tl').onclick=e=>{if(e.target===$('daw-tl')){pausedAt=e.offsetX/pxPerSec;updatePH();if(isPlaying){stopPlay();startPlay()}}};
+function updatePH(){$('playhead').style.left=(pausedAt*pxPerSec)+'px'}
+function fmtT(s){return `${Math.floor(s/60)}:${(s%60).toFixed(1).padStart(4,'0')}`}
+$('audio-import').onchange=async e=>{for(const f of e.target.files){const buf=await audioCtx.decodeAudioData(await f.arrayBuffer());const clip={id:Math.random(),buffer:buf,name:f.name,startTime:pausedAt,volume:1,distortion:0,pitch:1,reverb:0,echo:0,pan:0,track:clips.length%4};clips.push(clip);renderDAW();selectClip(clip)}e.target.value='';notify(e.target.files.length+' clip(s) added')};
+function renderDAW(){const cont=$('daw-tl');Array.from(cont.getElementsByClassName('audio-clip')).forEach(el=>el.remove());clips.forEach(clip=>{const div=document.createElement('div');div.className=`audio-clip${selClip===clip?' sel':''}`;div.style.cssText=`width:${clip.buffer.duration*pxPerSec}px;left:${clip.startTime*pxPerSec}px;top:${clip.track*84+15}px`;div.innerHTML=`<span class="clip-name">${clip.name}</span><canvas class="clip-waveform"></canvas>`;div.onmousedown=me=>{me.stopPropagation();selectClip(clip);let sx=me.clientX,os=clip.startTime;const mm=m=>{clip.startTime=Math.max(0,os+(m.clientX-sx)/pxPerSec);div.style.left=(clip.startTime*pxPerSec)+'px'};const mu=()=>{document.removeEventListener('mousemove',mm);document.removeEventListener('mouseup',mu);renderDAW()};document.addEventListener('mousemove',mm);document.addEventListener('mouseup',mu)};cont.appendChild(div);drawWave(div.querySelector('canvas'),clip.buffer)});updatePH()}
+function drawWave(canvas,buf){canvas.width=canvas.parentElement.offsetWidth||200;canvas.height=76;const ctx=canvas.getContext('2d'),d=buf.getChannelData(0),step=Math.ceil(d.length/canvas.width);const g=ctx.createLinearGradient(0,0,canvas.width,0);g.addColorStop(0,'rgba(255,133,0,.55)');g.addColorStop(1,'rgba(255,200,0,.75)');ctx.fillStyle=g;for(let i=0;i<canvas.width;i++){let mn=1,mx=-1;for(let j=0;j<step;j++){const v=d[(i*step)+j]||0;if(v<mn)mn=v;if(v>mx)mx=v}ctx.fillRect(i,(1+mn)*38,1,Math.max(1,(mx-mn)*38))}}
+function selectClip(c){selClip=c;$('mixer-panel').style.display='block';$('mx-name').textContent='▸ '+c.name;$('p-vol').value=c.volume;$('p-dist').value=c.distortion;$('p-pitch').value=c.pitch;$('p-rev').value=c.reverb;$('p-echo').value=c.echo;$('p-pan').value=c.pan;updateML();renderDAW()}
+function updateML(){$('v-vol').textContent=selClip.volume.toFixed(1);$('v-dist').textContent=selClip.distortion;$('v-pitch').textContent=selClip.pitch.toFixed(2);$('v-rev').textContent=selClip.reverb.toFixed(2);$('v-echo').textContent=selClip.echo.toFixed(2);const p=selClip.pan;$('v-pan').textContent=p===0?'C':p>0?`R${Math.round(p*100)}`:`L${Math.round(-p*100)}`}
+$('p-vol').oninput=e=>{if(selClip){selClip.volume=parseFloat(e.target.value);updateML()}};
+$('p-dist').oninput=e=>{if(selClip){selClip.distortion=parseFloat(e.target.value);updateML()}};
+$('p-pitch').oninput=e=>{if(selClip){selClip.pitch=parseFloat(e.target.value);updateML()}};
+$('p-rev').oninput=e=>{if(selClip){selClip.reverb=parseFloat(e.target.value);updateML()}};
+$('p-echo').oninput=e=>{if(selClip){selClip.echo=parseFloat(e.target.value);updateML()}};
+$('p-pan').oninput=e=>{if(selClip){selClip.pan=parseFloat(e.target.value);updateML()}};
+function mkDist(a){const k=a*2,n=44100,c=new Float32Array(n);for(let i=0;i<n;i++){const x=i*2/n-1;c[i]=(3+k)*x*20*(Math.PI/180)/(Math.PI+k*Math.abs(x))}return c}
+async function mkRev(ctx){const n=ctx.sampleRate*2.5,ir=ctx.createBuffer(2,n,ctx.sampleRate);for(let c=0;c<2;c++){const d=ir.getChannelData(c);for(let i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,2)}return ir}
+async function buildChain(c,ctx,dest){const s=ctx.createBufferSource();s.buffer=c.buffer;s.playbackRate.value=c.pitch;const g=ctx.createGain();g.gain.value=c.volume;const pan=ctx.createStereoPanner();pan.pan.value=c.pan;let last=s;if(c.distortion>0){const sh=ctx.createWaveShaper();sh.curve=mkDist(c.distortion);s.connect(sh);last=sh}if(c.reverb>0){const cv=ctx.createConvolver();cv.buffer=await mkRev(ctx);const dm=ctx.createGain();dm.gain.value=1-c.reverb;const rm=ctx.createGain();rm.gain.value=c.reverb;last.connect(dm);last.connect(cv);cv.connect(rm);dm.connect(g);rm.connect(g)}else last.connect(g);if(c.echo>0){const dl=ctx.createDelay(2);dl.delayTime.value=0.35;const fb=ctx.createGain();fb.gain.value=c.echo*.6;const em=ctx.createGain();em.gain.value=c.echo;g.connect(dl);dl.connect(fb);fb.connect(dl);dl.connect(em);em.connect(pan);g.connect(pan)}else g.connect(pan);pan.connect(dest);return s}
+async function startPlay(){if(audioCtx.state==='suspended')await audioCtx.resume();isPlaying=true;startTime=audioCtx.currentTime-pausedAt;for(const c of clips){if(c.startTime+(c.buffer.duration/c.pitch)>pausedAt){const s=await buildChain(c,audioCtx,audioCtx.destination);const off=Math.max(0,(pausedAt-c.startTime)*c.pitch);s.start(audioCtx.currentTime+Math.max(0,c.startTime-pausedAt),off);activeNodes.push(s)}}const loop=()=>{if(!isPlaying)return;pausedAt=audioCtx.currentTime-startTime;updatePH();$('daw-time').textContent=fmtT(pausedAt);animFrame=requestAnimationFrame(loop)};loop()}
+function stopPlay(){isPlaying=false;activeNodes.forEach(n=>{try{n.stop()}catch(e){}});activeNodes=[];cancelAnimationFrame(animFrame)}
+function togglePlay(){isPlaying?stopPlay():startPlay();$('play-btn').textContent=isPlaying?'■ PAUSE':'▶ PLAY'}
+function deleteSelected(){clips=clips.filter(c=>c!==selClip);selClip=null;$('mixer-panel').style.display='none';renderDAW()}
+function clearAll(){stopPlay();clips=[];selClip=null;$('mixer-panel').style.display='none';renderDAW();notify('All clips cleared')}
+async function exportDAW(){if(!clips.length){return notify('No clips to export')}notify('Rendering…',5000);const dur=Math.max(...clips.map(c=>c.startTime+(c.buffer.duration/c.pitch)))+1;const oCtx=new OfflineAudioContext(2,44100*dur,44100);for(const c of clips){const s=await buildChain(c,oCtx,oCtx.destination);s.start(c.startTime)}const rendered=await oCtx.startRendering();const wav=audioToWav(rendered);const a=document.createElement('a');a.href=URL.createObjectURL(wav);a.download='Bypass_Audio.wav';a.click();notify('WAV exported!')}
+function audioToWav(buf){let n=buf.numberOfChannels,len=buf.length*n*2+44,arr=new ArrayBuffer(len),view=new DataView(arr),pos=0;const s16=d=>{view.setInt16(pos,d,true);pos+=2},s32=d=>{view.setUint32(pos,d,true);pos+=4};s32(0x46464952);s32(len-8);s32(0x45564157);s32(0x20746d66);s32(16);s16(1);s16(n);s32(buf.sampleRate);s32(buf.sampleRate*2*n);s16(n*2);s16(16);s32(0x61746164);s32(len-pos-4);for(let o=0;o<buf.length;o++)for(let i=0;i<n;i++){const s=Math.max(-1,Math.min(1,buf.getChannelData(i)[o]));s16(s<0?s*0x8000:s*0x7FFF)}return new Blob([arr],{type:'audio/wav'})}
+
+// ══════════════════════════════════════════════════════════════════
+// IN-BROWSER AUDIO BYPASS PROCESSORS
+// ══════════════════════════════════════════════════════════════════
+
+// ── State ─────────────────────────────────────────────────────────
+const apS={};
+['m1','m2','m3','m4','m5','m5s','cr','tp'].forEach(k=>apS[k]={raw:null,out:null,src:null,playing:false});
+
+function apLoad(k,inp){
+  const f=inp.files[0];if(!f)return;
+  $('ap-'+k+'-stat').textContent='Loading…';
+  f.arrayBuffer().then(ab=>audioCtx.decodeAudioData(ab)).then(buf=>{
+    apS[k].raw=buf;apS[k].out=null;
+    $('ap-'+k+'-stat').textContent=f.name+' ('+buf.duration.toFixed(1)+'s)';
+    const p=$('ap-'+k+'-prev');p.classList.remove('vis');
+  }).catch(e=>{$('ap-'+k+'-stat').textContent='Load error — try another format';});
+  inp.value='';
+}
+
+async function apRun(k){
+  const s=apS[k];if(!s.raw){notify('Upload audio first');return}
+  const btn=$('ap-'+k+'-run');btn.disabled=true;btn.textContent='⌛ Processing…';
+  $('ap-'+k+'-stat').textContent='Processing…';
+  await new Promise(r=>setTimeout(r,20)); // let UI update
+  try{
+    s.out=await AP_PROC[k](s.raw);
+    apDrawWave(k,s.out);
+    $('ap-'+k+'-prev').classList.add('vis');
+    $('ap-'+k+'-stat').textContent='Done! '+s.out.duration.toFixed(1)+'s — ready to play/export';
+    notify('Done! Play or export below.');
+  }catch(e){$('ap-'+k+'-stat').textContent='Error: '+e.message;notify('Processing error: '+e.message);}
+  btn.disabled=false;btn.textContent='▶ Process';
+}
+
+function apTogglePlay(k){
+  const s=apS[k];if(!s.out)return;
+  if(s.playing){try{s.src.stop()}catch(e){}s.playing=false;$('ap-'+k+'-play').textContent='▶ Play';return}
+  if(audioCtx.state==='suspended')audioCtx.resume();
+  s.src=audioCtx.createBufferSource();s.src.buffer=s.out;s.src.connect(audioCtx.destination);s.src.start();
+  s.playing=true;$('ap-'+k+'-play').textContent='■ Stop';
+  s.src.onended=()=>{s.playing=false;$('ap-'+k+'-play').textContent='▶ Play'};
+}
+
+function apExport(k){
+  const s=apS[k];if(!s.out){notify('Process audio first');return}
+  const wav=audioToWav(s.out);
+  const a=document.createElement('a');a.href=URL.createObjectURL(wav);
+  a.download='Bypass_'+k.toUpperCase()+'.wav';a.click();notify('WAV exported!');
+}
+
+function apDrawWave(k,buf){
+  const cv=$('ap-'+k+'-wave');cv.width=cv.offsetWidth||380;cv.height=52;
+  const c=cv.getContext('2d'),d=buf.getChannelData(0),step=Math.ceil(d.length/cv.width);
+  c.fillStyle='#050505';c.fillRect(0,0,cv.width,cv.height);
+  c.strokeStyle='rgba(255,133,0,.8)';c.lineWidth=1;c.beginPath();
+  const mid=cv.height/2;
+  for(let i=0;i<cv.width;i++){
+    let mn=1,mx=-1;
+    for(let j=0;j<step;j++){const v=d[i*step+j]||0;if(v<mn)mn=v;if(v>mx)mx=v}
+    c.moveTo(i,mid+mn*mid);c.lineTo(i,mid+mx*mid);
+  }
+  c.stroke();
+}
+
+// ── DSP Primitives ────────────────────────────────────────────────
+function pGain(ch,g){const o=new Float32Array(ch.length);for(let i=0;i<ch.length;i++)o[i]=ch[i]*g;return o}
+function pClip(ch,t=1){const o=new Float32Array(ch.length);for(let i=0;i<ch.length;i++)o[i]=Math.max(-t,Math.min(t,ch[i]));return o}
+function pSoftClip(ch,drive=2){const o=new Float32Array(ch.length);for(let i=0;i<ch.length;i++)o[i]=Math.tanh(ch[i]*drive);return o}
+function pSoftOD(ch,p1=90){const d=p1/40+0.1;const o=new Float32Array(ch.length);for(let i=0;i<ch.length;i++){const x=ch[i]*d;o[i]=x/(1+Math.abs(x))}return o}
+function pDupMix(ch,n){const o=new Float32Array(ch.length);for(let i=0;i<ch.length;i++)o[i]=ch[i]*n;return o}
+function pReverse(ch){const o=new Float32Array(ch.length);for(let i=0;i<ch.length;i++)o[i]=ch[ch.length-1-i];return o}
+function pNorm(ch){let pk=0;for(let i=0;i<ch.length;i++)pk=Math.max(pk,Math.abs(ch[i]));if(pk<1e-9)return ch;const o=new Float32Array(ch.length);const g=1/pk;for(let i=0;i<ch.length;i++)o[i]=ch[i]*g;return o}
+
+function pResample(ch,factor){
+  if(Math.abs(factor-1)<1e-6)return new Float32Array(ch);
+  const newLen=Math.max(1,Math.round(ch.length*factor));
+  const o=new Float32Array(newLen);
+  for(let i=0;i<newLen;i++){const p=i/factor;const lo=Math.floor(p);const hi=Math.min(lo+1,ch.length-1);o[i]=ch[lo]+(ch[hi]-ch[lo])*(p-lo)}
+  return o;
+}
+function pChangeSpeed(ch,pct){return pResample(ch,1/(1+pct/100))}
+function pChangeTempo(ch,pct){return pResample(ch,1/(1+pct/100))} // SBSMS=0: same as speed
+function pChangePitch(ch,semitones){
+  const f=Math.pow(2,semitones/12);
+  const resampled=pResample(ch,1/f); // change pitch (changes length)
+  return pResample(resampled,ch.length/resampled.length); // stretch back
+}
+
+function pBiquad(ch,b0,b1,b2,a1,a2){
+  const o=new Float32Array(ch.length);let x1=0,x2=0,y1=0,y2=0;
+  for(let i=0;i<ch.length;i++){
+    const x=isNaN(ch[i])?0:ch[i];
+    const y=b0*x+b1*x1+b2*x2-a1*y1-a2*y2;
+    x2=x1;x1=x;y2=y1;y1=isNaN(y)?0:y;o[i]=y1;
+  }
+  return o;
+}
+
+function pLowShelf(ch,sr,freq,gainDB){
+  if(Math.abs(gainDB)<0.01)return ch;
+  const A=Math.pow(10,gainDB/40),w0=2*Math.PI*freq/sr,cosW=Math.cos(w0),sinW=Math.sin(w0);
+  const sqA=Math.sqrt(A),alpha=sinW/Math.sqrt(2); // Q=1/sqrt(2), S=1
+  const b0=A*((A+1)-(A-1)*cosW+2*sqA*alpha),b1=2*A*((A-1)-(A+1)*cosW),b2=A*((A+1)-(A-1)*cosW-2*sqA*alpha);
+  const a0=(A+1)+(A-1)*cosW+2*sqA*alpha,a1=-2*((A-1)+(A+1)*cosW),a2=(A+1)+(A-1)*cosW-2*sqA*alpha;
+  return pBiquad(ch,b0/a0,b1/a0,b2/a0,a1/a0,a2/a0);
+}
+function pHighShelf(ch,sr,freq,gainDB){
+  if(Math.abs(gainDB)<0.01)return ch;
+  const A=Math.pow(10,gainDB/40),w0=2*Math.PI*freq/sr,cosW=Math.cos(w0),sinW=Math.sin(w0);
+  const sqA=Math.sqrt(A),alpha=sinW/Math.sqrt(2);
+  const b0=A*((A+1)+(A-1)*cosW+2*sqA*alpha),b1=-2*A*((A-1)+(A+1)*cosW),b2=A*((A+1)+(A-1)*cosW-2*sqA*alpha);
+  const a0=(A+1)-(A-1)*cosW+2*sqA*alpha,a1=2*((A-1)-(A+1)*cosW),a2=(A+1)-(A-1)*cosW-2*sqA*alpha;
+  return pBiquad(ch,b0/a0,b1/a0,b2/a0,a1/a0,a2/a0);
+}
+function pHighPass(ch,sr,freq,Q=0.707){
+  const w0=2*Math.PI*freq/sr,cosW=Math.cos(w0),alpha=Math.sin(w0)/(2*Q);
+  const b0=(1+cosW)/2,b1=-(1+cosW),b2=(1+cosW)/2,a0=1+alpha,a1=-2*cosW,a2=1-alpha;
+  return pBiquad(ch,b0/a0,b1/a0,b2/a0,a1/a0,a2/a0);
+}
+function pNotch(ch,sr,freq,Q=5){
+  const w0=2*Math.PI*freq/sr,cosW=Math.cos(w0),alpha=Math.sin(w0)/(2*Q);
+  const a0=1+alpha;
+  return pBiquad(ch,1/a0,-2*cosW/a0,1/a0,-2*cosW/a0,(1-alpha)/a0);
+}
+function pBassAndTreble(ch,sr,bassDB,trebleDB,gainDB=0){
+  let o=ch;
+  if(Math.abs(bassDB)>0.01)o=pLowShelf(o,sr,250,bassDB);
+  if(Math.abs(trebleDB)>0.01)o=pHighShelf(o,sr,4000,trebleDB);
+  if(Math.abs(gainDB)>0.01)o=pGain(o,Math.pow(10,gainDB/20));
+  return o;
+}
+
+function pCompress(ch,sr,{attackMs=2,releaseMs=100,ratio=4,threshDB=-20,normalize=false,makeup=0}){
+  const thrLin=Math.pow(10,threshDB/20);
+  const atk=Math.exp(-1/(sr*attackMs/1000));
+  const rel=Math.exp(-1/(sr*releaseMs/1000));
+  let env=0;const o=new Float32Array(ch.length);
+  for(let i=0;i<ch.length;i++){
+    const lvl=Math.abs(ch[i]);
+    env=lvl>env?atk*env+(1-atk)*lvl:rel*env+(1-rel)*lvl;
+    let gain=1;if(env>thrLin)gain=Math.pow(thrLin/env,1-1/ratio);
+    o[i]=ch[i]*gain;
+  }
+  if(normalize)return pNorm(o);
+  if(makeup!==0)return pGain(o,Math.pow(10,makeup/20));
+  return o;
+}
+
+function pLimiterHard(ch,gainDB=0,threshDB=0){
+  const g=Math.pow(10,gainDB/20),t=Math.pow(10,threshDB/20);
+  const o=new Float32Array(ch.length);
+  for(let i=0;i<ch.length;i++)o[i]=Math.max(-t,Math.min(t,ch[i]*g));
+  return o;
+}
+
+// Process both channels of an AudioBuffer, fn(Float32Array, sampleRate) → Float32Array
+async function apProcBuf(buf,fn){
+  const sr=buf.sampleRate,nc=buf.numberOfChannels;
+  const chs=[];let maxLen=0;
+  for(let c=0;c<nc;c++){
+    const r=fn(new Float32Array(buf.getChannelData(c)),sr);
+    chs.push(r);maxLen=Math.max(maxLen,r.length);
+  }
+  const out=audioCtx.createBuffer(nc,maxLen,sr);
+  for(let c=0;c<nc;c++)out.getChannelData(c).set(chs[c].subarray(0,maxLen));
+  return out;
+}
+
+// ── Method Processors ─────────────────────────────────────────────
+const AP_PROC={
+
+  // Method 1: Amp → Dup×4 → Compress → Amp → Mix → Bass/Treble → Limiter → HardClip → Speed−50%
+  m1:async(buf)=>apProcBuf(buf,(ch,sr)=>{
+    let s=pGain(ch,8.81049);
+    // 5 identical tracks: compress each → amp → then mix (×5)
+    s=pCompress(s,sr,{attackMs:0.2,releaseMs:1000,ratio:2,threshDB:-12,normalize:true});
+    s=pGain(s,0.707946);
+    s=pDupMix(s,5); // 5 tracks mixed
+    s=pBassAndTreble(s,sr,-11,-3,-4);
+    s=pLimiterHard(s,2,-3); // gain-L≈2dB avg, thresh=-3dB
+    s=pClip(s,Math.pow(10,-12/20)); // hardClip at -12dB threshold
+    s=pChangeSpeed(s,-50); // half speed
+    return s;
+  }),
+
+  // Method 2: Amp×35.5 → BassTreeble → Amp×8 → Dup→Mix
+  m2:async(buf)=>apProcBuf(buf,(ch,sr)=>{
+    let s=pGain(ch,35.5);
+    s=pBassAndTreble(s,sr,-24,-9,0);
+    s=pGain(s,8);
+    s=pDupMix(s,2); // dup → 2 tracks → mix
+    s=pClip(s); // prevent overflow
+    return s;
+  }),
+
+  // Method 3: complex chain
+  m3:async(buf)=>apProcBuf(buf,(ch,sr)=>{
+    let s=pGain(ch,1.41254);
+    s=pCompress(s,sr,{attackMs:3.25,releaseMs:23500,ratio:10,threshDB:-1,normalize:true});
+    s=pGain(s,5.49541);
+    s=pDupMix(s,1); // dup once → process → then we'll add original
+    s=pBassAndTreble(s,sr,-2,0,30);
+    s=pCompress(s,sr,{attackMs:1.78,releaseMs:23500,ratio:10,threshDB:-60,normalize:true});
+    s=pGain(s,0.00616595);
+    s=pDupMix(s,2); // dup → 2 tracks → mix
+    s=pSoftClip(s,1.5); // soft clipping
+    s=pBassAndTreble(s,sr,-1,0,7);
+    s=pGain(s,2.48313);
+    s=pLimiterHard(s,6,-3); // gain=6dB, thresh=-3dB
+    s=pBassAndTreble(s,sr,0,0,11); // +11dB overall gain
+    s=pDupMix(s,3); // dup×2 → 3 tracks → mix
+    s=pLimiterHard(s,4.1,-3);
+    return s;
+  }),
+
+  // Method 4 (gothism): Bass/Treble shaping → Compress×3 → SoftClip → Dup×3 → LowCut
+  m4:async(buf)=>apProcBuf(buf,(ch,sr)=>{
+    let s=ch;
+    // First shaping pass
+    s=pGain(s,0.8);
+    s=pBassAndTreble(s,sr,-12,-3,8.5);
+    s=pGain(s,2.7);
+    s=pGain(s,0.79432821);
+    s=pBassAndTreble(s,sr,-12,-3,8.5);
+    s=pGain(s,2.7);
+    // Second pass
+    s=pGain(s,1.2);
+    s=pBassAndTreble(s,sr,-9,-4,2);
+    // Compress×3
+    const cOpts={attackMs:2.73,releaseMs:8800,ratio:10,threshDB:-60,normalize:true};
+    s=pCompress(s,sr,cOpts);s=pCompress(s,sr,cOpts);s=pCompress(s,sr,cOpts);
+    s=pSoftClip(s,1.2); // soft clipping
+    // no-op first FilterCurve (default flat)
+    s=pGain(s,1.256);
+    s=pBassAndTreble(s,sr,-6,-8,-2);
+    s=pGain(s,0.8);
+    s=pDupMix(s,4); // dup×3 → 4 tracks → mix×0.8 already applied
+    // Final FilterCurve: high-pass around 95Hz (cuts sub-bass heavily)
+    s=pHighPass(s,sr,80,0.6);
+    s=pHighPass(s,sr,80,0.6); // 2nd pass for steeper rolloff
+    return s;
+  }),
+
+  // Method 5 Full: most comprehensive
+  m5:async(buf)=>apProcBuf(buf,(ch,sr)=>{
+    let s=pGain(ch,0.89125094);
+    // Limiter (threshold=0dB)
+    s=pClip(s,1);
+    // Compressor (ratio=95.1, makeup=30dB, threshold=-4dB)
+    s=pCompress(s,sr,{attackMs:200,releaseMs:419.2,ratio:95.1,threshDB:-4,makeup:30});
+    // Hard clip
+    s=pClip(s,1);
+    // Dup×3 → effects on all 4 copies → mix
+    // LegacyLimiter: gain=10dB, clip at 0dB
+    s=pLimiterHard(s,10,0);
+    // LegacyCompressor
+    s=pCompress(s,sr,{attackMs:5,releaseMs:30000,ratio:10,threshDB:-11,normalize:true});
+    s=pDupMix(s,4); // 4 tracks mixed
+    // Soft overdrive
+    s=pSoftOD(s,90);
+    s=pGain(s,1.8836491);
+    // ChangeTempo +1% (SBSMS=0 = speed change)
+    s=pChangeSpeed(s,1);
+    // ChangePitch -1% (tiny pitch drop)
+    s=pChangePitch(s,-0.174); // -1% ≈ -0.174 semitones
+    // Dup → 2 tracks → mix
+    s=pDupMix(s,2);
+    s=pGain(s,1.2882496);
+    s=pGain(s,1.1220185*1.1220185); // ×2 applications
+    s=pSoftOD(s,100);
+    s=pGain(s,1.678804);
+    s=pDupMix(s,3); // dup×2 → 3 tracks → mix
+    // reverse×2 = noop (cancel each other) — skip
+    return s;
+  }),
+
+  // Method 5 Simple
+  m5s:async(buf)=>apProcBuf(buf,(ch,sr)=>{
+    let s=pGain(ch,0.89125094);
+    s=pClip(s,1); // Limiter at 0dB
+    s=pDupMix(s,4); // dup×3 → 4 tracks
+    s=pClip(s,1); // Limiter again on mix
+    s=pGain(s,1.8836491);
+    s=pDupMix(s,2); // dup → 2 tracks
+    s=pGain(s,1.2882496);
+    s=pGain(s,1.1220185*1.1220185); // ×2
+    return s;
+  }),
+
+  // CR Method: BandReject 600-1100Hz + ChangeTempo +5%
+  cr:async(buf)=>apProcBuf(buf,(ch,sr)=>{
+    let s=ch;
+    // SpectralDelete 600-1100Hz: apply notch filter centered at ~835Hz (geometric mean)
+    // Use 3 overlapping notch passes for broader band rejection
+    s=pNotch(s,sr,650,4);
+    s=pNotch(s,sr,835,3);
+    s=pNotch(s,sr,1050,4);
+    // Also attenuate the band with a low-gain bandpass subtraction
+    s=pChangeTempo(s,5); // +5% tempo
+    return s;
+  }),
+
+  // Tempo/Pitch Shift: Tempo+4% → Speed+1% → Pitch−16 semitones → Tempo+4%
+  tp:async(buf)=>apProcBuf(buf,(ch,sr)=>{
+    let s=pChangeTempo(ch,4);      // +4% tempo (= speed)
+    s=pChangeSpeed(s,1);            // +1% speed
+    s=pChangePitch(s,-16);          // −16 semitones (pitch down)
+    s=pChangeTempo(s,4);            // +4% tempo again
+    return s;
+  }),
+};
+
+let nagisaTiles=[];
+function nagisaLoad(input){
+  const f=input.files[0];if(!f)return;
+  const r=new FileReader();r.onload=ev=>{const i=new Image();i.onload=()=>{methodState.nagisa.img=i;nagisaRender()};i.src=ev.target.result};r.readAsDataURL(f);input.value='';
+}
+function nagisaRender(){
+  const img=methodState.nagisa.img;if(!img)return;
+  const cx=parseInt($('ng-cx').value),cy=parseInt($('ng-cy').value);
+  const al=parseFloat($('ng-al').value);
+  const tw=Math.floor(img.naturalWidth/cx),th=Math.floor(img.naturalHeight/cy);
+  nagisaTiles=[];
+  const grid=$('ng-tile-grid');grid.innerHTML='';
+  const previewMax=30;
+  for(let r=0;r<cy;r++){for(let c=0;c<cx;c++){
+    const cv=document.createElement('canvas');cv.width=tw;cv.height=th;
+    const ctx=cv.getContext('2d');ctx.drawImage(img,c*tw,r*th,tw,th,0,0,tw,th);
+    if(al<1){const id=ctx.getImageData(0,0,tw,th),d=id.data;for(let i=3;i<d.length;i+=4)d[i]=Math.round(al*255);ctx.putImageData(id,0,0)}
+    nagisaTiles.push({cv,row:r,col:c});
+    if(nagisaTiles.length<=previewMax){
+      const w=Math.max(8,Math.floor(280/Math.min(cx,10)));
+      cv.style.cssText=`width:${w}px;height:auto;display:block`;
+      grid.appendChild(cv.cloneNode(true));
+      grid.lastChild.getContext('2d').drawImage(cv,0,0);
+    }
+  }}
+  $('cwrap-nagisa').style.display='block';$('ph-nagisa').style.display='none';
+  $('ng-info').textContent=`${cx*cy} tiles · each ${tw}×${th}px · total ${cx} cols × ${cy} rows`;
+}
+async function nagisaExport(){
+  if(!nagisaTiles.length){notify('Upload an image first');return}
+  notify(`Packing ${nagisaTiles.length} tiles…`,5000);
+  const zip=new JSZip();
+  const fmt=$('ng-fmt').value,mime='image/'+fmt,ext=fmt==='jpeg'?'jpg':fmt;
+  nagisaTiles.forEach(({cv,row,col})=>{
+    const fname=`tile_r${String(row).padStart(2,'0')}_c${String(col).padStart(2,'0')}.${ext}`;
+    zip.file(fname,cv.toDataURL(mime,.95).split(',')[1],{base64:true});
+  });
+  const blob=await zip.generateAsync({type:'blob'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Nagisa_Chop_Tiles.zip';a.click();
+  notify(`${nagisaTiles.length} tiles exported! Upload each as a Roblox decal.`);
+}
+function nagisaCopyScript(){
+  const img=methodState.nagisa.img;if(!img){notify('Upload an image first');return}
+  const cx=parseInt($('ng-cx').value),cy=parseInt($('ng-cy').value);
+  const tw=Math.floor(img.naturalWidth/cx),th=Math.floor(img.naturalHeight/cy);
+  const script=`-- Nagisa Chop Rebuild (LocalScript inside a ScreenGui Frame)
+-- Upload each tile_rXX_cXX.png as a Roblox Decal, fill in IDs below (row-major order)
+local COLS, ROWS = ${cx}, ${cy}
+local TILE_IDS = {
+  -- example: 123456789, 987654321, ...  (${cx*cy} total IDs needed)
+}
+local frame = script.Parent
+frame.Size = UDim2.fromOffset(${cx*tw}, ${cy*th})
+frame.BackgroundTransparency = 1
+for r = 0, ROWS - 1 do
+  for c = 0, COLS - 1 do
+    local idx = r * COLS + c + 1
+    local img = Instance.new("ImageLabel")
+    img.Image = "rbxassetid://" .. (TILE_IDS[idx] or 0)
+    img.Size = UDim2.fromOffset(${tw}, ${th})
+    img.Position = UDim2.fromOffset(c * ${tw}, r * ${th})
+    img.BackgroundTransparency = 1
+    img.Parent = frame
+  end
+end`;
+  navigator.clipboard.writeText(script).then(()=>notify('Roblox script copied to clipboard!')).catch(()=>notify('Copy failed — try a different browser'));
+}
+
+</script>
+</body>
+</html>
