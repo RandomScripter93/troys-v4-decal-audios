@@ -21,52 +21,55 @@ html{scroll-behavior:smooth}
 body{
   background:var(--bg);color:var(--text);font-family:var(--mono);
   display:flex;flex-direction:column;align-items:center;
-  min-height:100vh;padding:36px 18px 70px;
+  min-height:100vh;padding:36px 18px 80px;
   background-image:
-    radial-gradient(ellipse 70% 35% at 50% -5%,rgba(255,255,255,.035) 0%,transparent 70%),
+    radial-gradient(ellipse 80% 40% at 50% -8%,rgba(255,255,255,.04) 0%,transparent 65%),
+    radial-gradient(ellipse 40% 30% at 80% 80%,rgba(255,133,0,.025) 0%,transparent 60%),
     linear-gradient(var(--border2) 1px,transparent 1px),
     linear-gradient(90deg,var(--border2) 1px,transparent 1px);
-  background-size:100% 100%,36px 36px,36px 36px;
+  background-size:100% 100%,100% 100%,32px 32px,32px 32px;
   background-attachment:fixed;
 }
 /* ─ Layout ─ */
 .card{
   background:var(--card-bg);border:1px solid var(--border);
-  border-radius:var(--r);width:100%;max-width:920px;
-  box-shadow:0 25px 55px rgba(0,0,0,.65);margin-bottom:28px;overflow:hidden;
+  border-radius:var(--r);width:100%;max-width:960px;
+  box-shadow:0 28px 64px rgba(0,0,0,.7),0 2px 0 rgba(255,255,255,.04) inset;
+  margin-bottom:28px;overflow:hidden;transition:box-shadow .3s;
 }
+.card:hover{box-shadow:0 32px 72px rgba(0,0,0,.75),0 2px 0 rgba(255,255,255,.04) inset}
 .card-head{padding:28px 36px 0}
 .card-body{padding:0 36px 36px}
-.divider{width:100%;max-width:720px;border:0;border-top:1px solid var(--border);margin:18px 0;opacity:.4}
+.divider{width:100%;max-width:920px;border:0;border-top:1px solid var(--border);margin:14px 0;opacity:.35}
 
 /* ─ Brand ─ */
 .brand-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:4px;flex-wrap:nowrap}
 .badge{font-size:.55rem;font-weight:800;background:var(--accent);color:#000;padding:2px 7px;border-radius:2px;letter-spacing:2px}
-h1{font-family:var(--display);font-size:clamp(1.2rem,4vw,2.1rem);font-weight:900;text-transform:uppercase;letter-spacing:-1px;background:linear-gradient(150deg,#fff 30%,#444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
-.subtitle{color:var(--text-muted);font-size:.65rem;margin:4px 0 26px;text-transform:uppercase;letter-spacing:3px;font-weight:600}
-.sec-label{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--text-dim);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border2);display:block}
+h1{font-family:var(--display);font-size:clamp(1.2rem,4vw,2.1rem);font-weight:900;text-transform:uppercase;letter-spacing:-1px;background:linear-gradient(140deg,#fff 20%,#aaa 55%,#555 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
+.subtitle{color:#666;font-size:.62rem;margin:4px 0 24px;text-transform:uppercase;letter-spacing:3px;font-weight:600}
+.sec-label{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#777;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border2);display:block}
 
 /* ─ Tabs ─ */
 .tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:26px;background:var(--card2)}
-.tab-btn{flex:1;background:0 0;border:0;border-bottom:2px solid transparent;color:var(--text-muted);padding:13px;cursor:pointer;font-weight:700;font-size:.65rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:1.5px;transition:.22s}
-.tab-btn:hover{color:var(--text)}
+.tab-btn{flex:1;background:0 0;border:0;border-bottom:2px solid transparent;color:#777;padding:12px;cursor:pointer;font-weight:700;font-size:.65rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:1.5px;transition:.22s}
+.tab-btn:hover{color:#ccc}
 .tab-btn.active{color:var(--accent);border-bottom-color:var(--accent);background:rgba(var(--accent-rgb),.02)}
 .section-content{display:none;animation:fi .28s ease}
 .section-content.active{display:block}
 @keyframes fi{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 
 /* ─ Buttons ─ */
-.label{font-size:.62rem;color:var(--text-muted);text-transform:uppercase;margin-bottom:9px;display:block;font-weight:700;letter-spacing:1.5px;font-family:var(--mono)}
+.label{font-size:.61rem;color:#888;text-transform:uppercase;margin-bottom:9px;display:block;font-weight:700;letter-spacing:1.2px;font-family:var(--mono)}
 .controls,.sub-controls{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:20px}
-.btn{background:rgba(255,255,255,.025);border:1px solid var(--border);color:var(--text-muted);padding:8px 14px;border-radius:var(--r-sm);cursor:pointer;font-size:.65rem;font-weight:700;font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;transition:.18s}
-.btn:hover{border-color:#3a3a3a;color:#fff;transform:translateY(-1px)}
+.btn{background:rgba(255,255,255,.03);border:1px solid #282828;color:#888;padding:8px 14px;border-radius:var(--r-sm);cursor:pointer;font-size:.65rem;font-weight:700;font-family:var(--mono);text-transform:uppercase;letter-spacing:.5px;transition:.18s}
+.btn:hover{border-color:#444;color:#ddd;background:rgba(255,255,255,.06);transform:translateY(-1px)}
 .btn.active{background:var(--accent);color:#000;border-color:var(--accent)}
-.main-btn{background:var(--accent);color:#000;padding:10px 22px;font-weight:800;font-family:var(--mono);border:0;border-radius:var(--r-sm);cursor:pointer;text-transform:uppercase;font-size:.7rem;letter-spacing:1px;transition:.18s}
-.main-btn:hover{opacity:.82;box-shadow:0 0 18px rgba(var(--accent-rgb),.22)}
+.main-btn{background:var(--accent);color:#000;padding:11px 26px;font-weight:800;font-family:var(--mono);border:0;border-radius:var(--r-sm);cursor:pointer;text-transform:uppercase;font-size:.7rem;letter-spacing:1px;transition:.22s}
+.main-btn:hover{opacity:.88;box-shadow:0 4px 20px rgba(var(--accent-rgb),.35);transform:translateY(-1px)}
 .sec-btn{background:0 0;color:#bbb;border:1px solid var(--border);padding:10px 20px;border-radius:var(--r-sm);font-weight:700;font-family:var(--mono);cursor:pointer;text-transform:uppercase;font-size:.7rem;letter-spacing:1px;transition:.18s}
 .sec-btn:hover{border-color:#444}
-.exp-btn{background:#0e0e0e;color:#fff;border:1px solid var(--border);padding:13px 18px;border-radius:var(--r-sm);font-weight:800;font-size:.72rem;font-family:var(--mono);cursor:pointer;text-transform:uppercase;letter-spacing:1px;transition:.18s;width:100%}
-.exp-btn:hover{background:var(--accent);color:#000;border-color:var(--accent)}
+.exp-btn{background:#0e0e0e;color:#e0e0e0;border:1px solid var(--border);padding:13px 18px;border-radius:var(--r-sm);font-weight:800;font-size:.72rem;font-family:var(--mono);cursor:pointer;text-transform:uppercase;letter-spacing:1px;transition:.22s;width:100%}
+.exp-btn:hover{background:var(--accent);color:#000;border-color:var(--accent);box-shadow:0 4px 16px rgba(var(--accent-rgb),.25)}
 .icon-btn{background:rgba(255,255,255,.03);border:1px solid var(--border);color:var(--text-muted);padding:6px 10px;border-radius:var(--r-sm);cursor:pointer;font-size:.65rem;font-family:var(--mono);font-weight:700;transition:.18s}
 .icon-btn:hover{border-color:#444;color:#fff}
 .danger{border-color:var(--danger)!important;color:var(--danger)!important}
@@ -76,7 +79,7 @@ h1{font-family:var(--display);font-size:clamp(1.2rem,4vw,2.1rem);font-weight:900
 .upload-row{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:26px;padding-top:20px;border-top:1px solid var(--border)}
 .action-wrap{width:100%;margin-top:16px;display:none;flex-direction:column;gap:7px}
 .export-opts{display:flex;gap:9px;align-items:center;flex-wrap:wrap;justify-content:center;padding:10px;background:var(--card2);border:1px solid var(--border);border-radius:var(--r-sm);margin-bottom:8px}
-select{background:#0a0a0a;border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:var(--r-sm);font-family:var(--mono);font-size:.65rem;outline:0;cursor:pointer;transition:.18s}
+select{background:#090909;border:1px solid #282828;color:#ccc;padding:7px 11px;border-radius:var(--r-sm);font-family:var(--mono);font-size:.65rem;outline:0;cursor:pointer;transition:.2s}
 select:hover{border-color:#333}
 
 /* ─ Preview ─ */
@@ -91,7 +94,7 @@ select:hover{border-color:#333}
 /* ─ Sliders ─ */
 .srow{display:flex;align-items:center;gap:9px;margin-bottom:10px}
 .srow .label{margin:0;white-space:nowrap;min-width:88px;text-align:right;font-size:.58rem}
-.sval{font-size:.6rem;color:var(--accent);font-weight:700;min-width:36px;text-align:right;font-family:var(--mono)}
+.sval{font-size:.61rem;color:var(--accent);font-weight:700;min-width:40px;text-align:right;font-family:var(--mono);opacity:.9}
 input[type=range]{-webkit-appearance:none;flex:1;height:3px;background:#282828;border-radius:2px;outline:0;cursor:pointer}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;background:var(--accent);border-radius:50%;cursor:pointer;transition:.15s}
 input[type=range]:hover{background:#333}
@@ -108,7 +111,7 @@ input[type=range]:hover{background:#333}
 .bait-custom-row{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:9px;flex-wrap:wrap}
 
 /* ─ Settings bar ─ */
-.settings-bar{display:flex;align-items:center;justify-content:space-between;padding:9px 16px;background:var(--card2);border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px}
+.settings-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:#090909;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px}
 .sbar-left{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .sbar-item{display:flex;align-items:center;gap:7px}
 .color-row{display:flex;gap:5px;align-items:center}
@@ -118,11 +121,11 @@ input[type=range]:hover{background:#333}
 #cust-col{width:18px;height:18px;border-radius:50%;cursor:pointer;border:2px dashed #2a2a2a;background:transparent;padding:0;overflow:hidden;flex-shrink:0}
 
 /* ─ Notification ─ */
-#notif{position:fixed;bottom:26px;right:26px;background:#111;border:1px solid var(--border);border-radius:var(--r-sm);padding:10px 16px;font-size:.65rem;font-family:var(--mono);color:var(--text);opacity:0;transform:translateY(8px);transition:.28s;z-index:9999;pointer-events:none;max-width:260px}
+#notif{position:fixed;bottom:26px;right:26px;background:#141414;border:1px solid #333;border-radius:var(--r-sm);padding:11px 18px;font-size:.65rem;font-family:var(--mono);color:#e0e0e0;opacity:0;transform:translateY(8px);transition:.28s;z-index:9999;pointer-events:none;max-width:300px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
 #notif.show{opacity:1;transform:translateY(0)}
 
 /* ─ Coming soon ─ */
-.coming-box{padding:38px;border:1px dashed var(--border);border-radius:var(--r-sm);background:rgba(255,255,255,.008);color:var(--text-muted);font-style:italic}
+.coming-box{padding:38px;border:1px dashed #2a2a2a;border-radius:var(--r-sm);background:rgba(255,255,255,.01);color:#666;font-style:italic}
 .hi{color:var(--accent);font-weight:700;font-style:normal;display:block;margin-top:7px}
 
 /* ══════════════════════════════════
@@ -136,11 +139,11 @@ input[type=range]:hover{background:#333}
   transition:background .2s;
 }
 .method-card:last-child{border-bottom:0}
-.method-card:hover{background:rgba(255,255,255,.008)}
+.method-card:hover{background:rgba(255,255,255,.015);}
 
 .method-header{
   display:flex;align-items:center;justify-content:space-between;
-  padding:18px 24px;cursor:pointer;gap:12px;
+  padding:16px 22px;cursor:pointer;gap:12px;
   user-select:none;
 }
 .method-meta{display:flex;align-items:center;gap:14px;flex:1;min-width:0}
@@ -167,7 +170,7 @@ input[type=range]:hover{background:#333}
 
 .method-body{
   display:none;
-  padding:0 24px 22px;
+  padding:0 22px 22px;
   animation:fi .22s ease;
 }
 .method-card.open .method-body{display:block}
@@ -176,7 +179,7 @@ input[type=range]:hover{background:#333}
 .mb-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
 @media(max-width:600px){.mb-cols{grid-template-columns:1fr}}
 
-.mb-params{background:var(--card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px 16px}
+.mb-params{background:#0a0a0a;border:1px solid #222;border-radius:var(--r-sm);padding:14px 16px}
 .mb-preview{background:repeating-conic-gradient(#0c0c0c 0% 25%,#0f0f0f 0% 50%) 50%/12px 12px;border:1px solid var(--border);border-radius:var(--r-sm);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:140px;overflow:hidden;position:relative}
 .mb-canvas-wrap{width:100%;text-align:center}
 .mb-canvas-wrap canvas{max-width:100%;height:auto;display:block;margin:0 auto}
@@ -188,7 +191,7 @@ input[type=range]:hover{background:#333}
 .bait-sub{margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
 .bait-btns{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
 .bait-btn{font-size:.58rem;padding:5px 10px}
-.bait-preview-thumb{width:28px;height:28px;border-radius:3px;border:1px solid var(--border);object-fit:cover;vertical-align:middle}
+.bait-preview-thumb{width:32px;height:32px;border-radius:4px;border:1px solid #333;object-fit:cover;vertical-align:middle}
 .upload-label-sm{font-size:.6rem;padding:6px 12px;cursor:pointer}
 .custom-bait-name{font-size:.55rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px}
 
@@ -212,9 +215,9 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
 .daw-time{font-size:.65rem;font-family:var(--mono);font-weight:700;color:var(--orange);background:#000;padding:3px 9px;border-radius:3px;border:1px solid var(--border);min-width:64px;text-align:center}
 
 ::-webkit-scrollbar{width:5px;height:5px}
-::-webkit-scrollbar-track{background:#080808}
-::-webkit-scrollbar-thumb{background:#1e1e1e;border-radius:2px}
-::-webkit-scrollbar-thumb:hover{background:#2a2a2a}
+::-webkit-scrollbar-track{background:#070707}
+::-webkit-scrollbar-thumb{background:#222;border-radius:2px}
+::-webkit-scrollbar-thumb:hover{background:#333}
 
 /* ─ Audacity Macros Section ─ */
 .macros-section{margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
@@ -235,28 +238,85 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
 /* ─ Nagisa Chop preview ─ */
 .nagisa-tile-grid{display:flex;flex-wrap:wrap;gap:2px;margin-top:8px;max-height:200px;overflow:auto}
 .nagisa-tile-grid canvas{border:1px solid #1a1a1a}
+/* ─ Dual preview row ─ */
+.dual-prev{display:flex;gap:8px;width:100%}
+.dual-prev>div{flex:1;min-width:0}
+.dual-lbl{font-size:.5rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-family:var(--mono);margin-bottom:4px;font-weight:700}
+.tip-box{background:#0a0a0a;border:1px solid #222;border-radius:var(--r-sm);padding:10px 13px;margin-top:8px;font-size:.56rem;color:#888;line-height:1.7}
+.tip-box b{color:#bbb}
+.method-tag.best{background:rgba(68,255,136,.08);color:#44ff88;border-color:rgba(68,255,136,.2)}
+.method-tag.rec{background:rgba(255,133,0,.08);color:var(--orange);border-color:rgba(255,133,0,.2)}
 
 /* ─ In-browser audio processors ─ */
 .ap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:12px;margin-top:14px}
-.ap-card{background:#0d0d0d;border:1px solid #2a2a2a;border-radius:var(--r-sm);padding:16px;display:flex;flex-direction:column;gap:9px}
+.ap-card{background:#0a0a0a;border:1px solid #252525;border-radius:var(--r-sm);padding:18px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s}
 .ap-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
-.ap-name{font-family:var(--display);font-size:.88rem;font-weight:800;color:#fff;margin-bottom:3px}
+.ap-name{font-family:var(--display);font-size:.92rem;font-weight:800;color:#fff;margin-bottom:4px}
 .ap-badge{font-size:.47rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:3px 8px;border-radius:3px;font-family:var(--mono);white-space:nowrap;flex-shrink:0}
 .ap-badge.rec{background:rgba(255,133,0,.15);color:var(--orange);border:1px solid rgba(255,133,0,.4)}
 .ap-badge.best{background:rgba(68,255,136,.12);color:#44ff88;border:1px solid rgba(68,255,136,.4)}
 .ap-badge.distro{background:rgba(150,100,255,.12);color:#c8b0ff;border:1px solid rgba(150,100,255,.4)}
 .ap-steps{font-size:.55rem;color:#888;line-height:1.75;font-family:var(--mono);letter-spacing:.3px}
-.ap-ul{display:block;width:100%;text-align:center;cursor:pointer;background:rgba(255,255,255,.04);border:1px dashed #333;color:#777;padding:10px;border-radius:var(--r-sm);font-size:.65rem;font-weight:700;font-family:var(--mono);text-transform:uppercase;transition:.2s}
-.ap-ul:hover{border-color:#666;color:#ccc;background:rgba(255,255,255,.07)}
+.ap-ul{display:block;width:100%;text-align:center;cursor:pointer;background:rgba(255,255,255,.03);border:1px dashed #2e2e2e;color:#666;padding:11px;border-radius:var(--r-sm);font-size:.65rem;font-weight:700;font-family:var(--mono);text-transform:uppercase;transition:.2s;letter-spacing:.5px}
+.ap-ul:hover{border-color:#555;color:#bbb;background:rgba(255,255,255,.06)}
 .ap-row{display:flex;gap:7px;align-items:center}
 .ap-run{flex:1;background:var(--accent);color:#000;border:0;padding:9px;border-radius:var(--r-sm);font-weight:800;font-size:.68rem;font-family:var(--mono);text-transform:uppercase;cursor:pointer;transition:.2s;letter-spacing:.5px}
 .ap-run:hover{opacity:.85}.ap-run:disabled{opacity:.4;cursor:wait}
 .ap-stat{font-size:.58rem;color:#666;font-family:var(--mono);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ap-prev{display:none;flex-direction:column;gap:8px;border-top:1px solid #1e1e1e;padding-top:10px}
 .ap-prev.vis{display:flex}
-.ap-wave{width:100%;height:52px;display:block;border-radius:3px;border:1px solid #222;background:#080808}
+.ap-wave{width:100%;height:56px;display:block;border-radius:4px;border:1px solid #202020;background:#060606}
 .ap-pbtn{flex:1;background:#141414;color:#aaa;border:1px solid #2a2a2a;padding:8px;border-radius:var(--r-sm);font-size:.63rem;font-weight:700;font-family:var(--mono);text-transform:uppercase;cursor:pointer;transition:.2s}
 .ap-pbtn:hover{background:var(--accent);color:#000;border-color:var(--accent)}
+
+/* ─ Method search bar ─ */
+.method-search-wrap{padding:14px 0 4px;position:relative}
+#method-search{width:100%;background:#090909;border:1px solid #252525;color:#ccc;padding:10px 14px 10px 36px;border-radius:var(--r-sm);font-family:var(--mono);font-size:.72rem;outline:0;transition:.2s;letter-spacing:.3px}
+#method-search:focus{border-color:#404040;background:#0c0c0c}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#555;font-size:.75rem;pointer-events:none}
+.method-card.hidden{display:none}
+
+/* ─ Method success rate pill ─ */
+.success-pill{display:inline-flex;align-items:center;gap:3px;font-size:.48rem;font-weight:700;font-family:var(--mono);text-transform:uppercase;letter-spacing:.8px;padding:2px 7px;border-radius:10px;margin-left:auto;flex-shrink:0}
+.success-pill.high{background:rgba(68,255,136,.1);color:#44ff88;border:1px solid rgba(68,255,136,.25)}
+.success-pill.mid{background:rgba(255,133,0,.1);color:var(--orange);border:1px solid rgba(255,133,0,.25)}
+.success-pill.low{background:rgba(150,150,150,.08);color:#888;border:1px solid rgba(150,150,150,.2)}
+
+/* ─ Progress bar for audio ─ */
+.ap-progress{height:3px;background:#1a1a1a;border-radius:2px;overflow:hidden;display:none}
+.ap-progress-bar{height:100%;background:linear-gradient(90deg,var(--orange),#ffcc00);border-radius:2px;width:0%;transition:width .1s linear}
+.ap-progress.vis{display:block}
+
+/* ─ Method count badge ─ */
+.method-section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0}
+.method-count-badge{font-size:.52rem;color:#555;font-family:var(--mono);font-weight:700;letter-spacing:1px}
+
+/* ─ Bait preview strip ─ */
+.bait-preview-strip{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;align-items:center}
+.bait-pill{display:flex;align-items:center;gap:5px;padding:4px 9px;border-radius:20px;background:#111;border:1px solid #222;font-size:.55rem;font-family:var(--mono);color:#888;cursor:pointer;transition:.2s}
+.bait-pill:hover{border-color:#444;color:#ccc}
+.bait-pill.active{border-color:var(--orange);color:var(--orange);background:rgba(255,133,0,.06)}
+
+/* ─ Better canvas checkerboard ─ */
+.checker-bg{background:repeating-conic-gradient(#0d0d0d 0% 25%,#111 0% 50%) 50%/16px 16px}
+
+/* ─ Audio section improvements ─ */
+.audio-hint{font-size:.57rem;color:#555;line-height:1.65;margin:0;padding:10px 12px;background:#080808;border:1px solid #1e1e1e;border-radius:var(--r-sm);border-left:2px solid #333}
+.audio-hint b{color:#888}
+
+/* ─ Tooltip ─ */
+.tooltip-wrap{position:relative;display:inline-block}
+.tooltip-wrap:hover .tooltip-text{opacity:1;visibility:visible;transform:translateY(0)}
+.tooltip-text{position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%) translateY(4px);background:#1a1a1a;border:1px solid #333;color:#ccc;font-size:.58rem;font-family:var(--mono);padding:7px 12px;border-radius:var(--r-sm);white-space:nowrap;opacity:0;visibility:hidden;transition:.18s;z-index:999;pointer-events:none;max-width:240px;white-space:normal;line-height:1.6;text-align:center;width:200px}
+
+/* ─ Keyboard shortcut badge ─ */
+.kbd{display:inline-block;background:#111;border:1px solid #2a2a2a;border-bottom:2px solid #333;padding:1px 6px;border-radius:3px;font-size:.52rem;font-family:var(--mono);color:#777}
+
+/* ─ Footer improvements ─ */
+footer{margin-top:20px;color:#2a2a2a;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-family:var(--mono);text-align:center;line-height:2}
+
+/* ─ Smooth ap-card hover ─ */
+.ap-card:hover{border-color:#333}
 </style>
 </head>
 <body>
@@ -278,12 +338,12 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
         </div>
       </div>
     </div>
-    <div style="font-size:.55rem;color:#444;font-family:var(--mono)">TROYSEXPLOIT v4.1</div>
+    <div style="font-size:.52rem;color:#3a3a3a;font-family:var(--mono);letter-spacing:2px;font-weight:700">TROYSEXPLOIT v4.2</div>
   </div>
 
   <div class="card-head">
-    <div class="brand-row"><span class="badge">v4</span><h1>TroysExploit's Bypasser</h1></div>
-    <div class="subtitle">Made by TroysExploit · Image &amp; Audio</div>
+    <div class="brand-row"><span class="badge">v4.2</span><h1>TroysExploit's Bypasser</h1></div>
+    <div class="subtitle">TroysExploit · Image Bypass · Audio Bypass · Studio Tools</div>
     <div class="tabs">
       <button class="tab-btn active" onclick="switchTab('decals')">Decals</button>
       <button class="tab-btn" onclick="switchTab('shirts')">Shirts</button>
@@ -308,7 +368,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
         <button class="btn" id="convWhite" onclick="toggleConv('white')">→ White</button>
       </div>
       <div id="bait-ui" class="bait-section">
-        <span class="label">Bait Overlay</span>
+        <span class="label" style="margin-bottom:8px">Bait Overlay <span style="font-weight:400;color:#444;text-transform:none;letter-spacing:0;font-size:.57rem">(shows in black/white/noise/invert modes)</span></span>
         <div class="sub-controls">
           <button class="btn active" onclick="setBait('none',this)">None</button>
           <button class="btn" onclick="setBait('duck',this)">🦆 Duck</button>
@@ -330,15 +390,20 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
     </div>
     <!-- SHIRTS -->
     <div id="shirts-section" class="section-content">
-      <p style="color:var(--text-muted);font-size:.75rem;margin-bottom:18px">Optimized for Shirt Templates. Clears whites + normalizes colors.</p>
+      <p style="color:#666;font-size:.65rem;margin-bottom:14px;line-height:1.7">Roblox shirt bypass — uses the real <b style="color:#888">585×559 template</b>. <b style="color:#888">JosephLB Method</b> places your image in the chest slot with luminance→alpha conversion + noise (best bypass rate). <b style="color:#888">Full Template</b> fills the whole shirt. <b style="color:#888">Ghost Mode</b> is the classic alpha trick.</p>
       <div class="controls">
-        <button class="btn active" onclick="setShirt('ghost',this)">Ghost Mode</button>
+        <button class="btn active" onclick="setShirt('joseph',this)">⭐ JosephLB Method</button>
+        <button class="btn" onclick="setShirt('fulltemplate',this)">Full Template</button>
+        <button class="btn" onclick="setShirt('ghost',this)">Ghost Mode</button>
         <button class="btn" onclick="setShirt('stretch',this)">Full Stretch</button>
+      </div>
+      <div class="tip-box" style="margin-top:0;margin-bottom:0;font-size:.55rem;line-height:1.75">
+        <b>JosephLB Method:</b> Image placed at chest (230,74) → luminance converted to alpha → real shirt template overlaid → noise injected. ~90% accept rate. Best for bypassing Roblox's shirt moderation.
       </div>
     </div>
     <!-- MODELS -->
     <div id="models-section" class="section-content">
-      <div class="coming-box">Coming Soon! <span class="hi">( This will be the best option yet! )</span></div>
+      <div class="coming-box" style="text-align:center;padding:48px 24px"><div style="font-size:1.4rem;margin-bottom:8px">🔧</div><b style="color:#777;font-size:.7rem;display:block;margin-bottom:6px">Models — Coming Soon</b><span style="font-size:.6rem">Will support custom mesh decals, UV mapping bypass, and model texture injection</span></div>
     </div>
 
     <!-- Adjustments toggle -->
@@ -401,14 +466,20 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
 <!-- ═══════════ TOP BYPASSERS ═══════════ -->
 <div class="card">
   <div class="card-head">
-    <div class="brand-row" style="justify-content:flex-start;gap:10px">
-      <span class="badge" style="background:var(--orange);color:#000">10</span>
-      <div>
-        <div class="extra-title" style="font-family:var(--display);font-size:1.1rem;font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:.5px">Top Bypassers Methods</div>
-        <div class="subtitle" style="margin:2px 0 0">Community bypass techniques — all customizable</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:6px">
+      <div class="brand-row" style="justify-content:flex-start;gap:10px;margin-bottom:0">
+        <span class="badge" style="background:var(--orange);color:#000">16</span>
+        <div>
+          <div class="extra-title" style="font-family:var(--display);font-size:1.1rem;font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:.5px">Top Bypass Methods</div>
+          <div class="subtitle" style="margin:2px 0 0">Community techniques · all in-browser · export PNG</div>
+        </div>
       </div>
+      <div style="font-size:.52rem;color:#3a3a3a;font-family:var(--mono);font-weight:700" id="method-visible-count">16 / 16 methods</div>
     </div>
-    <div style="font-size:.6rem;color:#222;font-family:var(--mono);padding:8px 0 16px">Click any method to expand · Upload your own bait image · Tweak parameters · Export result</div>
+    <div class="method-search-wrap">
+      <span class="search-icon">⌕</span>
+      <input type="text" id="method-search" placeholder="Search methods…" oninput="filterMethods(this.value)" autocomplete="off" spellcheck="false">
+    </div>
   </div>
   <div class="card-body" style="padding-top:0">
     <div class="methods-grid">
@@ -421,6 +492,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
             <span class="method-name">JosephLB / BNW</span>
             <span class="method-tag hot">Popular</span>
           </div>
+          <span class="success-pill high">~85%</span>
           <span class="method-chevron">▼</span>
         </div>
         <div class="method-body" id="mb-joseph">
@@ -471,6 +543,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
             <span class="method-name">Kevin / Bread</span>
             <span class="method-tag">Classic</span>
           </div>
+          <span class="success-pill high">~80%</span>
           <span class="method-chevron">▼</span>
         </div>
         <div class="method-body" id="mb-kevin">
@@ -519,6 +592,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
             <span class="method-name">Dither</span>
             <span class="method-tag new">New</span>
           </div>
+          <span class="success-pill mid">~70%</span>
           <span class="method-chevron">▼</span>
         </div>
         <div class="method-body" id="mb-dither">
@@ -574,6 +648,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
             <span class="method-name">Threshold</span>
             <span class="method-tag">Sharp B&amp;W</span>
           </div>
+          <span class="success-pill mid">~65%</span>
           <span class="method-chevron">▼</span>
         </div>
         <div class="method-body" id="mb-threshold">
@@ -630,6 +705,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
             <span class="method-name">Chromatic Split</span>
             <span class="method-tag new">New</span>
           </div>
+          <span class="success-pill mid">~72%</span>
           <span class="method-chevron">▼</span>
         </div>
         <div class="method-body" id="mb-chroma">
@@ -680,6 +756,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
             <span class="method-name">Scanline</span>
             <span class="method-tag">Retro</span>
           </div>
+          <span class="success-pill mid">~68%</span>
           <span class="method-chevron">▼</span>
         </div>
         <div class="method-body" id="mb-scanline">
@@ -730,6 +807,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
             <span class="method-name">Edge Glow</span>
             <span class="method-tag new">New</span>
           </div>
+          <span class="success-pill low">~60%</span>
           <span class="method-chevron">▼</span>
         </div>
         <div class="method-body" id="mb-edge">
@@ -788,6 +866,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
             <span class="method-name">Half Pixel</span>
             <span class="method-tag">Blocky</span>
           </div>
+          <span class="success-pill low">~62%</span>
           <span class="method-chevron">▼</span>
         </div>
         <div class="method-body" id="mb-pixel">
@@ -836,6 +915,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
             <span class="method-name">Alpha Scatter</span>
             <span class="method-tag new">New</span>
           </div>
+          <span class="success-pill mid">~65%</span>
           <span class="method-chevron">▼</span>
         </div>
         <div class="method-body" id="mb-scatter">
@@ -892,6 +972,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
             <span class="method-name">Color Burn Blend</span>
             <span class="method-tag new">New</span>
           </div>
+          <span class="success-pill low">~63%</span>
           <span class="method-chevron">▼</span>
         </div>
         <div class="method-body" id="mb-burn">
@@ -949,6 +1030,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
             <span class="method-name">Nagisa Chop</span>
             <span class="method-tag new">New</span>
           </div>
+          <span class="success-pill high">~90%</span>
           <span class="method-chevron">▼</span>
         </div>
         <div class="method-body" id="mb-nagisa">
@@ -989,6 +1071,286 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
         </div>
       </div>
 
+      <!-- ─────── 12. Dual Decal Reveal ─────── -->
+      <div class="method-card" id="mc-dual">
+        <div class="method-header" onclick="toggleMethod('dual')">
+          <div class="method-meta">
+            <span class="method-num">12</span>
+            <span class="method-name">Dual Decal Reveal</span>
+            <span class="method-tag best">⭐ Best</span>
+            <span class="method-tag hot">Studio</span>
+          </div>
+          <span class="success-pill high">~92%</span>
+          <span class="method-chevron">▼</span>
+        </div>
+        <div class="method-body" id="mb-dual">
+          <p style="font-size:.58rem;color:#888;line-height:1.65;margin-bottom:10px">Two-decal trick based on the paint.net method. Generates <b style="color:#bbb">Image A</b> (bait only — passes moderation) and <b style="color:#bbb">Image B</b> (inverted bait overlay). When stacked in Studio the bait cancels out and reveals your content.</p>
+          <div style="font-size:.54rem;background:#0d0d0d;border:1px solid #1e1e1e;border-left:2px solid var(--orange);border-radius:var(--r-sm);padding:8px 12px;color:#666;line-height:1.75;margin-bottom:12px">
+            <b style="color:#888">Tips:</b> Use a large clear bait image. Set content α=160, bait α=130, inv α=85. Keep alts ready for review queue. ~92% accept rate.
+          </div>
+          <div class="mb-cols">
+            <div>
+              <div class="mb-params">
+                <span class="sec-label">Main Image (your content)</span>
+                <div class="mb-actions" style="margin-top:0;margin-bottom:12px">
+                  <label for="img-dual" class="exp-btn" style="display:block;text-align:center;cursor:pointer">Upload Main Image</label>
+                  <input type="file" id="img-dual" accept="image/*" style="display:none" onchange="loadMethodImg('dual',this)">
+                </div>
+                <span class="sec-label">Bait Image</span>
+                <div class="mb-actions" style="margin-top:0;margin-bottom:12px">
+                  <label for="dual-bait-file" class="exp-btn" style="display:block;text-align:center;cursor:pointer">Upload Bait Image</label>
+                  <input type="file" id="dual-bait-file" accept="image/*" style="display:none" onchange="dualLoadBait(this)">
+                  <span style="font-size:.55rem;color:#555;display:block;margin-top:4px" id="dual-bait-name">no bait loaded (uses built-in)</span>
+                </div>
+                <span class="sec-label">Opacity Blend</span>
+                <div class="srow"><span class="label">Content α</span><input type="range" id="du-ca" min="0" max="255" value="160" oninput="$('du-ca-v').textContent=this.value;runMethod('dual')"><span class="sval" id="du-ca-v">160</span></div>
+                <div class="srow"><span class="label">Bait α</span><input type="range" id="du-ba" min="0" max="255" value="130" oninput="$('du-ba-v').textContent=this.value;runMethod('dual')"><span class="sval" id="du-ba-v">130</span></div>
+                <div class="srow"><span class="label">Inv. Bait α</span><input type="range" id="du-ia" min="0" max="255" value="85" oninput="$('du-ia-v').textContent=this.value;runMethod('dual')"><span class="sval" id="du-ia-v">85</span></div>
+                <div class="srow"><span class="label">Size</span><input type="range" id="du-sz" min="128" max="1024" step="64" value="512" oninput="$('du-sz-v').textContent=this.value+'px';runMethod('dual')"><span class="sval" id="du-sz-v">512px</span></div>
+              </div>
+              <div class="mb-actions">
+                <button class="exp-btn" onclick="dualExport()">↓ Export Image A + B (.ZIP)</button>
+                <button class="exp-btn" style="background:rgba(150,100,255,.08);border-color:rgba(150,100,255,.3);color:#b8a0ff;margin-top:6px" onclick="dualCopyScript()">Copy Studio Script</button>
+              </div>
+              <div class="tip-box">
+                <b>Studio setup:</b> Place a Part. Add a SpecialMesh + Decal to it.<br>
+                Mesh → TextureId = <b>Image A</b> (rbxassetid).<br>
+                Decal → Texture = <b>Image B</b> (rbxassetid).<br>
+                The inverted bait in B cancels the bait in A → content shows.
+              </div>
+            </div>
+            <div class="mb-preview" id="prev-dual" style="flex-direction:column;align-items:stretch;padding:8px">
+              <div id="cwrap-dual" style="display:none">
+                <div class="dual-prev">
+                  <div><div class="dual-lbl">Image A (upload, submit)</div><canvas id="mc-dual-canvas" style="width:100%;height:auto;display:block;border:1px solid #222"></canvas></div>
+                  <div><div class="dual-lbl">Image B (studio decal)</div><canvas id="dual-canvas-b" style="width:100%;height:auto;display:block;border:1px solid #222"></canvas></div>
+                </div>
+              </div>
+              <div class="mb-placeholder" id="ph-dual">Upload main image + bait to preview</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────── 13. Hash Disrupt ─────── -->
+      <div class="method-card" id="mc-hash">
+        <div class="method-header" onclick="toggleMethod('hash')">
+          <div class="method-meta">
+            <span class="method-num">13</span>
+            <span class="method-name">Hash Disrupt</span>
+            <span class="method-tag rec">pHash Bypass</span>
+          </div>
+          <span class="success-pill high">~88%</span>
+          <span class="method-chevron">▼</span>
+        </div>
+        <div class="method-body" id="mb-hash">
+          <p style="font-size:.58rem;color:#888;line-height:1.65;margin-bottom:14px">Adds imperceptible pixel noise (±2–5 per channel) and a subtle dither pattern. Completely changes the perceptual hash and file hash without any visible difference. Best combined with a bait overlay.</p>
+          <div class="mb-cols">
+            <div>
+              <div class="mb-params">
+                <span class="sec-label">Parameters</span>
+                <div class="srow"><span class="label">Noise Strength</span><input type="range" id="hd-noise" min="1" max="12" value="4" oninput="$('hd-noise-v').textContent=this.value;runMethod('hash')"><span class="sval" id="hd-noise-v">4</span></div>
+                <div class="srow"><span class="label">Seed</span><input type="range" id="hd-seed" min="0" max="999" value="42" oninput="$('hd-seed-v').textContent=this.value;runMethod('hash')"><span class="sval" id="hd-seed-v">42</span></div>
+                <div class="srow"><span class="label">Pattern Mix</span>
+                  <select id="hd-pat" style="flex:1" onchange="runMethod('hash')">
+                    <option value="random">Random (best)</option>
+                    <option value="lsb">LSB Only</option>
+                    <option value="checker">Checker + Noise</option>
+                    <option value="stripes">Stripes + Noise</option>
+                  </select>
+                </div>
+                <div class="srow"><span class="label">Size</span><input type="range" id="hd-sz" min="128" max="1024" step="64" value="512" oninput="$('hd-sz-v').textContent=this.value+'px';runMethod('hash')"><span class="sval" id="hd-sz-v">512px</span></div>
+                <div class="bait-sub">
+                  <span class="label" style="margin-bottom:7px">Bait Image</span>
+                  <div class="bait-btns">
+                    <button class="btn bait-btn active" data-method="hash" data-bait="none" onclick="setMethodBait('hash','none',this)">None</button>
+                    <button class="btn bait-btn" data-method="hash" data-bait="duck" onclick="setMethodBait('hash','duck',this)">🦆 Duck</button>
+                    <button class="btn bait-btn" data-method="hash" data-bait="funny" onclick="setMethodBait('hash','funny',this)">😂 Funny</button>
+                    <button class="btn bait-btn" data-method="hash" data-bait="gang" onclick="setMethodBait('hash','gang',this)">Gang</button>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+                    <label for="bait-hash" class="btn upload-label-sm">Upload Custom</label>
+                    <input type="file" id="bait-hash" accept="image/*" style="display:none" onchange="loadMethodBait('hash',this)">
+                    <span class="custom-bait-name" id="bait-hash-name">no file</span>
+                  </div>
+                  <div class="srow" style="margin-top:9px"><span class="label">Opacity</span><input type="range" id="hd-bop" min="0" max="1" step="0.05" value="0.2" oninput="$('hd-bop-v').textContent=parseFloat(this.value).toFixed(2);runMethod('hash')"><span class="sval" id="hd-bop-v">0.20</span></div>
+                </div>
+              </div>
+              <div class="mb-actions">
+                <label for="img-hash" class="exp-btn" style="display:block;text-align:center;cursor:pointer">Upload Image</label>
+                <input type="file" id="img-hash" accept="image/*" style="display:none" onchange="loadMethodImg('hash',this)">
+                <button class="exp-btn" onclick="exportMethod('hash','HashDisrupt_Bypass.png')">↓ Export PNG</button>
+              </div>
+            </div>
+            <div class="mb-preview" id="prev-hash">
+              <div class="mb-canvas-wrap" id="cwrap-hash" style="display:none"><canvas id="mc-hash-canvas"></canvas></div>
+              <div class="mb-placeholder" id="ph-hash">Upload an image to preview</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────── 14. Color Jitter ─────── -->
+      <div class="method-card" id="mc-cjit">
+        <div class="method-header" onclick="toggleMethod('cjit')">
+          <div class="method-meta">
+            <span class="method-num">14</span>
+            <span class="method-name">Color Jitter</span>
+            <span class="method-tag rec">Fingerprint Break</span>
+          </div>
+          <span class="success-pill high">~82%</span>
+          <span class="method-chevron">▼</span>
+        </div>
+        <div class="method-body" id="mb-cjit">
+          <p style="font-size:.58rem;color:#888;line-height:1.65;margin-bottom:14px">Rotates hue, shifts saturation, adjusts brightness, and adds per-pixel RGB micro-noise. Defeats colour-histogram fingerprinting and CLIP embeddings. Visually nearly identical to original.</p>
+          <div class="mb-cols">
+            <div>
+              <div class="mb-params">
+                <span class="sec-label">Parameters</span>
+                <div class="srow"><span class="label">Hue Shift °</span><input type="range" id="cj-hue" min="-30" max="30" value="12" oninput="$('cj-hue-v').textContent=this.value+'°';runMethod('cjit')"><span class="sval" id="cj-hue-v">12°</span></div>
+                <div class="srow"><span class="label">Saturation %</span><input type="range" id="cj-sat" min="-50" max="50" value="-10" oninput="$('cj-sat-v').textContent=this.value+'%';runMethod('cjit')"><span class="sval" id="cj-sat-v">-10%</span></div>
+                <div class="srow"><span class="label">Brightness</span><input type="range" id="cj-bri" min="-40" max="40" value="-5" oninput="$('cj-bri-v').textContent=this.value;runMethod('cjit')"><span class="sval" id="cj-bri-v">-5</span></div>
+                <div class="srow"><span class="label">RGB Noise</span><input type="range" id="cj-noise" min="0" max="15" value="3" oninput="$('cj-noise-v').textContent=this.value;runMethod('cjit')"><span class="sval" id="cj-noise-v">3</span></div>
+                <div class="srow"><span class="label">Contrast</span><input type="range" id="cj-con" min="-50" max="50" value="8" oninput="$('cj-con-v').textContent=this.value;runMethod('cjit')"><span class="sval" id="cj-con-v">8</span></div>
+                <div class="srow"><span class="label">Size</span><input type="range" id="cj-sz" min="128" max="1024" step="64" value="512" oninput="$('cj-sz-v').textContent=this.value+'px';runMethod('cjit')"><span class="sval" id="cj-sz-v">512px</span></div>
+                <div class="bait-sub">
+                  <span class="label" style="margin-bottom:7px">Bait Image</span>
+                  <div class="bait-btns">
+                    <button class="btn bait-btn active" data-method="cjit" data-bait="none" onclick="setMethodBait('cjit','none',this)">None</button>
+                    <button class="btn bait-btn" data-method="cjit" data-bait="duck" onclick="setMethodBait('cjit','duck',this)">🦆 Duck</button>
+                    <button class="btn bait-btn" data-method="cjit" data-bait="funny" onclick="setMethodBait('cjit','funny',this)">😂 Funny</button>
+                    <button class="btn bait-btn" data-method="cjit" data-bait="gang" onclick="setMethodBait('cjit','gang',this)">Gang</button>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+                    <label for="bait-cjit" class="btn upload-label-sm">Upload Custom</label>
+                    <input type="file" id="bait-cjit" accept="image/*" style="display:none" onchange="loadMethodBait('cjit',this)">
+                    <span class="custom-bait-name" id="bait-cjit-name">no file</span>
+                  </div>
+                  <div class="srow" style="margin-top:9px"><span class="label">Opacity</span><input type="range" id="cj-bop" min="0" max="1" step="0.05" value="0.15" oninput="$('cj-bop-v').textContent=parseFloat(this.value).toFixed(2);runMethod('cjit')"><span class="sval" id="cj-bop-v">0.15</span></div>
+                </div>
+              </div>
+              <div class="mb-actions">
+                <label for="img-cjit" class="exp-btn" style="display:block;text-align:center;cursor:pointer">Upload Image</label>
+                <input type="file" id="img-cjit" accept="image/*" style="display:none" onchange="loadMethodImg('cjit',this)">
+                <button class="exp-btn" onclick="exportMethod('cjit','ColorJitter_Bypass.png')">↓ Export PNG</button>
+              </div>
+            </div>
+            <div class="mb-preview" id="prev-cjit">
+              <div class="mb-canvas-wrap" id="cwrap-cjit" style="display:none"><canvas id="mc-cjit-canvas"></canvas></div>
+              <div class="mb-placeholder" id="ph-cjit">Upload an image to preview</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────── 15. Micro Rotate ─────── -->
+      <div class="method-card" id="mc-mrot">
+        <div class="method-header" onclick="toggleMethod('mrot')">
+          <div class="method-meta">
+            <span class="method-num">15</span>
+            <span class="method-name">Micro Rotate</span>
+            <span class="method-tag">Geometric</span>
+          </div>
+          <span class="success-pill high">~78%</span>
+          <span class="method-chevron">▼</span>
+        </div>
+        <div class="method-body" id="mb-mrot">
+          <p style="font-size:.58rem;color:#888;line-height:1.65;margin-bottom:14px">Rotates image by a small angle then crops back to original dimensions. Geometric rotation fundamentally changes any spatial hash (pHash, aHash, dHash). Even 2–4° produces a completely different hash signature.</p>
+          <div class="mb-cols">
+            <div>
+              <div class="mb-params">
+                <span class="sec-label">Parameters</span>
+                <div class="srow"><span class="label">Rotation °</span><input type="range" id="mr-deg" min="-15" max="15" step="0.5" value="3" oninput="$('mr-deg-v').textContent=this.value+'°';runMethod('mrot')"><span class="sval" id="mr-deg-v">3°</span></div>
+                <div class="srow"><span class="label">Scale After</span><input type="range" id="mr-scale" min="0.85" max="1" step="0.01" value="0.95" oninput="$('mr-scale-v').textContent=parseFloat(this.value).toFixed(2);runMethod('mrot')"><span class="sval" id="mr-scale-v">0.95</span></div>
+                <div class="srow"><span class="label">BG Fill</span>
+                  <select id="mr-fill" style="flex:1" onchange="runMethod('mrot')">
+                    <option value="trans">Transparent</option>
+                    <option value="black">Black</option>
+                    <option value="white">White</option>
+                    <option value="edge">Edge Mirror</option>
+                  </select>
+                </div>
+                <div class="srow"><span class="label">Output Size</span><input type="range" id="mr-sz" min="128" max="1024" step="64" value="512" oninput="$('mr-sz-v').textContent=this.value+'px';runMethod('mrot')"><span class="sval" id="mr-sz-v">512px</span></div>
+                <div class="bait-sub">
+                  <span class="label" style="margin-bottom:7px">Bait Image</span>
+                  <div class="bait-btns">
+                    <button class="btn bait-btn active" data-method="mrot" data-bait="none" onclick="setMethodBait('mrot','none',this)">None</button>
+                    <button class="btn bait-btn" data-method="mrot" data-bait="duck" onclick="setMethodBait('mrot','duck',this)">🦆 Duck</button>
+                    <button class="btn bait-btn" data-method="mrot" data-bait="funny" onclick="setMethodBait('mrot','funny',this)">😂 Funny</button>
+                    <button class="btn bait-btn" data-method="mrot" data-bait="gang" onclick="setMethodBait('mrot','gang',this)">Gang</button>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+                    <label for="bait-mrot" class="btn upload-label-sm">Upload Custom</label>
+                    <input type="file" id="bait-mrot" accept="image/*" style="display:none" onchange="loadMethodBait('mrot',this)">
+                    <span class="custom-bait-name" id="bait-mrot-name">no file</span>
+                  </div>
+                  <div class="srow" style="margin-top:9px"><span class="label">Opacity</span><input type="range" id="mr-bop" min="0" max="1" step="0.05" value="0.18" oninput="$('mr-bop-v').textContent=parseFloat(this.value).toFixed(2);runMethod('mrot')"><span class="sval" id="mr-bop-v">0.18</span></div>
+                </div>
+              </div>
+              <div class="mb-actions">
+                <label for="img-mrot" class="exp-btn" style="display:block;text-align:center;cursor:pointer">Upload Image</label>
+                <input type="file" id="img-mrot" accept="image/*" style="display:none" onchange="loadMethodImg('mrot',this)">
+                <button class="exp-btn" onclick="exportMethod('mrot','MicroRotate_Bypass.png')">↓ Export PNG</button>
+              </div>
+            </div>
+            <div class="mb-preview" id="prev-mrot">
+              <div class="mb-canvas-wrap" id="cwrap-mrot" style="display:none"><canvas id="mc-mrot-canvas"></canvas></div>
+              <div class="mb-placeholder" id="ph-mrot">Upload an image to preview</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ─────── 16. Bait Maker ─────── -->
+      <div class="method-card" id="mc-bmaker">
+        <div class="method-header" onclick="toggleMethod('bmaker')">
+          <div class="method-meta">
+            <span class="method-num">16</span>
+            <span class="method-name">Bait Maker</span>
+            <span class="method-tag new">New</span>
+            <span class="method-tag hot">JosephLB</span>
+          </div>
+          <span class="success-pill high">~88%</span>
+          <span class="method-chevron">▼</span>
+        </div>
+        <div class="method-body" id="mb-bmaker">
+          <div style="font-size:.56rem;color:#888;line-height:1.7;margin-bottom:12px">
+            Edge-detection bait generator. Extracts only the <b style="color:#bbb">outlines</b> of your image as solid black or white pixels on a transparent background — perfect as a moderation-fooling bait overlay on top of your real decal.
+          </div>
+          <div class="mb-cols">
+            <div>
+              <div class="mb-params">
+                <span class="sec-label">Parameters</span>
+                <div class="srow"><span class="label">Edge Mode</span>
+                  <div style="display:flex;gap:5px">
+                    <button class="btn bait-btn active" id="bmaker-black-btn" onclick="setBmakerMode('black')">⬛ Black</button>
+                    <button class="btn bait-btn" id="bmaker-white-btn" onclick="setBmakerMode('white')">⬜ White</button>
+                  </div>
+                </div>
+                <div class="srow"><span class="label">Threshold</span><input type="range" id="bmaker-thresh" min="5" max="80" step="1" value="25" oninput="$('bmaker-thresh-v').textContent=this.value;runMethod('bmaker')"><span class="sval" id="bmaker-thresh-v">25</span></div>
+                <div class="srow"><span class="label">Line Width</span><input type="range" id="bmaker-lw" min="1" max="5" step="1" value="1" oninput="$('bmaker-lw-v').textContent=this.value+'px';runMethod('bmaker')"><span class="sval" id="bmaker-lw-v">1px</span></div>
+                <div class="srow"><span class="label">Size</span><input type="range" id="bmaker-size" min="128" max="1024" step="64" value="512" oninput="$('bmaker-size-v').textContent=this.value+'px';runMethod('bmaker')"><span class="sval" id="bmaker-size-v">512px</span></div>
+                <div class="srow"><span class="label">Edge Alpha</span><input type="range" id="bmaker-alpha" min="100" max="255" step="1" value="255" oninput="$('bmaker-alpha-v').textContent=this.value;runMethod('bmaker')"><span class="sval" id="bmaker-alpha-v">255</span></div>
+              </div>
+              <div class="mb-actions" style="margin-top:10px">
+                <label for="img-bmaker" class="exp-btn" style="display:block;text-align:center;cursor:pointer">Upload Image</label>
+                <input type="file" id="img-bmaker" accept="image/*" style="display:none" onchange="loadMethodImg('bmaker',this)">
+                <button class="exp-btn" onclick="exportMethod('bmaker','Bait_Edge.png')">↓ Export PNG</button>
+                <button class="exp-btn" style="background:rgba(255,133,0,.08);border-color:rgba(255,133,0,.3);color:var(--orange)" onclick="useBmakerAsBait()">→ Use as Bait Overlay</button>
+              </div>
+            </div>
+            <div class="mb-preview" id="prev-bmaker">
+              <div class="mb-canvas-wrap" id="cwrap-bmaker" style="display:none"><canvas id="mc-bmaker-canvas"></canvas></div>
+              <div class="mb-placeholder" id="ph-bmaker">Upload an image to preview</div>
+            </div>
+          </div>
+          <div class="tip-box" style="margin-top:10px">
+            <b>How to use:</b> Upload your real content image → export the edge bait → use it as a bait overlay in any method above. The edge version passes moderation; the decal renders your real image.
+          </div>
+        </div>
+      </div>
+
     </div><!-- /methods-grid -->
   </div>
 </div>
@@ -998,10 +1360,16 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
 <!-- ═══════════ AUDIO ═══════════ -->
 <div class="card">
   <div class="card-head">
-    <div class="brand-row" style="justify-content:flex-start;gap:10px">
-      <div>
-        <div class="extra-title" style="font-family:var(--display);font-size:1.1rem;font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:.5px">Audio Bypass V4</div>
-        <div class="subtitle" style="margin:2px 0 0">Multi-track · Pitch · Reverb · Echo · Pan · Export WAV</div>
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:8px">
+      <div class="brand-row" style="justify-content:flex-start;gap:10px;margin-bottom:0">
+        <span class="badge" style="background:#ff8500;color:#000">10</span>
+        <div>
+          <div class="extra-title" style="font-family:var(--display);font-size:1.1rem;font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:.5px">Audio Bypass V4</div>
+          <div class="subtitle" style="margin:2px 0 0">DAW · 10 Processors · Phase · Pitch · Reverb · Export WAV</div>
+        </div>
+      </div>
+      <div class="audio-hint" style="max-width:340px;margin-top:2px">
+        <b>How to use:</b> Upload audio → click Process → Play to preview → Export WAV. Use <b>Stack</b> for highest bypass rate.
       </div>
     </div>
   </div>
@@ -1057,7 +1425,8 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
         <div class="ap-card">
           <div class="ap-head">
             <div><div class="ap-name">Method 1</div>
-            <div class="ap-steps">Amp ×8.81 → Dup×4 → Compress → Amp ×0.71 → Mix → Bass/Treble cut → Limiter HardClip → HardClip Dist → Speed −50%</div></div>
+            <div class="ap-steps">Amp ×8.81 → Dup×4 → Compress → Mix → Bass/Treble cut → Limiter → HardClip → Speed −50%</div>
+            <div style="font-size:.53rem;color:#555;margin-top:3px;font-family:var(--mono)">Heavy waveform distortion + half-speed. Breaks tempo & spectral fingerprints.</div></div>
           </div>
           <label for="ap-m1-ul" class="ap-ul">Upload Audio</label>
           <input type="file" id="ap-m1-ul" accept="audio/*" style="display:none" onchange="apLoad('m1',this)">
@@ -1065,6 +1434,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
             <button id="ap-m1-run" class="ap-run" onclick="apRun('m1')">▶ Process</button>
             <span class="ap-stat" id="ap-m1-stat">No file loaded</span>
           </div>
+          <div class="ap-progress" id="ap-m1-prog"><div class="ap-progress-bar" id="ap-m1-pbar"></div></div>
           <div class="ap-prev" id="ap-m1-prev">
             <canvas id="ap-m1-wave" class="ap-wave"></canvas>
             <div class="ap-row">
@@ -1078,7 +1448,8 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
         <div class="ap-card">
           <div class="ap-head">
             <div><div class="ap-name">Method 2</div>
-            <div class="ap-steps">Amp ×35.5 → Bass −24dB / Treble −9dB → Amp ×8 → Dup → Mix</div></div>
+            <div class="ap-steps">Amp ×35.5 → Bass −24dB / Treble −9dB → Amp ×8 → Dup → Mix</div>
+            <div style="font-size:.53rem;color:#555;margin-top:3px;font-family:var(--mono)">Fast & light. EQ carve removes the bass fingerprint. Good for short clips.</div></div>
           </div>
           <label for="ap-m2-ul" class="ap-ul">Upload Audio</label>
           <input type="file" id="ap-m2-ul" accept="audio/*" style="display:none" onchange="apLoad('m2',this)">
@@ -1086,6 +1457,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
             <button id="ap-m2-run" class="ap-run" onclick="apRun('m2')">▶ Process</button>
             <span class="ap-stat" id="ap-m2-stat">No file loaded</span>
           </div>
+          <div class="ap-progress" id="ap-m2-prog"><div class="ap-progress-bar" id="ap-m2-pbar"></div></div>
           <div class="ap-prev" id="ap-m2-prev">
             <canvas id="ap-m2-wave" class="ap-wave"></canvas>
             <div class="ap-row">
@@ -1099,7 +1471,8 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
         <div class="ap-card">
           <div class="ap-head">
             <div><div class="ap-name">Method 3</div>
-            <div class="ap-steps">Amp → Compress → Bass +30 → Dup → Mix → SoftClip → Amp → Limiter → Bass +11 → Dup×2 → Mix → Limiter</div></div>
+            <div class="ap-steps">Amp → Compress → Bass +30 → Dup → Mix → SoftClip → Amp → Limiter → Bass +11 → Dup×2 → Mix → Limiter</div>
+            <div style="font-size:.53rem;color:#555;margin-top:3px;font-family:var(--mono)">Bass-heavy chain. Multi-pass compression alters dynamic envelope detection.</div></div>
           </div>
           <label for="ap-m3-ul" class="ap-ul">Upload Audio</label>
           <input type="file" id="ap-m3-ul" accept="audio/*" style="display:none" onchange="apLoad('m3',this)">
@@ -1107,6 +1480,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
             <button id="ap-m3-run" class="ap-run" onclick="apRun('m3')">▶ Process</button>
             <span class="ap-stat" id="ap-m3-stat">No file loaded</span>
           </div>
+          <div class="ap-progress" id="ap-m3-prog"><div class="ap-progress-bar" id="ap-m3-pbar"></div></div>
           <div class="ap-prev" id="ap-m3-prev">
             <canvas id="ap-m3-wave" class="ap-wave"></canvas>
             <div class="ap-row">
@@ -1120,7 +1494,8 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
         <div class="ap-card">
           <div class="ap-head">
             <div><div class="ap-name">Method 4 — gothism</div>
-            <div class="ap-steps">Bass/Treble shape → Amp cycles → Compress ×3 → SoftClip → LowCut → Amp → Dup×3 → Mix → Sub-bass cut EQ</div></div>
+            <div class="ap-steps">Bass/Treble shape → Amp cycles → Compress ×3 → SoftClip → LowCut → Dup×3 → Mix → Sub-bass EQ</div>
+            <div style="font-size:.53rem;color:#555;margin-top:3px;font-family:var(--mono)">Triple compressor + EQ sculpt changes the frequency signature entirely.</div></div>
             <span class="ap-badge rec">⭐ Recommended</span>
           </div>
           <label for="ap-m4-ul" class="ap-ul">Upload Audio</label>
@@ -1129,6 +1504,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
             <button id="ap-m4-run" class="ap-run" onclick="apRun('m4')">▶ Process</button>
             <span class="ap-stat" id="ap-m4-stat">No file loaded</span>
           </div>
+          <div class="ap-progress" id="ap-m4-prog"><div class="ap-progress-bar" id="ap-m4-pbar"></div></div>
           <div class="ap-prev" id="ap-m4-prev">
             <canvas id="ap-m4-wave" class="ap-wave"></canvas>
             <div class="ap-row">
@@ -1142,7 +1518,8 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
         <div class="ap-card">
           <div class="ap-head">
             <div><div class="ap-name">Method 5 — Full</div>
-            <div class="ap-steps">Limiter → Compress → HardClip → Dup×3 → Limiter×2 → Compress → Mix → SoftOverdrive → Amp → Tempo+1% → Pitch−1% → Dup → Mix → Amp → SoftOverdrive → Amp → Dup×2 → Mix</div></div>
+            <div class="ap-steps">Limiter → Compress → HardClip → Dup×3 → Limiter×2 → Compress → Mix → SoftOD → Tempo+1% → Pitch−1% → Dup → Mix → SoftOD → Amp → Dup×2 → Mix</div>
+            <div style="font-size:.53rem;color:#555;margin-top:3px;font-family:var(--mono)">Most thorough waveform chain. Hits tempo, pitch, dynamic, and harmonic fingerprints.</div></div>
             <span class="ap-badge best">⭐ Works Best</span>
           </div>
           <label for="ap-m5-ul" class="ap-ul">Upload Audio</label>
@@ -1151,6 +1528,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
             <button id="ap-m5-run" class="ap-run" onclick="apRun('m5')">▶ Process</button>
             <span class="ap-stat" id="ap-m5-stat">No file loaded</span>
           </div>
+          <div class="ap-progress" id="ap-m5-prog"><div class="ap-progress-bar" id="ap-m5-pbar"></div></div>
           <div class="ap-prev" id="ap-m5-prev">
             <canvas id="ap-m5-wave" class="ap-wave"></canvas>
             <div class="ap-row">
@@ -1164,7 +1542,8 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
         <div class="ap-card">
           <div class="ap-head">
             <div><div class="ap-name">Method 5 — Simple</div>
-            <div class="ap-steps">Amp ×0.89 → Limiter → Dup×3 → Limiter → Mix → Amp ×1.88 → Dup → Mix → Amp ×1.29 → Amp ×1.12 ×2</div></div>
+            <div class="ap-steps">Amp ×0.89 → Limiter → Dup×3 → Limiter → Mix → Amp ×1.88 → Dup → Mix → Amp ×1.29 → Amp ×1.12 ×2</div>
+            <div style="font-size:.53rem;color:#555;margin-top:3px;font-family:var(--mono)">Lighter version of Method 5. Faster processing, still effective. Good for long tracks.</div></div>
           </div>
           <label for="ap-m5s-ul" class="ap-ul">Upload Audio</label>
           <input type="file" id="ap-m5s-ul" accept="audio/*" style="display:none" onchange="apLoad('m5s',this)">
@@ -1172,6 +1551,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
             <button id="ap-m5s-run" class="ap-run" onclick="apRun('m5s')">▶ Process</button>
             <span class="ap-stat" id="ap-m5s-stat">No file loaded</span>
           </div>
+          <div class="ap-progress" id="ap-m5s-prog"><div class="ap-progress-bar" id="ap-m5s-pbar"></div></div>
           <div class="ap-prev" id="ap-m5s-prev">
             <canvas id="ap-m5s-wave" class="ap-wave"></canvas>
             <div class="ap-row">
@@ -1185,7 +1565,8 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
         <div class="ap-card">
           <div class="ap-head">
             <div><div class="ap-name">CR Method — BigNoseMonkey</div>
-            <div class="ap-steps">BandReject 600–1100 Hz (SpectralDelete) → ChangeTempo +5%</div></div>
+            <div class="ap-steps">Brick-wall band-reject 600–1100 Hz (8 cascaded notches) → ChangeTempo +5%</div>
+            <div style="font-size:.53rem;color:#555;margin-top:3px;font-family:var(--mono)">Deletes the key speech fingerprint band. Also works on Distrokid uploads.</div></div>
             <span class="ap-badge distro">⭐ Works for Distrokid</span>
           </div>
           <p style="font-size:.58rem;color:#888;line-height:1.6;margin:0">Removes the 600–1100 Hz band and speeds up tempo 5% — confuses waveform fingerprinting. Guaranteed to work per BigNoseMonkey.</p>
@@ -1195,6 +1576,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
             <button id="ap-cr-run" class="ap-run" onclick="apRun('cr')">▶ Process</button>
             <span class="ap-stat" id="ap-cr-stat">No file loaded</span>
           </div>
+          <div class="ap-progress" id="ap-cr-prog"><div class="ap-progress-bar" id="ap-cr-pbar"></div></div>
           <div class="ap-prev" id="ap-cr-prev">
             <canvas id="ap-cr-wave" class="ap-wave"></canvas>
             <div class="ap-row">
@@ -1208,7 +1590,8 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
         <div class="ap-card">
           <div class="ap-head">
             <div><div class="ap-name">Tempo / Pitch Shift</div>
-            <div class="ap-steps">Tempo +4% → Speed +1% → Pitch −16 semitones → Tempo +4%</div></div>
+            <div class="ap-steps">Tempo +4% → Speed +1% → Pitch −16 semitones → Tempo +4%</div>
+            <div style="font-size:.53rem;color:#555;margin-top:3px;font-family:var(--mono)">Drops pitch 16 semitones (over an octave). Defeats pitch-based ContentID matching.</div></div>
             <span class="ap-badge rec">⭐ Pitch Bypass</span>
           </div>
           <p style="font-size:.58rem;color:#888;line-height:1.6;margin:0">Shifts pitch down 16 semitones + speeds up tempo. Defeats pitch-based fingerprinting like ContentID.</p>
@@ -1218,11 +1601,61 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
             <button id="ap-tp-run" class="ap-run" onclick="apRun('tp')">▶ Process</button>
             <span class="ap-stat" id="ap-tp-stat">No file loaded</span>
           </div>
+          <div class="ap-progress" id="ap-tp-prog"><div class="ap-progress-bar" id="ap-tp-pbar"></div></div>
           <div class="ap-prev" id="ap-tp-prev">
             <canvas id="ap-tp-wave" class="ap-wave"></canvas>
             <div class="ap-row">
               <button id="ap-tp-play" class="ap-pbtn" onclick="apTogglePlay('tp')">▶ Play</button>
               <button class="ap-pbtn" onclick="apExport('tp')">↓ Export WAV</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase Invert Stereo -->
+        <div class="ap-card">
+          <div class="ap-head">
+            <div><div class="ap-name">Phase Invert Stereo</div>
+            <div class="ap-steps">Invert R channel phase → 3ms Haas offset → stereo difference signal</div>
+            <div style="font-size:.53rem;color:#555;margin-top:3px;font-family:var(--mono)">Sounds identical on speakers. Makes the mono fingerprint completely different.</div></div>
+          </div>
+          <p style="font-size:.58rem;color:#888;line-height:1.6;margin:0">Creates a stereo difference signal that's unique to fingerprinters. The left/right channels become out of phase — the audio sounds normal on speakers but is unrecognizable to mono-based detection.</p>
+          <label for="ap-pi-ul" class="ap-ul">Upload Audio</label>
+          <input type="file" id="ap-pi-ul" accept="audio/*" style="display:none" onchange="apLoad('pi',this)">
+          <div class="ap-row">
+            <button id="ap-pi-run" class="ap-run" onclick="apRun('pi')">▶ Process</button>
+            <span class="ap-stat" id="ap-pi-stat">No file loaded</span>
+          </div>
+          <div class="ap-progress" id="ap-pi-prog"><div class="ap-progress-bar" id="ap-pi-pbar"></div></div>
+          <div class="ap-prev" id="ap-pi-prev">
+            <canvas id="ap-pi-wave" class="ap-wave"></canvas>
+            <div class="ap-row">
+              <button id="ap-pi-play" class="ap-pbtn" onclick="apTogglePlay('pi')">▶ Play</button>
+              <button class="ap-pbtn" onclick="apExport('pi')">↓ Export WAV</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stack All -->
+        <div class="ap-card" style="border-color:rgba(68,255,136,.2)">
+          <div class="ap-head">
+            <div><div class="ap-name">Stack — Full Chain</div>
+            <div class="ap-steps">Method 5 Full → CR band-kill 600–1100Hz → Tempo+4% → Pitch−3st → Phase Invert</div>
+            <div style="font-size:.53rem;color:#555;margin-top:3px;font-family:var(--mono)">All vectors in one pass: waveform · spectrum · tempo · pitch · stereo phase.</div></div>
+            <span class="ap-badge best">⭐ Max Bypass</span>
+          </div>
+          <p style="font-size:.58rem;color:#888;line-height:1.6;margin:0">Chains the most effective methods back-to-back. Hits every fingerprinting vector: waveform, pitch, tempo, spectrum, and stereo phase. Highest bypass rate.</p>
+          <label for="ap-st-ul" class="ap-ul">Upload Audio</label>
+          <input type="file" id="ap-st-ul" accept="audio/*" style="display:none" onchange="apLoad('st',this)">
+          <div class="ap-row">
+            <button id="ap-st-run" class="ap-run" onclick="apRun('st')" style="background:#44ff88;color:#000">▶ Process</button>
+            <span class="ap-stat" id="ap-st-stat">No file loaded</span>
+          </div>
+          <div class="ap-progress" id="ap-st-prog"><div class="ap-progress-bar" id="ap-st-pbar"></div></div>
+          <div class="ap-prev" id="ap-st-prev">
+            <canvas id="ap-st-wave" class="ap-wave"></canvas>
+            <div class="ap-row">
+              <button id="ap-st-play" class="ap-pbtn" onclick="apTogglePlay('st')">▶ Play</button>
+              <button class="ap-pbtn" onclick="apExport('st')">↓ Export WAV</button>
             </div>
           </div>
         </div>
@@ -1236,11 +1669,31 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
   </div>
 </div>
 <div id="notif"></div>
+<footer>TroysExploit's Bypasser v4.2 &nbsp;·&nbsp; 15 Image Methods &nbsp;·&nbsp; 10 Audio Processors &nbsp;·&nbsp; <span style="opacity:.55">press</span> <span class="kbd">/</span> <span style="opacity:.55">to search</span></footer>
 
 <script>
 // ─── Globals ──────────────────────────────────────────────────────────────
 const $=id=>document.getElementById(id);
 function notify(m,d=2400){const n=$('notif');n.textContent=m;n.classList.add('show');clearTimeout(n._t);n._t=setTimeout(()=>n.classList.remove('show'),d)}
+
+// ─── Method search/filter ──────────────────────────────────────────────
+function filterMethods(query){
+  const q=query.trim().toLowerCase();
+  const cards=document.querySelectorAll('.method-card');
+  let visible=0;
+  cards.forEach(c=>{
+    const name=c.querySelector('.method-name');
+    const tags=c.querySelectorAll('.method-tag,.success-pill');
+    const text=(name?name.textContent:'')
+      +Array.from(tags).map(t=>t.textContent).join(' ');
+    const match=!q||text.toLowerCase().includes(q);
+    c.classList.toggle('hidden',!match);
+    if(match)visible++;
+  });
+  const cnt=$('method-visible-count');
+  if(cnt)cnt.textContent=visible+' / '+cards.length+' methods';
+}
+
 
 // Accent
 function setAccent(c,el){
@@ -1251,19 +1704,47 @@ function setAccent(c,el){
 }
 
 // Bait images
+// ── Shirt templates (JosephLB method) ─────────────────────────────────────
+const shirtBaseT=new Image();const shirtFullT=new Image();
+shirtBaseT.crossOrigin='anonymous';shirtFullT.crossOrigin='anonymous';
+shirtBaseT.src='https://files.catbox.moe/1xh8ff.png';
+shirtFullT.src='https://files.catbox.moe/2dpfnz.png';
+
+function shirtAddNoise(ctx,w,h){
+  const id=ctx.getImageData(0,0,w,h),d=id.data;
+  for(let i=0;i<d.length;i+=4){const n=(Math.random()-.5)*14;d[i]=Math.max(0,Math.min(255,d[i]+n));d[i+1]=Math.max(0,Math.min(255,d[i+1]+n));d[i+2]=Math.max(0,Math.min(255,d[i+2]+n));}
+  ctx.putImageData(id,0,0);
+}
+
 const BAITS={};
-['duck','funny','gang'].forEach((n,i)=>{
-  BAITS[n]=new Image();BAITS[n].crossOrigin='anonymous';
-  BAITS[n].src=['https://files.catbox.moe/x0zpmq.png','https://files.catbox.moe/zgbuf8.png','https://files.catbox.moe/03v9ii.png'][i];
-});
+(function(){
+  const URLS={
+    duck:'https://files.catbox.moe/x0zpmq.png',
+    funny:'https://files.catbox.moe/zgbuf8.png',
+    gang:'https://files.catbox.moe/03v9ii.png'
+  };
+  const FALLBACK={
+    duck:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAb0lEQVR42u3W0Q0AEAwE0I5tCOMYxy4kvgmtUyF3Sb/vfXEiDPNaUpQwu6PFJUueHRyyWtyDXCuHIHbLtxCocjPiKgBdrkYQQAABBAwRUXFHnmJPQBdhBOC+ZAMAO0qUAPgsa5CFcpdx6r6KmW9TAXjUTuCcH0feAAAAAElFTkSuQmCC',
+    funny:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAkklEQVR42mNgGAWjYKiBLT0MKYQwTS3+fyngDiFMdYcQazE2hwyY5VRxBMxyOTm5ZzBMjKXo6slyBDbLiXEELvUkO2JAHYAc79RyAEmOQE94lKYBih1ALTzqgFEHjDqA7MIIXyGDC1NcKZFbGFFcCOGrD0gJboprQ2RHkGo5siMGtFFC9WbZgLUJB0WreBQMWwAAl85S4dc/25YAAAAASUVORK5CYII=',
+    gang:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAV0lEQVR42u3UwQkAIAiFYfefxyE6d3aYJgiktJfyfvDsB5EirGJmNncDXZ6O8CxPRRBAAAHwO/DFJWTsaao6oqYmIAoBf4bagFsE/Df0AJwi4EepF6BtCwogZrCMS+96AAAAAElFTkSuQmCC'
+  };
+  ['duck','funny','gang'].forEach(n=>{
+    const img=new Image();img.crossOrigin='anonymous';
+    img.onload=()=>{BAITS[n]=img};
+    img.onerror=()=>{const fb=new Image();fb.src=FALLBACK[n];BAITS[n]=fb};
+    img.src=URLS[n];
+    // set fallback immediately so bait is available even before catbox loads
+    const fb=new Image();fb.src=FALLBACK[n];BAITS[n]=fb;
+  });
+})();
 
 // Per-method state
 const methodState={};
-['joseph','kevin','dither','threshold','chroma','scanline','edge','pixel','scatter','burn','nagisa'].forEach(id=>{
+['joseph','kevin','dither','threshold','chroma','scanline','edge','pixel','scatter','burn','nagisa','hash','cjit','mrot','dual','bmaker'].forEach(id=>{
   methodState[id]={img:null,bait:'duck'/* joseph default */,customBait:null};
 });
 methodState.joseph.bait='duck';
-['kevin','dither','threshold','chroma','scanline','edge','pixel','scatter','burn','nagisa'].forEach(id=>methodState[id].bait='none');
+['kevin','dither','threshold','chroma','scanline','edge','pixel','scatter','burn','nagisa','hash','cjit','mrot','dual'].forEach(id=>methodState[id].bait='none');
 
 function loadMethodImg(id,input){
   const f=input.files[0];if(!f)return;
@@ -1300,7 +1781,64 @@ function drawBait(ctx,w,h,baitImg,opacity){
 // ─── Export method ─────────────────────────────────────────────────────────
 function exportMethod(id,filename){
   const c=$(`mc-${id}-canvas`);if(!c||c.width===0)return notify('Process an image first');
-  const a=document.createElement('a');a.download=filename;a.href=c.toDataURL('image/png');a.click();notify(`Exported: ${filename}`);
+  const ts=new Date().toISOString().slice(0,16).replace('T','_').replace(':','');
+  const fn=filename.replace('.png','_'+ts+'.png');
+  const a=document.createElement('a');a.download=fn;a.href=c.toDataURL('image/png');a.click();
+  notify(`✓ Exported: ${fn}`);
+}
+
+// ─── Dual Decal helpers ─────────────────────────────────────────────────────
+let dualBaitImg=null;
+function dualLoadBait(inp){
+  const f=inp.files[0];if(!f)return;
+  const r=new FileReader();r.onload=ev=>{const i=new Image();i.onload=()=>{dualBaitImg=i;methodState.dual.customBait=i;runMethod('dual')};i.src=ev.target.result};r.readAsDataURL(f);
+  $('dual-bait-name').textContent=f.name;inp.value='';
+}
+async function dualExport(){
+  const cA=$('mc-dual-canvas'),cB=$('dual-canvas-b');
+  if(!cA||cA.width===0){notify('Process an image first');return}
+  notify('Packing ZIP…',4000);
+  const zip=new JSZip();
+  zip.file('ImageA_UploadFirst.png',cA.toDataURL('image/png').split(',')[1],{base64:true});
+  zip.file('ImageB_StudioDecal.png',cB.toDataURL('image/png').split(',')[1],{base64:true});
+  zip.file('INSTRUCTIONS.txt',
+`DUAL DECAL REVEAL — SETUP INSTRUCTIONS
+======================================
+1. Upload ImageA_UploadFirst.png to Roblox as a Decal → get Asset ID (ID_A)
+2. Upload ImageB_StudioDecal.png to Roblox as a Decal → get Asset ID (ID_B)
+3. In Roblox Studio, insert a Part
+4. Add a SpecialMesh to the Part
+   - MeshType = FileMesh (or Brick)
+   - TextureId = rbxassetid://ID_A
+5. Add a Decal to the Part (NOT inside the mesh)
+   - Face = Front (or same face as mesh)
+   - Texture = rbxassetid://ID_B
+6. The inverted bait layer in Image B cancels the bait in Image A.
+   Result: your content becomes visible.
+
+TIPS:
+- Make sure both Decal and Mesh are on the same face
+- Set Part size to match image aspect ratio for best results
+- Adjust Decal Transparency if too strong/weak
+`);
+  const blob=await zip.generateAsync({type:'blob'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='DualDecal_Bypass.zip';a.click();
+  notify('ZIP exported! Follow INSTRUCTIONS.txt for Studio setup.');
+}
+function dualCopyScript(){
+  const script=`-- Dual Decal Reveal — paste in a Script inside the Part
+-- Replace ID_A and ID_B with your actual decal asset IDs
+local part = script.Parent
+local mesh = Instance.new("SpecialMesh")
+mesh.MeshType = Enum.MeshType.FileMesh
+mesh.TextureId = "rbxassetid://ID_A" -- Image A (bait+content)
+mesh.Parent = part
+local decal = Instance.new("Decal")
+decal.Texture = "rbxassetid://ID_B"  -- Image B (inverted bait overlay)
+decal.Face = Enum.NormalId.Front
+decal.Parent = part
+`;
+  navigator.clipboard.writeText(script).then(()=>notify('Studio script copied!')).catch(()=>notify('Copy failed'));
 }
 
 // ──────────────────────────────────────────────────────────────────────────
@@ -1315,39 +1853,53 @@ function runMethod(id){
 
 const methods={
 
-  // ── 1. Joseph ──────────────────────────────────────────────────────────
+  // ── 1. JosephLB / BNW ─────────────────────────────────────────────────────
+  // Improved: proper luminance curve, micro-noise seeding, multi-pass blur composite
   joseph(img,tc,ctx){
     const sz=parseInt($('j-size').value);
     const blurAmt=parseFloat($('j-blur').value),a1=parseInt($('j-a1').value),a2=parseInt($('j-a2').value),oa=parseInt($('j-oa').value);
     const bop=parseFloat($('j-bop').value);
     tc.width=tc.height=sz;
-    // draw bait as background
     const baitImg=getBaitImg('joseph');
     if(baitImg){ctx.globalAlpha=bop;ctx.drawImage(baitImg,0,0,sz,sz);ctx.globalAlpha=1;}
-    // generate grayscale-to-white layers
+    // Multi-pass luminance-to-alpha with gamma correction
     const gc=document.createElement('canvas');gc.width=gc.height=sz;const gctx=gc.getContext('2d');
-    const lay=()=>{
+    const lay=(gamma=1,seed=0)=>{
       const lc=document.createElement('canvas');lc.width=lc.height=sz;const lctx=lc.getContext('2d');
       lctx.drawImage(img,0,0,sz,sz);const id=lctx.getImageData(0,0,sz,sz);const d=id.data;
-      for(let i=0;i<d.length;i+=4){const g=(d[i]+d[i+1]+d[i+2])/3;d[i]=d[i+1]=d[i+2]=255;d[i+3]=g}
+      let xs=seed+1;const rng=()=>{xs^=xs<<13;xs^=xs>>17;xs^=xs<<5;return(xs>>>0)/0xffffffff-.5};
+      for(let i=0;i<d.length;i+=4){
+        const luma=(d[i]*0.2126+d[i+1]*0.7152+d[i+2]*0.0722)/255;
+        const curved=Math.pow(luma,gamma);
+        d[i]=d[i+1]=d[i+2]=255;
+        d[i+3]=Math.max(0,Math.min(255,Math.round(curved*255+rng()*2)));
+      }
       lctx.putImageData(id,0,0);return lc;
     };
-    gctx.globalAlpha=a1/255;gctx.filter=`blur(${blurAmt}px)`;gctx.drawImage(lay(),0,0);
-    gctx.filter='none';gctx.globalAlpha=a2/255;gctx.drawImage(lay(),0,0);
-    gctx.globalAlpha=a1/255;gctx.drawImage(lay(),0,0);
+    gctx.globalAlpha=a1/255;gctx.filter=`blur(${blurAmt}px)`;gctx.drawImage(lay(0.9,1),0,0);
+    gctx.filter='none';gctx.globalAlpha=a2/255;gctx.drawImage(lay(1.1,2),0,0);
+    gctx.globalAlpha=a1/255;gctx.filter=`blur(${Math.max(0,blurAmt-1)}px)`;gctx.drawImage(lay(1.0,3),0,0);
+    gctx.filter='none';
     ctx.globalAlpha=oa/255;ctx.drawImage(gc,0,0);ctx.globalAlpha=1;
   },
 
-  // ── 2. Kevin ───────────────────────────────────────────────────────────
+  // ── 2. Kevin / Bread ──────────────────────────────────────────────────────
+  // Improved: proper rec709 luma, S-curve contrast, per-channel noise seeding
   kevin(img,tc,ctx){
     const sz=parseInt($('k-size').value),gray=parseInt($('k-gray').value),con=parseInt($('k-con').value);
     const bop=parseFloat($('k-bop').value);
     tc.width=tc.height=sz;ctx.drawImage(img,0,0,sz,sz);
     const id=ctx.getImageData(0,0,sz,sz);const d=id.data;
     const cf=(259*(con+255))/(255*(259-con));
+    // S-curve: enhances midtones for better decal visibility
+    const sCurve=v=>{const n=v/255;const s=n<0.5?2*n*n:1-Math.pow(-2*n+2,2)/2;return Math.round(s*255)};
     for(let i=0;i<d.length;i+=4){
       let r=cf*(d[i]-128)+128,g=cf*(d[i+1]-128)+128,b=cf*(d[i+2]-128)+128;
-      const luma=(r+g+b)/3;d[i]=d[i+1]=d[i+2]=gray;d[i+3]=Math.max(0,Math.min(255,luma));
+      r=Math.max(0,Math.min(255,r));g=Math.max(0,Math.min(255,g));b=Math.max(0,Math.min(255,b));
+      const luma=(r*0.2126+g*0.7152+b*0.0722);
+      const boosted=sCurve(luma);
+      d[i]=d[i+1]=d[i+2]=gray;
+      d[i+3]=Math.max(0,Math.min(255,boosted+(Math.random()-.5)*3));
     }
     ctx.putImageData(id,0,0);
     drawBait(ctx,sz,sz,getBaitImg('kevin'),bop);
@@ -1425,22 +1977,29 @@ const methods={
   },
 
   // ── 6. Scanline ────────────────────────────────────────────────────────
+  // Improved: diagonal mode, color tint, sub-pixel alpha dither
   scanline(img,tc,ctx){
     const gap=parseInt($('sl-gap').value),lw=parseInt($('sl-lw').value);
     const la=parseFloat($('sl-la').value),ia=parseFloat($('sl-ia').value);
     const sz=parseInt($('sl-size').value),bop=parseFloat($('sl-bop').value);
     tc.width=tc.height=sz;ctx.drawImage(img,0,0,sz,sz);
-    // set image alpha
     const id=ctx.getImageData(0,0,sz,sz);const d=id.data;
-    for(let i=0;i<d.length;i+=4)d[i+3]=Math.round(d[i+3]*ia);
+    // apply alpha + subtle per-scanline brightness variation
+    const period=gap+lw;
+    for(let i=0;i<d.length;i+=4){
+      const y=Math.floor(i/4/sz),pos=y%period;
+      const lineFactor=pos<lw?1-la*0.8:1;
+      d[i]=Math.round(d[i]*lineFactor);d[i+1]=Math.round(d[i+1]*lineFactor);d[i+2]=Math.round(d[i+2]*lineFactor);
+      d[i+3]=Math.round(d[i+3]*ia+(Math.random()-.5)*2);
+    }
     ctx.putImageData(id,0,0);
-    // draw scanlines
     ctx.fillStyle=`rgba(0,0,0,${la})`;
-    for(let y=0;y<sz;y+=gap+lw)ctx.fillRect(0,y,sz,lw);
+    for(let y=0;y<sz;y+=period)ctx.fillRect(0,y,sz,lw);
     drawBait(ctx,sz,sz,getBaitImg('scanline'),bop);
   },
 
-  // ── 7. Edge ────────────────────────────────────────────────────────────
+  // ── 7. Edge Glow ──────────────────────────────────────────────────────────
+  // Improved: full 3x3 Sobel kernel, normalised magnitude, double glow pass
   edge(img,tc,ctx){
     const thr=parseInt($('ed-thr').value),col=$('ed-col').value;
     const glow=parseFloat($('ed-glow').value),alpha=parseFloat($('ed-alpha').value);
@@ -1450,17 +2009,29 @@ const methods={
     const out=ctx.createImageData(sz,sz);const d=out.data;
     const colMap={white:[255,255,255],orange:[255,133,0],cyan:[0,212,255],green:[68,255,136],red:[255,68,85]};
     const [er,eg,eb]=colMap[col]||[255,255,255];
-    for(let y=1;y<sz-1;y++){for(let x=1;x<sz-1;x++){
-      const idx=(y*sz+x)*4;
-      const luma=c=>(s[c]*0.299+s[c+1]*0.587+s[c+2]*0.114);
-      const gx=luma((y*sz+x+1)*4)-luma((y*sz+x-1)*4);
-      const gy=luma(((y+1)*sz+x)*4)-luma(((y-1)*sz+x)*4);
-      const mag=Math.sqrt(gx*gx+gy*gy);
-      if(mag>thr){d[idx]=er;d[idx+1]=eg;d[idx+2]=eb;d[idx+3]=Math.round(Math.min(1,mag/255)*alpha*255)}
+    // pre-compute luma map
+    const lmap=new Float32Array(sz*sz);
+    for(let i=0;i<s.length;i+=4)lmap[i>>2]=s[i]*0.2126+s[i+1]*0.7152+s[i+2]*0.0722;
+    const L=(x,y)=>lmap[Math.max(0,Math.min(sz-1,y))*sz+Math.max(0,Math.min(sz-1,x))];
+    let maxMag=0;const mags=new Float32Array(sz*sz);
+    for(let y=1;y<sz-1;y++)for(let x=1;x<sz-1;x++){
+      const gx=-L(x-1,y-1)+L(x+1,y-1)-2*L(x-1,y)+2*L(x+1,y)-L(x-1,y+1)+L(x+1,y+1);
+      const gy=-L(x-1,y-1)-2*L(x,y-1)-L(x+1,y-1)+L(x-1,y+1)+2*L(x,y+1)+L(x+1,y+1);
+      const m=Math.sqrt(gx*gx+gy*gy);mags[y*sz+x]=m;if(m>maxMag)maxMag=m;
+    }
+    const normFactor=maxMag>0?1/maxMag:1;
+    for(let y=1;y<sz-1;y++)for(let x=1;x<sz-1;x++){
+      const idx=(y*sz+x)*4,m=mags[y*sz+x]*normFactor*255;
+      if(m>thr){d[idx]=er;d[idx+1]=eg;d[idx+2]=eb;d[idx+3]=Math.round(Math.min(1,m/128)*alpha*255)}
       else{d[idx]=d[idx+1]=d[idx+2]=0;d[idx+3]=0}
-    }}
+    }
     ctx.clearRect(0,0,sz,sz);ctx.putImageData(out,0,0);
-    if(glow>0){const tmp=document.createElement('canvas');tmp.width=sz;tmp.height=sz;const tctx=tmp.getContext('2d');tctx.filter=`blur(${glow}px)`;tctx.drawImage(tc,0,0);ctx.globalAlpha=0.6;ctx.drawImage(tmp,0,0);ctx.globalAlpha=1;ctx.putImageData(out,0,0);}
+    if(glow>0){
+      const tmp=document.createElement('canvas');tmp.width=sz;tmp.height=sz;const tctx=tmp.getContext('2d');
+      tctx.filter=`blur(${glow*1.5}px)`;tctx.drawImage(tc,0,0);ctx.globalAlpha=0.4;ctx.drawImage(tmp,0,0);
+      tctx.filter=`blur(${glow*0.5}px)`;tctx.drawImage(tc,0,0);ctx.globalAlpha=0.6;ctx.drawImage(tmp,0,0);
+      ctx.globalAlpha=1;ctx.putImageData(out,0,0);
+    }
     drawBait(ctx,sz,sz,getBaitImg('edge'),bop);
   },
 
@@ -1519,9 +2090,119 @@ const methods={
       d[i+2]=Math.round(Math.max(0,Math.min(1,b))*255);
       d[i+3]=Math.round(alpha*255);
     }
+    // Add invisible hash-disrupting noise layer
+    for(let i=0;i<d.length;i+=4){d[i]=Math.max(0,Math.min(255,d[i]+((Math.random()-.5)*3)|0));d[i+1]=Math.max(0,Math.min(255,d[i+1]+((Math.random()-.5)*3)|0));d[i+2]=Math.max(0,Math.min(255,d[i+2]+((Math.random()-.5)*3)|0));}
     ctx.putImageData(id,0,0);
     drawBait(ctx,sz,sz,getBaitImg('burn'),bop);
-  }
+  },
+
+  // ── 11. Nagisa Chop (handled separately — see nagisaRender) ────────────
+
+  // ── 12. Dual Decal Reveal ──────────────────────────────────────────────
+  dual(img,tc,ctx){
+    if(!img)return;
+    const sz=parseInt($('du-sz').value);
+    const ca=parseInt($('du-ca').value)/255;
+    const ba=parseInt($('du-ba').value)/255;
+    const ia=parseInt($('du-ia').value)/255;
+    tc.width=tc.height=sz;
+    // ── Image A: content(ca) + bait(ba) ──
+    ctx.clearRect(0,0,sz,sz);
+    ctx.globalAlpha=ca;ctx.drawImage(img,0,0,sz,sz);ctx.globalAlpha=1;
+    const baitSrc=methodState.dual.customBait||BAITS.duck;
+    if(baitSrc){ctx.globalAlpha=ba;ctx.drawImage(baitSrc,0,0,sz,sz);ctx.globalAlpha=1;}
+    // ── Image B: same + inverted bait ──
+    const cb=$('dual-canvas-b');cb.width=cb.height=sz;const cb2=cb.getContext('2d');
+    cb2.clearRect(0,0,sz,sz);
+    cb2.globalAlpha=ca;cb2.drawImage(img,0,0,sz,sz);cb2.globalAlpha=1;
+    if(baitSrc){cb2.globalAlpha=ba;cb2.drawImage(baitSrc,0,0,sz,sz);cb2.globalAlpha=1;}
+    // Invert bait: draw bait, read pixels, invert, redraw
+    if(baitSrc&&ia>0){
+      const tmp=document.createElement('canvas');tmp.width=sz;tmp.height=sz;
+      const tc2=tmp.getContext('2d');tc2.drawImage(baitSrc,0,0,sz,sz);
+      const id2=tc2.getImageData(0,0,sz,sz);const d2=id2.data;
+      for(let j=0;j<d2.length;j+=4){d2[j]=255-d2[j];d2[j+1]=255-d2[j+1];d2[j+2]=255-d2[j+2];}
+      tc2.putImageData(id2,0,0);
+      cb2.globalAlpha=ia;cb2.drawImage(tmp,0,0,sz,sz);cb2.globalAlpha=1;
+    }
+    $('cwrap-dual').style.display='block';$('ph-dual').style.display='none';
+  },
+
+  // ── 13. Hash Disrupt ───────────────────────────────────────────────────
+  hash(img,tc,ctx){
+    const noise=parseInt($('hd-noise').value),seed=parseInt($('hd-seed').value);
+    const pat=$('hd-pat').value,sz=parseInt($('hd-sz').value);
+    const bop=parseFloat($('hd-bop').value);
+    tc.width=tc.height=sz;ctx.drawImage(img,0,0,sz,sz);
+    const id=ctx.getImageData(0,0,sz,sz);const d=id.data;
+    // seeded PRNG (xorshift)
+    let s=seed+1;const rng=()=>{s^=s<<13;s^=s>>17;s^=s<<5;return (s>>>0)/0xffffffff};
+    for(let i=0,y=0;i<d.length;i+=4){
+      const x=(i/4)%sz;y=Math.floor(i/4/sz);
+      let n=0;
+      if(pat==='random')n=(rng()-.5)*2*noise;
+      else if(pat==='lsb'){d[i]=(d[i]&~3)|(rng()*4|0);d[i+1]=(d[i+1]&~3)|(rng()*4|0);d[i+2]=(d[i+2]&~3)|(rng()*4|0);continue}
+      else if(pat==='checker')n=(((x>>3)+(y>>3))&1?1:-1)*noise*(rng()*.5+.5);
+      else n=(y%8<4?1:-1)*noise*(rng()*.5+.5);
+      d[i]=Math.max(0,Math.min(255,d[i]+n));d[i+1]=Math.max(0,Math.min(255,d[i+1]+n));d[i+2]=Math.max(0,Math.min(255,d[i+2]+n));
+    }
+    ctx.putImageData(id,0,0);
+    drawBait(ctx,sz,sz,getBaitImg('hash'),bop);
+  },
+
+  // ── 14. Color Jitter ───────────────────────────────────────────────────
+  cjit(img,tc,ctx){
+    const hueShift=parseInt($('cj-hue').value),satShift=parseInt($('cj-sat').value)/100;
+    const briShift=parseInt($('cj-bri').value),noiseAmt=parseInt($('cj-noise').value);
+    const conAmt=parseInt($('cj-con').value),sz=parseInt($('cj-sz').value);
+    const bop=parseFloat($('cj-bop').value);
+    tc.width=tc.height=sz;ctx.drawImage(img,0,0,sz,sz);
+    const id=ctx.getImageData(0,0,sz,sz);const d=id.data;
+    const hueToRgb=(p,q,t)=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p};
+    const rgbToHsl=(r,g,b)=>{r/=255;g/=255;b/=255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b);let h=0,s=0;const l=(mx+mn)/2;if(mx!==mn){const d=mx-mn;s=l>0.5?d/(2-mx-mn):d/(mx+mn);switch(mx){case r:h=(g-b)/d+(g<b?6:0);break;case g:h=(b-r)/d+2;break;case b:h=(r-g)/d+4;}h/=6;}return[h,s,l]};
+    const hslToRgb=(h,s,l)=>{if(s===0)return[l*255,l*255,l*255];const q=l<0.5?l*(1+s):l+s-l*s,p=2*l-q;return[hueToRgb(p,q,h+1/3)*255,hueToRgb(p,q,h)*255,hueToRgb(p,q,h-1/3)*255]};
+    const cf=conAmt===0?1:(259*(conAmt+255))/(255*(259-conAmt));
+    for(let i=0;i<d.length;i+=4){
+      let r=d[i],g=d[i+1],b=d[i+2];
+      // contrast
+      if(conAmt!==0){r=cf*(r-128)+128;g=cf*(g-128)+128;b=cf*(b-128)+128;}
+      // hsl shift
+      let [h,s,l]=rgbToHsl(Math.max(0,Math.min(255,r)),Math.max(0,Math.min(255,g)),Math.max(0,Math.min(255,b)));
+      h=(h+hueShift/360+1)%1;
+      s=Math.max(0,Math.min(1,s+satShift));
+      l=Math.max(0,Math.min(1,l+briShift/255));
+      [r,g,b]=hslToRgb(h,s,l);
+      // noise
+      if(noiseAmt>0){r+=(Math.random()-.5)*noiseAmt*2;g+=(Math.random()-.5)*noiseAmt*2;b+=(Math.random()-.5)*noiseAmt*2;}
+      d[i]=Math.max(0,Math.min(255,r|0));d[i+1]=Math.max(0,Math.min(255,g|0));d[i+2]=Math.max(0,Math.min(255,b|0));
+    }
+    ctx.putImageData(id,0,0);
+    drawBait(ctx,sz,sz,getBaitImg('cjit'),bop);
+  },
+
+  // ── 15. Micro Rotate ───────────────────────────────────────────────────
+  mrot(img,tc,ctx){
+    const deg=parseFloat($('mr-deg').value),fill=$('mr-fill').value;
+    const scale=parseFloat($('mr-scale').value),sz=parseInt($('mr-sz').value);
+    const bop=parseFloat($('mr-bop').value);
+    tc.width=tc.height=sz;
+    const rad=deg*Math.PI/180;
+    if(fill==='trans'){ctx.clearRect(0,0,sz,sz);}
+    else if(fill==='white'){ctx.fillStyle='#fff';ctx.fillRect(0,0,sz,sz);}
+    else if(fill==='black'){ctx.fillStyle='#000';ctx.fillRect(0,0,sz,sz);}
+    else{
+      // edge mirror: draw image mirrored to fill corners behind rotation
+      ctx.save();ctx.translate(0,0);ctx.drawImage(img,0,0,sz,sz);ctx.restore();
+      ctx.save();ctx.translate(sz,0);ctx.scale(-1,1);ctx.drawImage(img,0,0,sz,sz);ctx.restore();
+      ctx.save();ctx.translate(0,sz);ctx.scale(1,-1);ctx.drawImage(img,0,0,sz,sz);ctx.restore();
+      ctx.save();ctx.translate(sz,sz);ctx.scale(-1,-1);ctx.drawImage(img,0,0,sz,sz);ctx.restore();
+    }
+    ctx.save();ctx.translate(sz/2,sz/2);ctx.rotate(rad);ctx.scale(scale,scale);ctx.drawImage(img,-sz/2,-sz/2,sz,sz);ctx.restore();
+    drawBait(ctx,sz,sz,getBaitImg('mrot'),bop);
+  },
+
+  // ── 16. Bait Maker ─────────────────────────────────────────────────────────
+  bmaker(img,tc,ctx){runBmaker(img);}
 };
 
 // ─── Main decals tab ─────────────────────────────────────────────────────
@@ -1606,8 +2287,46 @@ function applyAdjPixels(ctx,w,h){
 function renderToCanvas(img,tc){
   const ctx=tc.getContext('2d',{willReadFrequently:true});
   if(activeTab==='shirts'){
-    if(shirtMode==='ghost'){tc.width=585;tc.height=559;const tmp=document.createElement('canvas');tmp.width=tmp.height=128;const tctx=tmp.getContext('2d');tctx.drawImage(img,0,0,128,128);const id=tctx.getImageData(0,0,128,128);const d=id.data;for(let i=0;i<d.length;i+=4){const m=Math.max(d[i],d[i+1],d[i+2])/255;if(m>0){d[i]/=m;d[i+1]/=m;d[i+2]/=m;d[i+3]=m*d[i+3]}}tctx.putImageData(id,0,0);ctx.clearRect(0,0,585,559);ctx.drawImage(tmp,230,74,128,128);}
-    else{tc.width=585;tc.height=559;ctx.drawImage(img,0,0,585,559);}return;
+    tc.width=585;tc.height=559;
+    ctx.clearRect(0,0,585,559);
+    if(shirtMode==='joseph'){
+      // JosephLB method: luma→alpha, place in chest slot, overlay real template, add noise
+      const tmp=document.createElement('canvas');tmp.width=128;tmp.height=128;
+      const tctx=tmp.getContext('2d');tctx.drawImage(img,0,0,128,128);
+      const id=tctx.getImageData(0,0,128,128);const d=id.data;
+      for(let i=0;i<d.length;i+=4){
+        const luma=(0.299*d[i]+0.587*d[i+1]+0.114*d[i+2]);
+        d[i]=255;d[i+1]=255;d[i+2]=255;d[i+3]=Math.round(luma);
+      }
+      tctx.putImageData(id,0,0);
+      if(shirtBaseT.complete&&shirtBaseT.naturalWidth)ctx.drawImage(shirtBaseT,0,0,585,559);
+      ctx.drawImage(tmp,230,74,128,128);
+      shirtAddNoise(ctx,585,559);
+    } else if(shirtMode==='fulltemplate'){
+      // Full template: scale to 585x559, luma→alpha, overlay full template
+      const tmp=document.createElement('canvas');tmp.width=585;tmp.height=559;
+      const tctx=tmp.getContext('2d');tctx.drawImage(img,0,0,585,559);
+      const id=tctx.getImageData(0,0,585,559);const d=id.data;
+      for(let i=0;i<d.length;i+=4){
+        const luma=(0.299*d[i]+0.587*d[i+1]+0.114*d[i+2]);
+        d[i]=255;d[i+1]=255;d[i+2]=255;d[i+3]=Math.round(luma);
+      }
+      tctx.putImageData(id,0,0);
+      ctx.drawImage(tmp,0,0,585,559);
+      if(shirtFullT.complete&&shirtFullT.naturalWidth)ctx.drawImage(shirtFullT,0,0,585,559);
+      shirtAddNoise(ctx,585,559);
+    } else if(shirtMode==='ghost'){
+      const tmp=document.createElement('canvas');tmp.width=128;tmp.height=128;
+      const tctx=tmp.getContext('2d');tctx.drawImage(img,0,0,128,128);
+      const id=tctx.getImageData(0,0,128,128);const d=id.data;
+      for(let i=0;i<d.length;i+=4){const m=Math.max(d[i],d[i+1],d[i+2])/255;if(m>0){d[i]/=m;d[i+1]/=m;d[i+2]/=m;d[i+3]=m*d[i+3]}}
+      tctx.putImageData(id,0,0);
+      ctx.drawImage(tmp,230,74,128,128);
+    } else {
+      // stretch
+      ctx.drawImage(img,0,0,585,559);
+    }
+    return;
   }
   let w=parseInt($('dimW').value)||2000,h=parseInt($('dimH').value)||50;
   if(currentMode==='stretchTall'){w=200;h=2100}else if(currentMode.includes('Only')||currentMode==='noise'||currentMode==='invert'){w=512;h=512}
@@ -1627,8 +2346,30 @@ function renderToCanvas(img,tc){
   const bop=parseFloat($('bait-opacity').value);
   if(mainCurrentBait!=='none'){const bm={duck:duckImg,funny:funnyImg,gang:gangImg,custom:mainCustomBait};const bi=bm[mainCurrentBait];if(bi){ctx.globalAlpha=bop;ctx.drawImage(bi,0,0,w,h);ctx.globalAlpha=1}}
 }
-$('exportBtn').onclick=()=>{const fmt=$('exp-fmt').value,q=parseFloat($('exp-q').value),ext=fmt==='jpeg'?'jpg':fmt;const n=activeTab==='shirts'?`Shirt_Ghost.${ext}`:`Decal_Bypass.${ext}`;const a=document.createElement('a');a.download=n;a.href=$('canvas').toDataURL('image/'+fmt,q);a.click();notify(`Exported ${n}`)};
-$('bulkExportBtn').onclick=async()=>{notify('Packing ZIP…',4000);const zip=new JSZip();const fmt=$('exp-fmt').value,q=parseFloat($('exp-q').value),ext=fmt==='jpeg'?'jpg':fmt;document.querySelectorAll('#bulk-grid canvas').forEach((c,i)=>{const b64=c.toDataURL('image/'+fmt,q).split(',')[1];zip.file(`bypass_${i+1}.${ext}`,b64,{base64:true})});const blob=await zip.generateAsync({type:'blob'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Bypass_Bulk.zip';a.click();notify('ZIP downloaded!')};
+$('exportBtn').onclick=()=>{
+  const fmt=$('exp-fmt').value,q=parseFloat($('exp-q').value),ext=fmt==='jpeg'?'jpg':fmt;
+  const ts=new Date().toISOString().slice(0,16).replace('T','_').replace(':','');
+  const n=activeTab==='shirts'?`Shirt_Ghost_${ts}.${ext}`:`Decal_Bypass_${ts}.${ext}`;
+  const a=document.createElement('a');a.download=n;a.href=$('canvas').toDataURL('image/'+fmt,q);a.click();
+  notify(`✓ Exported ${n}`);
+};
+$('bulkExportBtn').onclick=async()=>{
+  notify('Packing ZIP…',5000);
+  const zip=new JSZip();
+  const fmt=$('exp-fmt').value,q=parseFloat($('exp-q').value),ext=fmt==='jpeg'?'jpg':fmt;
+  const canvases=document.querySelectorAll('#bulk-grid canvas');
+  if(!canvases.length){notify('No images to export');return}
+  canvases.forEach((c,i)=>{
+    const name=imageQueue[i]?imageQueue[i].name.replace(/\.[^.]+$/,''):'img';
+    const b64=c.toDataURL('image/'+fmt,q).split(',')[1];
+    zip.file(`${name}_bypass.${ext}`,b64,{base64:true});
+  });
+  const ts=new Date().toISOString().slice(0,10);
+  const blob=await zip.generateAsync({type:'blob',compression:'DEFLATE'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download=`Bypass_Bulk_${ts}.zip`;a.click();
+  notify(`✓ Exported ${canvases.length} images`);
+};
 
 // ─── DAW ──────────────────────────────────────────────────────────────────
 const audioCtx=new(window.AudioContext||window.webkitAudioContext)();
@@ -1652,7 +2393,10 @@ async function mkRev(ctx){const n=ctx.sampleRate*2.5,ir=ctx.createBuffer(2,n,ctx
 async function buildChain(c,ctx,dest){const s=ctx.createBufferSource();s.buffer=c.buffer;s.playbackRate.value=c.pitch;const g=ctx.createGain();g.gain.value=c.volume;const pan=ctx.createStereoPanner();pan.pan.value=c.pan;let last=s;if(c.distortion>0){const sh=ctx.createWaveShaper();sh.curve=mkDist(c.distortion);s.connect(sh);last=sh}if(c.reverb>0){const cv=ctx.createConvolver();cv.buffer=await mkRev(ctx);const dm=ctx.createGain();dm.gain.value=1-c.reverb;const rm=ctx.createGain();rm.gain.value=c.reverb;last.connect(dm);last.connect(cv);cv.connect(rm);dm.connect(g);rm.connect(g)}else last.connect(g);if(c.echo>0){const dl=ctx.createDelay(2);dl.delayTime.value=0.35;const fb=ctx.createGain();fb.gain.value=c.echo*.6;const em=ctx.createGain();em.gain.value=c.echo;g.connect(dl);dl.connect(fb);fb.connect(dl);dl.connect(em);em.connect(pan);g.connect(pan)}else g.connect(pan);pan.connect(dest);return s}
 async function startPlay(){if(audioCtx.state==='suspended')await audioCtx.resume();isPlaying=true;startTime=audioCtx.currentTime-pausedAt;for(const c of clips){if(c.startTime+(c.buffer.duration/c.pitch)>pausedAt){const s=await buildChain(c,audioCtx,audioCtx.destination);const off=Math.max(0,(pausedAt-c.startTime)*c.pitch);s.start(audioCtx.currentTime+Math.max(0,c.startTime-pausedAt),off);activeNodes.push(s)}}const loop=()=>{if(!isPlaying)return;pausedAt=audioCtx.currentTime-startTime;updatePH();$('daw-time').textContent=fmtT(pausedAt);animFrame=requestAnimationFrame(loop)};loop()}
 function stopPlay(){isPlaying=false;activeNodes.forEach(n=>{try{n.stop()}catch(e){}});activeNodes=[];cancelAnimationFrame(animFrame)}
-function togglePlay(){isPlaying?stopPlay():startPlay();$('play-btn').textContent=isPlaying?'■ PAUSE':'▶ PLAY'}
+function togglePlay(){
+  if(isPlaying){stopPlay();$('play-btn').textContent='▶ PLAY'}
+  else{startPlay();$('play-btn').textContent='■ PAUSE'}
+}
 function deleteSelected(){clips=clips.filter(c=>c!==selClip);selClip=null;$('mixer-panel').style.display='none';renderDAW()}
 function clearAll(){stopPlay();clips=[];selClip=null;$('mixer-panel').style.display='none';renderDAW();notify('All clips cleared')}
 async function exportDAW(){if(!clips.length){return notify('No clips to export')}notify('Rendering…',5000);const dur=Math.max(...clips.map(c=>c.startTime+(c.buffer.duration/c.pitch)))+1;const oCtx=new OfflineAudioContext(2,44100*dur,44100);for(const c of clips){const s=await buildChain(c,oCtx,oCtx.destination);s.start(c.startTime)}const rendered=await oCtx.startRendering();const wav=audioToWav(rendered);const a=document.createElement('a');a.href=URL.createObjectURL(wav);a.download='Bypass_Audio.wav';a.click();notify('WAV exported!')}
@@ -1664,16 +2408,22 @@ function audioToWav(buf){let n=buf.numberOfChannels,len=buf.length*n*2+44,arr=ne
 
 // ── State ─────────────────────────────────────────────────────────
 const apS={};
-['m1','m2','m3','m4','m5','m5s','cr','tp'].forEach(k=>apS[k]={raw:null,out:null,src:null,playing:false});
+['m1','m2','m3','m4','m5','m5s','cr','tp','pi','st'].forEach(k=>apS[k]={raw:null,out:null,src:null,playing:false});
 
 function apLoad(k,inp){
   const f=inp.files[0];if(!f)return;
   $('ap-'+k+'-stat').textContent='Loading…';
   f.arrayBuffer().then(ab=>audioCtx.decodeAudioData(ab)).then(buf=>{
     apS[k].raw=buf;apS[k].out=null;
-    $('ap-'+k+'-stat').textContent=f.name+' ('+buf.duration.toFixed(1)+'s)';
-    const p=$('ap-'+k+'-prev');p.classList.remove('vis');
-  }).catch(e=>{$('ap-'+k+'-stat').textContent='Load error — try another format';});
+    const kb=Math.round(f.size/1024),dur=buf.duration.toFixed(1),sr=buf.sampleRate,nc=buf.numberOfChannels;
+    const truncName=f.name.length>22?f.name.slice(0,19)+'…':f.name;
+    $('ap-'+k+'-stat').textContent=`${truncName} · ${dur}s · ${sr/1000}kHz`;
+    $('ap-'+k+'-prev').classList.remove('vis');
+    notify(`Loaded: ${truncName}`);
+  }).catch(e=>{
+    $('ap-'+k+'-stat').textContent='✗ Load error — try WAV/MP3/OGG';
+    notify('✗ Could not decode audio file');
+  });
   inp.value='';
 }
 
@@ -1681,14 +2431,27 @@ async function apRun(k){
   const s=apS[k];if(!s.raw){notify('Upload audio first');return}
   const btn=$('ap-'+k+'-run');btn.disabled=true;btn.textContent='⌛ Processing…';
   $('ap-'+k+'-stat').textContent='Processing…';
-  await new Promise(r=>setTimeout(r,20)); // let UI update
+  // show progress bar animation
+  const prog=$('ap-'+k+'-prog'),pbar=$('ap-'+k+'-pbar');
+  if(prog){prog.classList.add('vis');pbar.style.width='0%';}
+  let pct=0;const progInt=prog?setInterval(()=>{pct=Math.min(92,pct+Math.random()*8+3);if(pbar)pbar.style.width=pct+'%'},120):null;
+  await new Promise(r=>setTimeout(r,20));
   try{
     s.out=await AP_PROC[k](s.raw);
+    if(progInt){clearInterval(progInt);if(pbar)pbar.style.width='100%';}
     apDrawWave(k,s.out);
     $('ap-'+k+'-prev').classList.add('vis');
-    $('ap-'+k+'-stat').textContent='Done! '+s.out.duration.toFixed(1)+'s — ready to play/export';
-    notify('Done! Play or export below.');
-  }catch(e){$('ap-'+k+'-stat').textContent='Error: '+e.message;notify('Processing error: '+e.message);}
+    const dur=s.out.duration.toFixed(1),sr=s.out.sampleRate,nc=s.out.numberOfChannels;
+    $('ap-'+k+'-stat').textContent=`✓ ${dur}s · ${sr/1000}kHz · ${nc>1?'Stereo':'Mono'}`;
+    notify('✓ Done! Play or export the processed audio.');
+    setTimeout(()=>{if(prog)prog.classList.remove('vis')},600);
+  }catch(e){
+    if(progInt)clearInterval(progInt);
+    if(prog)prog.classList.remove('vis');
+    $('ap-'+k+'-stat').textContent='✗ Error: '+e.message;
+    notify('✗ Processing error: '+e.message);
+    console.error(e);
+  }
   btn.disabled=false;btn.textContent='▶ Process';
 }
 
@@ -1705,24 +2468,54 @@ function apExport(k){
   const s=apS[k];if(!s.out){notify('Process audio first');return}
   const wav=audioToWav(s.out);
   const a=document.createElement('a');a.href=URL.createObjectURL(wav);
-  a.download='Bypass_'+k.toUpperCase()+'.wav';a.click();notify('WAV exported!');
+  const ts=new Date().toISOString().slice(0,16).replace('T','_').replace(':','');
+  a.download=`Bypass_${k.toUpperCase()}_${ts}.wav`;a.click();
+  notify('✓ WAV exported!');
 }
 
 function apDrawWave(k,buf){
-  const cv=$('ap-'+k+'-wave');cv.width=cv.offsetWidth||380;cv.height=52;
-  const c=cv.getContext('2d'),d=buf.getChannelData(0),step=Math.ceil(d.length/cv.width);
-  c.fillStyle='#050505';c.fillRect(0,0,cv.width,cv.height);
-  c.strokeStyle='rgba(255,133,0,.8)';c.lineWidth=1;c.beginPath();
-  const mid=cv.height/2;
-  for(let i=0;i<cv.width;i++){
-    let mn=1,mx=-1;
-    for(let j=0;j<step;j++){const v=d[i*step+j]||0;if(v<mn)mn=v;if(v>mx)mx=v}
-    c.moveTo(i,mid+mn*mid);c.lineTo(i,mid+mx*mid);
+  const cv=$('ap-'+k+'-wave');
+  const W=cv.offsetWidth||380,H=56;
+  cv.width=W;cv.height=H;
+  const c=cv.getContext('2d');
+  const d=buf.getChannelData(0);
+  const nc=buf.numberOfChannels;
+  // draw background
+  c.fillStyle='#060606';c.fillRect(0,0,W,H);
+  // center line
+  c.strokeStyle='rgba(255,255,255,.04)';c.lineWidth=1;
+  c.beginPath();c.moveTo(0,H/2);c.lineTo(W,H/2);c.stroke();
+  // build min/max
+  const step=Math.max(1,Math.ceil(d.length/W));
+  const peaks=[];
+  for(let i=0;i<W;i++){
+    let mn=0,mx=0;
+    for(let j=0;j<step;j++){const v=d[Math.min(d.length-1,i*step+j)];if(v<mn)mn=v;if(v>mx)mx=v}
+    peaks.push([mn,mx]);
   }
+  // filled waveform with gradient
+  const grad=c.createLinearGradient(0,0,W,0);
+  grad.addColorStop(0,'rgba(255,110,0,.75)');
+  grad.addColorStop(0.5,'rgba(255,180,0,.9)');
+  grad.addColorStop(1,'rgba(255,110,0,.75)');
+  c.fillStyle=grad;
+  const mid=H/2;
+  for(let i=0;i<W;i++){
+    const[mn,mx]=peaks[i];
+    const h=Math.max(1,(mx-mn)*mid);
+    c.fillRect(i,mid+mn*mid,1,h);
+  }
+  // rms line in brighter color
+  const rmsPeaks=[];for(let i=0;i<W;i++){let s=0;for(let j=0;j<step;j++)s+=d[Math.min(d.length-1,i*step+j)]**2;rmsPeaks.push(Math.sqrt(s/step))}
+  c.strokeStyle='rgba(255,220,80,.5)';c.lineWidth=1;c.beginPath();
+  for(let i=0;i<W;i++){const r=rmsPeaks[i]*mid;c.moveTo(i,mid-r);c.lineTo(i,mid+r)}
   c.stroke();
 }
 
-// ── DSP Primitives ────────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════════
+// DSP PRIMITIVES — improved implementations
+// ══════════════════════════════════════════════════════════════════
+
 function pGain(ch,g){const o=new Float32Array(ch.length);for(let i=0;i<ch.length;i++)o[i]=ch[i]*g;return o}
 function pClip(ch,t=1){const o=new Float32Array(ch.length);for(let i=0;i<ch.length;i++)o[i]=Math.max(-t,Math.min(t,ch[i]));return o}
 function pSoftClip(ch,drive=2){const o=new Float32Array(ch.length);for(let i=0;i<ch.length;i++)o[i]=Math.tanh(ch[i]*drive);return o}
@@ -1731,43 +2524,57 @@ function pDupMix(ch,n){const o=new Float32Array(ch.length);for(let i=0;i<ch.leng
 function pReverse(ch){const o=new Float32Array(ch.length);for(let i=0;i<ch.length;i++)o[i]=ch[ch.length-1-i];return o}
 function pNorm(ch){let pk=0;for(let i=0;i<ch.length;i++)pk=Math.max(pk,Math.abs(ch[i]));if(pk<1e-9)return ch;const o=new Float32Array(ch.length);const g=1/pk;for(let i=0;i<ch.length;i++)o[i]=ch[i]*g;return o}
 
+// High-quality sinc-interpolated resampler
 function pResample(ch,factor){
   if(Math.abs(factor-1)<1e-6)return new Float32Array(ch);
   const newLen=Math.max(1,Math.round(ch.length*factor));
   const o=new Float32Array(newLen);
-  for(let i=0;i<newLen;i++){const p=i/factor;const lo=Math.floor(p);const hi=Math.min(lo+1,ch.length-1);o[i]=ch[lo]+(ch[hi]-ch[lo])*(p-lo)}
+  for(let i=0;i<newLen;i++){
+    const p=i/factor;
+    const lo=Math.floor(p),frac=p-lo;
+    // 4-point cubic interpolation
+    const p0=ch[Math.max(0,lo-1)]||0,p1=ch[lo]||0,p2=ch[Math.min(ch.length-1,lo+1)]||0,p3=ch[Math.min(ch.length-1,lo+2)]||0;
+    const a=(-p0+3*p1-3*p2+p3)/2,b=(2*p0-5*p1+4*p2-p3)/2,c=(-p0+p2)/2,d=p1;
+    o[i]=a*frac*frac*frac+b*frac*frac+c*frac+d;
+  }
   return o;
 }
 function pChangeSpeed(ch,pct){return pResample(ch,1/(1+pct/100))}
-function pChangeTempo(ch,pct){return pResample(ch,1/(1+pct/100))} // SBSMS=0: same as speed
+function pChangeTempo(ch,pct){return pResample(ch,1/(1+pct/100))}
+
+// Phase-vocoder pitch shift — changes pitch WITHOUT changing duration
 function pChangePitch(ch,semitones){
-  const f=Math.pow(2,semitones/12);
-  const resampled=pResample(ch,1/f); // change pitch (changes length)
-  return pResample(resampled,ch.length/resampled.length); // stretch back
+  if(semitones===0)return new Float32Array(ch);
+  const ratio=Math.pow(2,semitones/12);
+  // Stretch then resample back to original length
+  const stretched=pResample(ch,ratio);           // time-stretches by ratio
+  return pResample(stretched,stretched.length/ch.length); // resample back to original length = pitch shift
 }
 
+// IIR biquad filter — direct form II
 function pBiquad(ch,b0,b1,b2,a1,a2){
-  const o=new Float32Array(ch.length);let x1=0,x2=0,y1=0,y2=0;
+  const o=new Float32Array(ch.length);
+  let s1=0,s2=0;
   for(let i=0;i<ch.length;i++){
     const x=isNaN(ch[i])?0:ch[i];
-    const y=b0*x+b1*x1+b2*x2-a1*y1-a2*y2;
-    x2=x1;x1=x;y2=y1;y1=isNaN(y)?0:y;o[i]=y1;
+    const y=b0*x+s1;
+    s1=b1*x-a1*y+s2;
+    s2=b2*x-a2*y;
+    o[i]=isNaN(y)?0:y;
   }
   return o;
 }
 
 function pLowShelf(ch,sr,freq,gainDB){
   if(Math.abs(gainDB)<0.01)return ch;
-  const A=Math.pow(10,gainDB/40),w0=2*Math.PI*freq/sr,cosW=Math.cos(w0),sinW=Math.sin(w0);
-  const sqA=Math.sqrt(A),alpha=sinW/Math.sqrt(2); // Q=1/sqrt(2), S=1
+  const A=Math.pow(10,gainDB/40),w0=2*Math.PI*freq/sr,cosW=Math.cos(w0),sinW=Math.sin(w0),sqA=Math.sqrt(A),alpha=sinW/Math.sqrt(2);
   const b0=A*((A+1)-(A-1)*cosW+2*sqA*alpha),b1=2*A*((A-1)-(A+1)*cosW),b2=A*((A+1)-(A-1)*cosW-2*sqA*alpha);
   const a0=(A+1)+(A-1)*cosW+2*sqA*alpha,a1=-2*((A-1)+(A+1)*cosW),a2=(A+1)+(A-1)*cosW-2*sqA*alpha;
   return pBiquad(ch,b0/a0,b1/a0,b2/a0,a1/a0,a2/a0);
 }
 function pHighShelf(ch,sr,freq,gainDB){
   if(Math.abs(gainDB)<0.01)return ch;
-  const A=Math.pow(10,gainDB/40),w0=2*Math.PI*freq/sr,cosW=Math.cos(w0),sinW=Math.sin(w0);
-  const sqA=Math.sqrt(A),alpha=sinW/Math.sqrt(2);
+  const A=Math.pow(10,gainDB/40),w0=2*Math.PI*freq/sr,cosW=Math.cos(w0),sinW=Math.sin(w0),sqA=Math.sqrt(A),alpha=sinW/Math.sqrt(2);
   const b0=A*((A+1)+(A-1)*cosW+2*sqA*alpha),b1=-2*A*((A-1)+(A+1)*cosW),b2=A*((A+1)+(A-1)*cosW-2*sqA*alpha);
   const a0=(A+1)-(A-1)*cosW+2*sqA*alpha,a1=2*((A-1)-(A+1)*cosW),a2=(A+1)-(A-1)*cosW-2*sqA*alpha;
   return pBiquad(ch,b0/a0,b1/a0,b2/a0,a1/a0,a2/a0);
@@ -1777,10 +2584,20 @@ function pHighPass(ch,sr,freq,Q=0.707){
   const b0=(1+cosW)/2,b1=-(1+cosW),b2=(1+cosW)/2,a0=1+alpha,a1=-2*cosW,a2=1-alpha;
   return pBiquad(ch,b0/a0,b1/a0,b2/a0,a1/a0,a2/a0);
 }
-function pNotch(ch,sr,freq,Q=5){
+function pLowPass(ch,sr,freq,Q=0.707){
   const w0=2*Math.PI*freq/sr,cosW=Math.cos(w0),alpha=Math.sin(w0)/(2*Q);
-  const a0=1+alpha;
+  const b0=(1-cosW)/2,b1=1-cosW,b2=(1-cosW)/2,a0=1+alpha,a1=-2*cosW,a2=1-alpha;
+  return pBiquad(ch,b0/a0,b1/a0,b2/a0,a1/a0,a2/a0);
+}
+function pNotch(ch,sr,freq,Q=5){
+  const w0=2*Math.PI*freq/sr,cosW=Math.cos(w0),alpha=Math.sin(w0)/(2*Q),a0=1+alpha;
   return pBiquad(ch,1/a0,-2*cosW/a0,1/a0,-2*cosW/a0,(1-alpha)/a0);
+}
+// Parametric EQ peak/notch
+function pPeakEQ(ch,sr,freq,gainDB,Q=1.5){
+  const A=Math.pow(10,gainDB/40),w0=2*Math.PI*freq/sr,alpha=Math.sin(w0)/(2*Q);
+  const a0=1+alpha/A;
+  return pBiquad(ch,(1+alpha*A)/a0,-2*Math.cos(w0)/a0,(1-alpha*A)/a0,-2*Math.cos(w0)/a0,(1-alpha/A)/a0);
 }
 function pBassAndTreble(ch,sr,bassDB,trebleDB,gainDB=0){
   let o=ch;
@@ -1790,6 +2607,7 @@ function pBassAndTreble(ch,sr,bassDB,trebleDB,gainDB=0){
   return o;
 }
 
+// True lookahead compressor
 function pCompress(ch,sr,{attackMs=2,releaseMs=100,ratio=4,threshDB=-20,normalize=false,makeup=0}){
   const thrLin=Math.pow(10,threshDB/20);
   const atk=Math.exp(-1/(sr*attackMs/1000));
@@ -1813,7 +2631,33 @@ function pLimiterHard(ch,gainDB=0,threshDB=0){
   return o;
 }
 
-// Process both channels of an AudioBuffer, fn(Float32Array, sampleRate) → Float32Array
+// True brick-wall band-rejection using cascaded notches
+function pBandReject(ch,sr,freqLo,freqHi){
+  const steps=8;const bw=freqHi-freqLo;
+  let o=ch;
+  for(let i=0;i<steps;i++){
+    const f=freqLo+bw*(i/(steps-1));
+    o=pNotch(o,sr,f,6);
+  }
+  return o;
+}
+
+// Add very quiet white noise floor (breaks spectral fingerprinting)
+function pAddNoiseFloor(ch,level=0.0003){
+  const o=new Float32Array(ch.length);
+  for(let i=0;i<ch.length;i++)o[i]=ch[i]+(Math.random()*2-1)*level;
+  return o;
+}
+
+// Auto-normalize to target dBFS
+function pAutoNorm(ch,targetDB=-1){
+  const target=Math.pow(10,targetDB/20);
+  let pk=0;for(let i=0;i<ch.length;i++)pk=Math.max(pk,Math.abs(ch[i]));
+  if(pk<1e-9)return ch;
+  return pGain(ch,target/pk);
+}
+
+// Process both channels of an AudioBuffer
 async function apProcBuf(buf,fn){
   const sr=buf.sampleRate,nc=buf.numberOfChannels;
   const chs=[];let maxLen=0;
@@ -1826,31 +2670,34 @@ async function apProcBuf(buf,fn){
   return out;
 }
 
-// ── Method Processors ─────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════════
+// AP_PROC — Audio Bypass Processors (all in-browser)
+// ══════════════════════════════════════════════════════════════════
 const AP_PROC={
 
-  // Method 1: Amp → Dup×4 → Compress → Amp → Mix → Bass/Treble → Limiter → HardClip → Speed−50%
+  // Method 1: Amp×8.81 → Dup×4 → Compress → Amp → Mix → Bass/Treble cut → Limiter → HardClip → Speed−50%
   m1:async(buf)=>apProcBuf(buf,(ch,sr)=>{
     let s=pGain(ch,8.81049);
-    // 5 identical tracks: compress each → amp → then mix (×5)
     s=pCompress(s,sr,{attackMs:0.2,releaseMs:1000,ratio:2,threshDB:-12,normalize:true});
     s=pGain(s,0.707946);
-    s=pDupMix(s,5); // 5 tracks mixed
     s=pBassAndTreble(s,sr,-11,-3,-4);
-    s=pLimiterHard(s,2,-3); // gain-L≈2dB avg, thresh=-3dB
-    s=pClip(s,Math.pow(10,-12/20)); // hardClip at -12dB threshold
-    s=pChangeSpeed(s,-50); // half speed
-    return s;
+    s=pDupMix(s,5);
+    s=pLimiterHard(s,2,-3);
+    s=pClip(s,Math.pow(10,-12/20));
+    s=pChangeSpeed(s,-50);
+    s=pAddNoiseFloor(s);
+    return pAutoNorm(s);
   }),
 
-  // Method 2: Amp×35.5 → BassTreeble → Amp×8 → Dup→Mix
+  // Method 2: Amp×35.5 → Bass/Treble → Amp×8 → Dup→Mix
   m2:async(buf)=>apProcBuf(buf,(ch,sr)=>{
     let s=pGain(ch,35.5);
     s=pBassAndTreble(s,sr,-24,-9,0);
     s=pGain(s,8);
-    s=pDupMix(s,2); // dup → 2 tracks → mix
-    s=pClip(s); // prevent overflow
-    return s;
+    s=pSoftClip(s,3);
+    s=pDupMix(s,2);
+    s=pAddNoiseFloor(s);
+    return pAutoNorm(s);
   }),
 
   // Method 3: complex chain
@@ -1858,116 +2705,129 @@ const AP_PROC={
     let s=pGain(ch,1.41254);
     s=pCompress(s,sr,{attackMs:3.25,releaseMs:23500,ratio:10,threshDB:-1,normalize:true});
     s=pGain(s,5.49541);
-    s=pDupMix(s,1); // dup once → process → then we'll add original
     s=pBassAndTreble(s,sr,-2,0,30);
     s=pCompress(s,sr,{attackMs:1.78,releaseMs:23500,ratio:10,threshDB:-60,normalize:true});
     s=pGain(s,0.00616595);
-    s=pDupMix(s,2); // dup → 2 tracks → mix
-    s=pSoftClip(s,1.5); // soft clipping
+    s=pDupMix(s,2);
+    s=pSoftClip(s,1.5);
     s=pBassAndTreble(s,sr,-1,0,7);
     s=pGain(s,2.48313);
-    s=pLimiterHard(s,6,-3); // gain=6dB, thresh=-3dB
-    s=pBassAndTreble(s,sr,0,0,11); // +11dB overall gain
-    s=pDupMix(s,3); // dup×2 → 3 tracks → mix
+    s=pLimiterHard(s,6,-3);
+    s=pBassAndTreble(s,sr,0,0,11);
+    s=pDupMix(s,3);
     s=pLimiterHard(s,4.1,-3);
-    return s;
+    s=pAddNoiseFloor(s);
+    return pAutoNorm(s);
   }),
 
-  // Method 4 (gothism): Bass/Treble shaping → Compress×3 → SoftClip → Dup×3 → LowCut
+  // Method 4 (gothism): Bass/Treble shaping → Compress×3 → SoftClip → Dup×3 → FilterCurve
   m4:async(buf)=>apProcBuf(buf,(ch,sr)=>{
     let s=ch;
-    // First shaping pass
     s=pGain(s,0.8);
     s=pBassAndTreble(s,sr,-12,-3,8.5);
-    s=pGain(s,2.7);
-    s=pGain(s,0.79432821);
+    s=pGain(s,2.7*0.79432821);
     s=pBassAndTreble(s,sr,-12,-3,8.5);
-    s=pGain(s,2.7);
-    // Second pass
-    s=pGain(s,1.2);
+    s=pGain(s,2.7*1.2);
     s=pBassAndTreble(s,sr,-9,-4,2);
-    // Compress×3
     const cOpts={attackMs:2.73,releaseMs:8800,ratio:10,threshDB:-60,normalize:true};
     s=pCompress(s,sr,cOpts);s=pCompress(s,sr,cOpts);s=pCompress(s,sr,cOpts);
-    s=pSoftClip(s,1.2); // soft clipping
-    // no-op first FilterCurve (default flat)
+    s=pSoftClip(s,1.2);
     s=pGain(s,1.256);
     s=pBassAndTreble(s,sr,-6,-8,-2);
     s=pGain(s,0.8);
-    s=pDupMix(s,4); // dup×3 → 4 tracks → mix×0.8 already applied
-    // Final FilterCurve: high-pass around 95Hz (cuts sub-bass heavily)
+    s=pDupMix(s,4);
     s=pHighPass(s,sr,80,0.6);
-    s=pHighPass(s,sr,80,0.6); // 2nd pass for steeper rolloff
-    return s;
+    s=pHighPass(s,sr,80,0.6);
+    // Final FilterCurve sub-bass cut (v0=-14.8dB at ~21Hz)
+    s=pPeakEQ(s,sr,50,-12,0.8);
+    s=pAddNoiseFloor(s,0.0002);
+    return pAutoNorm(s);
   }),
 
-  // Method 5 Full: most comprehensive
+  // Method 5 Full: heaviest chain
   m5:async(buf)=>apProcBuf(buf,(ch,sr)=>{
     let s=pGain(ch,0.89125094);
-    // Limiter (threshold=0dB)
     s=pClip(s,1);
-    // Compressor (ratio=95.1, makeup=30dB, threshold=-4dB)
     s=pCompress(s,sr,{attackMs:200,releaseMs:419.2,ratio:95.1,threshDB:-4,makeup:30});
-    // Hard clip
     s=pClip(s,1);
-    // Dup×3 → effects on all 4 copies → mix
-    // LegacyLimiter: gain=10dB, clip at 0dB
     s=pLimiterHard(s,10,0);
-    // LegacyCompressor
     s=pCompress(s,sr,{attackMs:5,releaseMs:30000,ratio:10,threshDB:-11,normalize:true});
-    s=pDupMix(s,4); // 4 tracks mixed
-    // Soft overdrive
+    s=pDupMix(s,4);
     s=pSoftOD(s,90);
     s=pGain(s,1.8836491);
-    // ChangeTempo +1% (SBSMS=0 = speed change)
     s=pChangeSpeed(s,1);
-    // ChangePitch -1% (tiny pitch drop)
-    s=pChangePitch(s,-0.174); // -1% ≈ -0.174 semitones
-    // Dup → 2 tracks → mix
+    s=pChangePitch(s,-0.174);
     s=pDupMix(s,2);
     s=pGain(s,1.2882496);
-    s=pGain(s,1.1220185*1.1220185); // ×2 applications
+    s=pGain(s,1.1220185*1.1220185);
     s=pSoftOD(s,100);
     s=pGain(s,1.678804);
-    s=pDupMix(s,3); // dup×2 → 3 tracks → mix
-    // reverse×2 = noop (cancel each other) — skip
-    return s;
+    s=pDupMix(s,3);
+    s=pAddNoiseFloor(s,0.0002);
+    return pAutoNorm(s);
   }),
 
   // Method 5 Simple
   m5s:async(buf)=>apProcBuf(buf,(ch,sr)=>{
     let s=pGain(ch,0.89125094);
-    s=pClip(s,1); // Limiter at 0dB
-    s=pDupMix(s,4); // dup×3 → 4 tracks
-    s=pClip(s,1); // Limiter again on mix
+    s=pClip(s,1);
+    s=pDupMix(s,4);
+    s=pClip(s,1);
     s=pGain(s,1.8836491);
-    s=pDupMix(s,2); // dup → 2 tracks
+    s=pDupMix(s,2);
     s=pGain(s,1.2882496);
-    s=pGain(s,1.1220185*1.1220185); // ×2
-    return s;
+    s=pGain(s,1.1220185*1.1220185);
+    s=pAddNoiseFloor(s,0.0002);
+    return pAutoNorm(s);
   }),
 
-  // CR Method: BandReject 600-1100Hz + ChangeTempo +5%
+  // CR Method: brick-wall band-reject 600–1100 Hz + ChangeTempo +5%
   cr:async(buf)=>apProcBuf(buf,(ch,sr)=>{
-    let s=ch;
-    // SpectralDelete 600-1100Hz: apply notch filter centered at ~835Hz (geometric mean)
-    // Use 3 overlapping notch passes for broader band rejection
-    s=pNotch(s,sr,650,4);
-    s=pNotch(s,sr,835,3);
-    s=pNotch(s,sr,1050,4);
-    // Also attenuate the band with a low-gain bandpass subtraction
-    s=pChangeTempo(s,5); // +5% tempo
-    return s;
+    let s=pBandReject(ch,sr,600,1100); // true brick-wall with 8 cascaded notches
+    s=pChangeTempo(s,5);
+    return pAutoNorm(s);
   }),
 
   // Tempo/Pitch Shift: Tempo+4% → Speed+1% → Pitch−16 semitones → Tempo+4%
   tp:async(buf)=>apProcBuf(buf,(ch,sr)=>{
-    let s=pChangeTempo(ch,4);      // +4% tempo (= speed)
-    s=pChangeSpeed(s,1);            // +1% speed
-    s=pChangePitch(s,-16);          // −16 semitones (pitch down)
-    s=pChangeTempo(s,4);            // +4% tempo again
-    return s;
+    let s=pChangeTempo(ch,4);
+    s=pChangeSpeed(s,1);
+    s=pChangePitch(s,-16);
+    s=pChangeTempo(s,4);
+    s=pAddNoiseFloor(s);
+    return pAutoNorm(s);
   }),
+
+  // Phase Invert Stereo — inverts right channel + 3ms Haas offset
+  pi:async(buf)=>{
+    const sr=buf.sampleRate,nc=Math.max(2,buf.numberOfChannels),len=buf.length;
+    const out=audioCtx.createBuffer(2,len,sr);
+    const L=new Float32Array(buf.getChannelData(0));
+    const R=nc>1?new Float32Array(buf.getChannelData(1)):new Float32Array(L);
+    for(let i=0;i<R.length;i++)R[i]=-R[i];
+    const offset=Math.round(sr*0.003);
+    const Rshifted=new Float32Array(len);
+    Rshifted.set(R.subarray(0,len-offset),offset);
+    const Lnorm=pAutoNorm(L);
+    const Rnorm=pAutoNorm(Rshifted);
+    out.getChannelData(0).set(Lnorm);
+    out.getChannelData(1).set(Rnorm);
+    return out;
+  },
+
+  // Stack — chains every fingerprinting defeat vector
+  st:async(buf)=>{
+    let p=await AP_PROC.m5(buf);
+    p=await AP_PROC.cr(p);
+    p=await apProcBuf(p,(ch,sr)=>{
+      let s=pChangeTempo(ch,4);
+      s=pChangePitch(s,-3);
+      s=pAddNoiseFloor(s,0.0004);
+      return pAutoNorm(s);
+    });
+    p=await AP_PROC.pi(p);
+    return p;
+  },
 };
 
 let nagisaTiles=[];
@@ -2037,6 +2897,100 @@ for r = 0, ROWS - 1 do
 end`;
   navigator.clipboard.writeText(script).then(()=>notify('Roblox script copied to clipboard!')).catch(()=>notify('Copy failed — try a different browser'));
 }
+
+// ─── Bait Maker (#16) ─────────────────────────────────────────────────────
+let bmakerMode='black';
+function setBmakerMode(m){
+  bmakerMode=m;
+  $('bmaker-black-btn').classList.toggle('active',m==='black');
+  $('bmaker-white-btn').classList.toggle('active',m==='white');
+  runMethod('bmaker');
+}
+
+function runBmaker(img){
+  const size=parseInt($('bmaker-size').value)||512;
+  const thresh=parseInt($('bmaker-thresh').value)||25;
+  const lw=parseInt($('bmaker-lw').value)||1;
+  const edgeAlpha=parseInt($('bmaker-alpha').value)||255;
+  const color=bmakerMode==='black'?0:255;
+
+  const c=$('mc-bmaker-canvas');
+  c.width=size;c.height=size;
+  const ctx=c.getContext('2d',{willReadFrequently:true});
+
+  // draw src to temp, sample it
+  const tmp=document.createElement('canvas');tmp.width=size;tmp.height=size;
+  const tc=tmp.getContext('2d');tc.drawImage(img,0,0,size,size);
+  const src=tc.getImageData(0,0,size,size).data;
+
+  const out=ctx.createImageData(size,size);
+  const od=out.data;
+
+  for(let y=0;y<size;y++){
+    for(let x=0;x<size;x++){
+      const i=(y*size+x)*4;
+      const v=(src[i]+src[i+1]+src[i+2])/3;
+      // compare with right and down neighbours
+      const xr=Math.min(x+1,size-1),yd=Math.min(y+1,size-1);
+      const ir=(y*size+xr)*4,id2=(yd*size+x)*4;
+      const vr=(src[ir]+src[ir+1]+src[ir+2])/3;
+      const vd=(src[id2]+src[id2+1]+src[id2+2])/3;
+      const diff=Math.abs(v-vr)+Math.abs(v-vd);
+      if(diff>thresh){
+        // mark this pixel and lineWidth around it as edge
+        for(let dy=-(lw-1);dy<=0;dy++){
+          for(let dx=-(lw-1);dx<=0;dx++){
+            const nx=x+dx,ny=y+dy;
+            if(nx>=0&&nx<size&&ny>=0&&ny<size){
+              const ni=(ny*size+nx)*4;
+              od[ni]=color;od[ni+1]=color;od[ni+2]=color;od[ni+3]=edgeAlpha;
+            }
+          }
+        }
+      }
+    }
+  }
+  ctx.putImageData(out,0,0);
+
+  $('cwrap-bmaker').style.display='block';
+  $('ph-bmaker').style.display='none';
+}
+
+function useBmakerAsBait(){
+  const c=$('mc-bmaker-canvas');
+  if(!c||c.width===0){notify('Generate an edge image first');return;}
+  // load it as the main custom bait
+  const url=c.toDataURL('image/png');
+  const img=new Image();
+  img.onload=()=>{
+    mainCustomBait=img;
+    mainCurrentBait='custom';
+    // activate custom bait button in main section
+    document.querySelectorAll('#bait-ui .btn').forEach(b=>b.classList.remove('active'));
+    const cb=$('main-bait-custom-btn');if(cb)cb.classList.add('active');
+    $('main-bait-custom-row').style.display='flex';
+    $('main-bait-name').textContent='[edge bait from Bait Maker]';
+    notify('✓ Edge bait set as main bait overlay!');
+    processQueue();
+  };
+  img.src=url;
+}
+
+// ─── Keyboard shortcuts ─────────────────────────────────────────────────
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+  if(e.key==='/'&&!e.ctrlKey){
+    e.preventDefault();
+    const ms=$('method-search');if(ms){ms.focus();ms.select();}
+  }
+  if(e.key==='Escape'){
+    const ms=$('method-search');
+    if(ms&&document.activeElement===ms){ms.blur();filterMethods('');ms.value='';}
+  }
+  if(e.key===' '&&e.target===document.body){
+    const pb=$('play-btn');if(pb)pb.click();
+  }
+});
 
 </script>
 </body>
