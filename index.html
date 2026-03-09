@@ -1340,7 +1340,7 @@ footer{margin-top:20px;color:#2a2a2a;font-size:.58rem;font-weight:700;text-trans
                 <button class="exp-btn" style="background:rgba(255,133,0,.08);border-color:rgba(255,133,0,.3);color:var(--orange)" onclick="useBmakerAsBait()">→ Use as Bait Overlay</button>
               </div>
             </div>
-            <div class="mb-preview" id="prev-bmaker">
+            <div class="mb-preview" id="prev-bmaker" style="background:#fff">
               <div class="mb-canvas-wrap" id="cwrap-bmaker" style="display:none"><canvas id="mc-bmaker-canvas"></canvas></div>
               <div class="mb-placeholder" id="ph-bmaker">Upload an image to preview</div>
             </div>
@@ -2904,6 +2904,8 @@ function setBmakerMode(m){
   bmakerMode=m;
   $('bmaker-black-btn').classList.toggle('active',m==='black');
   $('bmaker-white-btn').classList.toggle('active',m==='white');
+  // flip preview background so edges are always visible
+  $('prev-bmaker').style.background=m==='black'?'#fff':'#111';
   runMethod('bmaker');
 }
 
