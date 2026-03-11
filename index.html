@@ -24,7 +24,7 @@ body{
   min-height:100vh;padding:36px 18px 80px;
   background-image:
     radial-gradient(ellipse 80% 40% at 50% -8%,rgba(255,255,255,.04) 0%,transparent 65%),
-    radial-gradient(ellipse 40% 30% at 80% 80%,rgba(255,133,0,.025) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 30% at 80% 80%,rgba(var(--accent-rgb),.02) 0%,transparent 60%),
     linear-gradient(var(--border2) 1px,transparent 1px),
     linear-gradient(90deg,var(--border2) 1px,transparent 1px);
   background-size:100% 100%,100% 100%,32px 32px,32px 32px;
@@ -118,6 +118,19 @@ input[type=range]:hover{background:#333}
 .swatch{width:18px;height:18px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:.18s;flex-shrink:0}
 .swatch:hover{transform:scale(1.2)}
 .swatch.sel{border-color:#fff}
+.rgb-swatch{
+  background:
+    radial-gradient(circle, #fff 0%, #fff 28%, transparent 55%),
+    conic-gradient(
+      hsl(0,100%,55%), hsl(30,100%,55%), hsl(60,100%,55%),
+      hsl(90,100%,55%), hsl(120,100%,55%), hsl(150,100%,55%),
+      hsl(180,100%,55%), hsl(210,100%,55%), hsl(240,100%,55%),
+      hsl(270,100%,55%), hsl(300,100%,55%), hsl(330,100%,55%),
+      hsl(360,100%,55%)
+    ) !important;
+  border:2px solid #333 !important;
+}
+.rgb-swatch.sel{border-color:#fff !important;}
 #cust-col{width:18px;height:18px;border-radius:50%;cursor:pointer;border:2px dashed #2a2a2a;background:transparent;padding:0;overflow:hidden;flex-shrink:0}
 
 /* ─ Notification ─ */
@@ -164,7 +177,7 @@ input[type=range]:hover{background:#333}
   white-space:nowrap;
 }
 .method-tag.hot{background:rgba(var(--accent-rgb),.08);color:var(--accent);border-color:rgba(var(--accent-rgb),.2)}
-.method-tag.new{background:rgba(68,255,136,.06);color:var(--success);border-color:rgba(68,255,136,.15)}
+.method-tag.new{background:rgba(var(--accent-rgb),.06);color:var(--accent);border-color:rgba(var(--accent-rgb),.15)}
 .method-chevron{font-size:.65rem;color:#555;transition:transform .22s;flex-shrink:0}
 .method-card.open .method-chevron{transform:rotate(180deg)}
 
@@ -207,7 +220,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
 .audio-clip{position:absolute;height:76px;background:rgba(var(--accent-rgb),.12);border:1px solid var(--accent);border-radius:3px;cursor:grab;overflow:hidden;z-index:10}
 .audio-clip:active{cursor:grabbing}
 .audio-clip.sel{border-color:#fff;background:rgba(var(--accent-rgb),.28);box-shadow:0 0 10px rgba(var(--accent-rgb),.18)}
-.clip-name{position:absolute;top:2px;left:4px;font-size:.48rem;color:rgba(255,133,0,.7);font-family:var(--mono);font-weight:700;text-transform:uppercase;overflow:hidden;white-space:nowrap;max-width:90%}
+.clip-name{position:absolute;top:2px;left:4px;font-size:.48rem;color:rgba(var(--accent-rgb),.7);font-family:var(--mono);font-weight:700;text-transform:uppercase;overflow:hidden;white-space:nowrap;max-width:90%}
 .clip-waveform{width:100%;height:100%;pointer-events:none}
 #mixer-panel{background:#070707;border-top:1px solid var(--border);padding:16px;display:none;text-align:left}
 .mixer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
@@ -226,9 +239,9 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
 .macro-card-name{font-family:var(--display);font-size:.82rem;font-weight:800;color:#fff;margin-bottom:4px}
 .macro-card-desc{font-size:.58rem;color:var(--text-muted);margin-bottom:11px;line-height:1.55}
 .macro-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:11px}
-.macro-tag{font-size:.5rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:2px 7px;border-radius:3px;font-family:var(--mono);background:rgba(150,100,255,.1);color:#b8a0ff}
-.macro-dl{width:100%;background:rgba(150,100,255,.08);border:1px solid rgba(150,100,255,.25);color:#b8a0ff;padding:9px 14px;border-radius:var(--r-sm);font-size:.65rem;font-weight:700;font-family:var(--mono);text-transform:uppercase;cursor:pointer;transition:.2s;text-align:center}
-.macro-dl:hover{background:rgba(150,100,255,.2);border-color:#b8a0ff;color:#fff}
+.macro-tag{font-size:.5rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:2px 7px;border-radius:3px;font-family:var(--mono);background:rgba(var(--accent-rgb),.1);color:var(--accent)}
+.macro-dl{width:100%;background:rgba(var(--accent-rgb),.06);border:1px solid rgba(var(--accent-rgb),.2);color:var(--accent);padding:9px 14px;border-radius:var(--r-sm);font-size:.65rem;font-weight:700;font-family:var(--mono);text-transform:uppercase;cursor:pointer;transition:.2s;text-align:center}
+.macro-dl:hover{background:rgba(var(--accent-rgb),.18);border-color:var(--accent);color:#fff}
 .skip-box{background:rgba(255,68,85,.03);border:1px solid rgba(255,68,85,.18);border-radius:var(--r-sm);padding:14px 16px;margin-top:16px}
 .skip-title{font-size:.6rem;font-weight:700;color:var(--danger);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;font-family:var(--mono)}
 .skip-item{font-size:.6rem;color:#777;margin-bottom:7px;padding-left:16px;position:relative;line-height:1.55}
@@ -244,18 +257,20 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
 .dual-lbl{font-size:.5rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);font-family:var(--mono);margin-bottom:4px;font-weight:700}
 .tip-box{background:#0a0a0a;border:1px solid #222;border-radius:var(--r-sm);padding:10px 13px;margin-top:8px;font-size:.56rem;color:#888;line-height:1.7}
 .tip-box b{color:#bbb}
-.method-tag.best{background:rgba(68,255,136,.08);color:#44ff88;border-color:rgba(68,255,136,.2)}
+.method-tag.best{background:rgba(var(--accent-rgb),.08);color:var(--accent);border-color:rgba(var(--accent-rgb),.2)}
 .method-tag.rec{background:rgba(var(--accent-rgb),.08);color:var(--accent);border-color:rgba(var(--accent-rgb),.2)}
 
 /* ─ In-browser audio processors ─ */
 .ap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:12px;margin-top:14px}
-.ap-card{background:#0a0a0a;border:1px solid #252525;border-radius:var(--r-sm);padding:18px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s}
+.ap-card{background:#0a0a0a;border:1px solid #252525;border-radius:var(--r-sm);padding:18px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,box-shadow .2s}
+.ap-card.card-best{border-color:rgba(var(--accent-rgb),.55);background:linear-gradient(160deg,rgba(var(--accent-rgb),.04) 0%,#0a0a0a 60%);box-shadow:0 0 18px rgba(var(--accent-rgb),.1),inset 0 1px 0 rgba(var(--accent-rgb),.12)}
+.ap-card.card-rec{border-color:rgba(var(--accent-rgb),.35);background:linear-gradient(160deg,rgba(var(--accent-rgb),.025) 0%,#0a0a0a 60%);box-shadow:0 0 10px rgba(var(--accent-rgb),.07),inset 0 1px 0 rgba(var(--accent-rgb),.08)}
 .ap-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
 .ap-name{font-family:var(--display);font-size:.92rem;font-weight:800;color:#fff;margin-bottom:4px}
 .ap-badge{font-size:.47rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:3px 8px;border-radius:3px;font-family:var(--mono);white-space:nowrap;flex-shrink:0}
-.ap-badge.rec{background:rgba(var(--accent-rgb),.15);color:var(--accent);border:1px solid rgba(var(--accent-rgb),.4)}
-.ap-badge.best{background:rgba(68,255,136,.12);color:#44ff88;border:1px solid rgba(68,255,136,.4)}
-.ap-badge.distro{background:rgba(150,100,255,.12);color:#c8b0ff;border:1px solid rgba(150,100,255,.4)}
+.ap-badge.rec{background:rgba(var(--accent-rgb),.14);color:var(--accent);border:1px solid rgba(var(--accent-rgb),.55);font-weight:700;box-shadow:0 0 6px rgba(var(--accent-rgb),.18),inset 0 0 6px rgba(var(--accent-rgb),.06);text-shadow:0 0 6px rgba(var(--accent-rgb),.35)}
+.ap-badge.best{background:rgba(var(--accent-rgb),.18);color:var(--accent);border:1px solid rgba(var(--accent-rgb),.7);font-weight:800;box-shadow:0 0 8px rgba(var(--accent-rgb),.25),inset 0 0 8px rgba(var(--accent-rgb),.08);text-shadow:0 0 8px rgba(var(--accent-rgb),.5)}
+.ap-badge.distro{background:rgba(var(--accent-rgb),.1);color:var(--accent);border:1px solid rgba(var(--accent-rgb),.35)}
 .ap-steps{font-size:.55rem;color:#888;line-height:1.75;font-family:var(--mono);letter-spacing:.3px}
 .ap-ul{display:block;width:100%;text-align:center;cursor:pointer;background:rgba(255,255,255,.03);border:1px dashed #2e2e2e;color:#666;padding:11px;border-radius:var(--r-sm);font-size:.65rem;font-weight:700;font-family:var(--mono);text-transform:uppercase;transition:.2s;letter-spacing:.5px}
 .ap-ul:hover{border-color:#555;color:#bbb;background:rgba(255,255,255,.06)}
@@ -278,7 +293,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
 
 /* ─ Method success rate pill ─ */
 .success-pill{display:inline-flex;align-items:center;gap:3px;font-size:.48rem;font-weight:700;font-family:var(--mono);text-transform:uppercase;letter-spacing:.8px;padding:2px 7px;border-radius:10px;margin-left:auto;flex-shrink:0}
-.success-pill.high{background:rgba(68,255,136,.1);color:#44ff88;border:1px solid rgba(68,255,136,.25)}
+.success-pill.high{background:rgba(var(--accent-rgb),.1);color:var(--accent);border:1px solid rgba(var(--accent-rgb),.25)}
 .success-pill.mid{background:rgba(var(--accent-rgb),.1);color:var(--accent);border:1px solid rgba(var(--accent-rgb),.25)}
 .success-pill.low{background:rgba(150,150,150,.08);color:#888;border:1px solid rgba(150,150,150,.2)}
 
@@ -316,7 +331,7 @@ footer{margin-top:16px;color:#3a3a3a;font-size:.6rem;font-weight:700;text-transf
 footer{margin-top:20px;color:#2a2a2a;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-family:var(--mono);text-align:center;line-height:2}
 
 /* ─ Smooth ap-card hover ─ */
-.ap-card:hover{border-color:#333}
+.ap-card:hover{border-color:#333}.ap-card.card-best:hover{border-color:rgba(var(--accent-rgb),.75);box-shadow:0 0 24px rgba(var(--accent-rgb),.15),inset 0 1px 0 rgba(var(--accent-rgb),.18)}.ap-card.card-rec:hover{border-color:rgba(var(--accent-rgb),.5);box-shadow:0 0 14px rgba(var(--accent-rgb),.1)}
 
 /* ─ Intro Maker ─ */
 .intro-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--r);width:100%;max-width:960px;box-shadow:0 28px 64px rgba(0,0,0,.7),0 2px 0 rgba(255,255,255,.04) inset;margin-bottom:28px;overflow:hidden}
@@ -329,21 +344,21 @@ footer{margin-top:20px;color:#2a2a2a;font-size:.58rem;font-weight:700;text-trans
 .sfx-btn{background:#0a0a0a;border:1px solid #252525;color:#999;padding:7px 6px;border-radius:var(--r-sm);cursor:pointer;font-size:.58rem;font-family:var(--mono);font-weight:700;text-align:center;transition:.18s;display:flex;flex-direction:column;align-items:center;gap:3px;line-height:1.3}
 .sfx-btn:hover{border-color:#444;color:#ddd;background:#111}
 .sfx-btn.sel{border-color:var(--accent);color:var(--accent);background:rgba(var(--accent-rgb),.08)}
-.sfx-btn.playing{border-color:#44ff88;color:#44ff88;background:rgba(68,255,136,.06);animation:sfx-pulse .5s ease infinite alternate}
+.sfx-btn.playing{border-color:var(--accent);color:var(--accent);background:rgba(var(--accent-rgb),.06);animation:sfx-pulse .5s ease infinite alternate}
 .sfx-emoji{font-size:1.1rem;display:block}
 @keyframes sfx-pulse{from{box-shadow:0 0 0 rgba(68,255,136,0)}to{box-shadow:0 0 8px rgba(68,255,136,.3)}}
 .intro-tts-input{width:100%;background:#080808;border:1px solid #252525;color:#e0e0e0;padding:11px 14px;border-radius:var(--r-sm);font-family:var(--display);font-size:1.1rem;font-weight:700;outline:0;transition:.2s;letter-spacing:.5px}
-.intro-tts-input:focus{border-color:#444;background:#0c0c0c}
+.intro-tts-input:focus{border-color:var(--accent);background:#0c0c0c;box-shadow:0 0 0 2px rgba(var(--accent-rgb),.12)}
 .voice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:6px;margin-top:10px}
 .voice-btn{background:#0a0a0a;border:1px solid #252525;color:#888;padding:9px 8px;border-radius:var(--r-sm);cursor:pointer;font-size:.6rem;font-family:var(--mono);font-weight:700;text-align:center;transition:.18s}
 .voice-btn:hover{border-color:#444;color:#ddd}
-.voice-btn.sel{border-color:#00d4ff;color:#00d4ff;background:rgba(0,212,255,.07)}
+.voice-btn.sel{border-color:var(--accent);color:var(--accent);background:rgba(var(--accent-rgb),.07)}
 .intro-seq{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px;background:#080808;border:1px solid #1e1e1e;border-radius:var(--r-sm);min-height:52px;margin-top:10px}
 .seq-block{display:flex;align-items:center;gap:6px;background:#111;border:1px solid #2a2a2a;border-radius:var(--r-sm);padding:6px 10px;font-size:.6rem;font-family:var(--mono);color:#bbb;cursor:default;user-select:none}
 .seq-arrow{color:#444;font-size:.75rem;flex-shrink:0}
 .seq-block.sfx-block{border-color:rgba(var(--accent-rgb),.3);color:var(--accent)}
-.seq-block.tts-block{border-color:rgba(0,212,255,.3);color:#00d4ff}
-.seq-block.outro-block{border-color:rgba(150,100,255,.3);color:#b8a0ff}
+.seq-block.tts-block{border-color:rgba(var(--accent-rgb),.4);color:var(--accent)}
+.seq-block.outro-block{border-color:rgba(var(--accent-rgb),.3);color:var(--accent)}
 .intro-wave-wrap{background:#060606;border:1px solid #1e1e1e;border-radius:var(--r-sm);overflow:hidden;margin-top:10px;display:none}
 .intro-wave-wrap.vis{display:block}
 #intro-wave{width:100%;height:60px;display:block}
@@ -366,7 +381,8 @@ footer{margin-top:20px;color:#2a2a2a;font-size:.58rem;font-weight:700;text-trans
           <div class="swatch" style="background:#cc44ff" onclick="setAccent('#cc44ff',this)"></div>
           <div class="swatch" style="background:#ff4455" onclick="setAccent('#ff4455',this)"></div>
           <div class="swatch" style="background:#fff" onclick="setAccent('#fff',this)"></div>
-          <input type="color" id="cust-col" title="Custom" oninput="setAccent(this.value,null)">
+          <div class="swatch rgb-swatch" id="swatch-rgb" title="RGB cycle" onclick="setAccentRGB(this)"></div>
+          <input type="color" id="cust-col" title="Custom colour" oninput="setAccent(this.value,null)">
         </div>
       </div>
     </div>
@@ -1089,7 +1105,7 @@ footer{margin-top:20px;color:#2a2a2a;font-size:.58rem;font-weight:700;text-trans
                 <label for="img-nagisa" class="exp-btn" style="display:block;text-align:center;cursor:pointer">Upload Image</label>
                 <input type="file" id="img-nagisa" accept="image/*" style="display:none" onchange="nagisaLoad(this)">
                 <button class="exp-btn" onclick="nagisaExport()">↓ Export All Tiles (.ZIP)</button>
-                <button class="exp-btn" style="background:rgba(150,100,255,.08);border-color:rgba(150,100,255,.3);color:#b8a0ff" onclick="nagisaCopyScript()">Copy Roblox Script</button>
+                <button class="exp-btn" style="background:rgba(var(--accent-rgb),.08);border-color:rgba(var(--accent-rgb),.3);color:var(--accent)" onclick="nagisaCopyScript()">Copy Roblox Script</button>
               </div>
             </div>
             <div class="mb-preview" id="prev-nagisa">
@@ -1142,7 +1158,7 @@ footer{margin-top:20px;color:#2a2a2a;font-size:.58rem;font-weight:700;text-trans
               </div>
               <div class="mb-actions">
                 <button class="exp-btn" onclick="dualExport()">↓ Export Image A + B (.ZIP)</button>
-                <button class="exp-btn" style="background:rgba(150,100,255,.08);border-color:rgba(150,100,255,.3);color:#b8a0ff;margin-top:6px" onclick="dualCopyScript()">Copy Studio Script</button>
+                <button class="exp-btn" style="background:rgba(var(--accent-rgb),.08);border-color:rgba(var(--accent-rgb),.3);color:var(--accent);margin-top:6px" onclick="dualCopyScript()">Copy Studio Script</button>
               </div>
               <div class="tip-box">
                 <b>Studio setup:</b> Place a Part. Add a SpecialMesh + Decal to it.<br>
@@ -1708,7 +1724,7 @@ footer{margin-top:20px;color:#2a2a2a;font-size:.58rem;font-weight:700;text-trans
             <button id="ap-zbx-run" class="ap-run" onclick="apRun('zbx')" style="background:rgba(150,100,255,.85);color:#fff">▶ Process</button>
             <span class="ap-stat" id="ap-zbx-stat">No file loaded</span>
           </div>
-          <div class="ap-progress" id="ap-zbx-prog"><div class="ap-progress-bar" id="ap-zbx-pbar" style="background:linear-gradient(90deg,#9b59b6,#c8b0ff)"></div></div>
+          <div class="ap-progress" id="ap-zbx-prog"><div class="ap-progress-bar" id="ap-zbx-pbar" style="background:linear-gradient(90deg,rgba(var(--accent-rgb),.6),var(--accent))"></div></div>
           <div class="ap-prev" id="ap-zbx-prev">
             <canvas id="ap-zbx-wave" class="ap-wave"></canvas>
             <div class="ap-row">
@@ -1734,7 +1750,7 @@ footer{margin-top:20px;color:#2a2a2a;font-size:.58rem;font-weight:700;text-trans
   <div class="card-head" style="padding-bottom:20px">
     <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:8px">
       <div class="brand-row" style="justify-content:flex-start;gap:10px;margin-bottom:0">
-        <span class="badge" style="background:linear-gradient(135deg,#ff8500,#cc44ff);color:#fff">NEW</span>
+        <span class="badge" style="background:linear-gradient(135deg,var(--accent),#cc44ff);color:#000">NEW</span>
         <div>
           <div class="extra-title" style="font-family:var(--display);font-size:1.1rem;font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:.5px">Intro / Watermark Maker</div>
           <div class="subtitle" style="margin:2px 0 0">SFX opener · Robot TTS · Voice FX · Export WAV</div>
@@ -1777,76 +1793,122 @@ footer{margin-top:20px;color:#2a2a2a;font-size:.58rem;font-weight:700;text-trans
     </div>
 
     <!-- Source tabs -->
-    <div style="display:flex;gap:5px;margin-bottom:12px">
-      <button class="btn active" id="tts-src-synth" onclick="introSetTtsSrc('synth',this)" style="font-size:.6rem">🤖 Synth Robot Voice</button>
+    <div style="display:flex;gap:5px;margin-bottom:12px;flex-wrap:wrap">
+      <button class="btn active" id="tts-src-puter" onclick="introSetTtsSrc('puter',this)" style="font-size:.6rem">🔊 Web Speech (Browser)</button>
+      <button class="btn" id="tts-src-synth" onclick="introSetTtsSrc('synth',this)" style="font-size:.6rem">🤖 Offline Synth</button>
       <button class="btn" id="tts-src-upload" onclick="introSetTtsSrc('upload',this)" style="font-size:.6rem">📂 Upload Your TTS</button>
     </div>
 
-    <!-- Synth panel -->
-    <div id="tts-synth-panel">
-      <input type="text" class="intro-tts-input" id="intro-tts-text" placeholder="e.g.  TroysExploit  ·  YxZ  ·  ausgang" maxlength="60" oninput="introUpdateSeq()">
-      <div style="font-size:.52rem;color:#555;font-family:var(--mono);margin-top:6px;margin-bottom:10px">Synthesised robot voice — generated entirely in-browser, exports cleanly to WAV.</div>
+    <!-- Web Speech API panel -->
+    <div id="tts-puter-panel">
+      <input type="text" class="intro-tts-input" id="intro-tts-text" placeholder="e.g.  TroysExploit  ·  YxZ  ·  ausgang" maxlength="500" oninput="introUpdateSeq()">
+
+      <!-- Voice selector + sliders -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+        <div>
+          <div style="font-size:.52rem;color:#777;font-family:var(--mono);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">Voice</div>
+          <select id="puter-voice" style="width:100%;background:#080808;border:1px solid #252525;color:#ccc;padding:6px 8px;border-radius:var(--r-sm);font-family:var(--mono);font-size:.58rem;outline:0" onchange="wsPreviewStop()">
+            <option value="">Loading voices…</option>
+          </select>
+        </div>
+        <div>
+          <div style="font-size:.52rem;color:#777;font-family:var(--mono);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">Speak Rate</div>
+          <div style="display:flex;gap:5px;align-items:center;margin-top:4px">
+            <input type="range" id="ws-rate" min="0.5" max="2" step="0.05" value="1" style="flex:1" oninput="$('ws-rate-v').textContent=parseFloat(this.value).toFixed(2)+'×'">
+            <span style="font-size:.52rem;color:var(--accent);font-family:var(--mono);min-width:38px" id="ws-rate-v">1.00×</span>
+          </div>
+          <div style="display:flex;gap:5px;align-items:center;margin-top:6px">
+            <span style="font-size:.5rem;color:#666;font-family:var(--mono);min-width:38px">Pitch</span>
+            <input type="range" id="ws-pitch" min="0" max="2" step="0.05" value="1" style="flex:1" oninput="$('ws-pitch-v').textContent=parseFloat(this.value).toFixed(2)">
+            <span style="font-size:.52rem;color:var(--accent);font-family:var(--mono);min-width:28px" id="ws-pitch-v">1.00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Preview button -->
+      <div style="display:flex;gap:7px;margin-top:10px;align-items:center">
+        <button class="ap-pbtn" id="ws-preview-btn" onclick="wsTogglePreview()" style="flex:0 0 auto;padding:6px 14px;font-size:.6rem">▶ Preview Voice</button>
+        <span style="font-size:.5rem;color:#444;font-family:var(--mono)" id="ws-preview-stat">Click Preview to hear the selected voice before generating.</span>
+      </div>
+
+      <!-- Capture instructions -->
+      <div style="margin-top:8px;padding:8px 10px;background:#0a0a0a;border:1px solid #1a1a1a;border-radius:var(--r-sm)">
+        <div style="font-size:.52rem;color:#555;font-family:var(--mono);line-height:1.7">
+          <span style="color:var(--accent);font-weight:700">▶ Preview</span> plays instantly · no capture needed.<br>
+          <span style="color:var(--accent);font-weight:700">⏺ Generate</span> will ask to <strong style="color:#888">Share Tab Audio</strong> once — select your tab, tick "Share audio", click Share. Records the speech → applies effects → exports WAV.
+        </div>
+      </div>
+    </div>
+
+    <!-- Offline synth panel -->
+    <div id="tts-synth-panel" style="display:none">
+      <input type="text" class="intro-tts-input" id="intro-tts-text-synth" placeholder="e.g.  TroysExploit  ·  YxZ  ·  ausgang" maxlength="60" oninput="introUpdateSeq()">
+      <div style="font-size:.52rem;color:#555;font-family:var(--mono);margin-top:5px">Offline formant synthesiser — works without internet. Sounds robotic by design.</div>
     </div>
 
     <!-- Upload TTS panel -->
     <div id="tts-upload-panel" style="display:none">
-      <label for="tts-upload-file" class="ap-ul" style="display:block;cursor:pointer;margin-bottom:6px">📂 Upload your TTS / voice file (MP3, WAV, OGG…)</label>
+      <label for="tts-upload-file" class="ap-ul" style="display:block;cursor:pointer">📂 Upload TTS / voice file (MP3, WAV, OGG…)</label>
       <input type="file" id="tts-upload-file" accept="audio/*" style="display:none" onchange="introLoadTtsUpload(this)">
-      <div id="tts-upload-stat" style="font-size:.55rem;color:#555;font-family:var(--mono);margin-bottom:8px">No file loaded — effects below will apply to uploaded audio.</div>
+      <div id="tts-upload-stat" style="font-size:.55rem;color:#555;font-family:var(--mono);margin-top:6px">No file loaded — voice effects below will apply to it.</div>
     </div>
 
-    <!-- Voice Style -->
-    <div style="font-size:.58rem;color:#777;font-family:var(--mono);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Voice Effects Style</div>
-    <div class="voice-grid">
-      <div class="voice-btn sel" id="voice-robot" onclick="introSetVoice('robot',this)">🤖 Robot</div>
-      <div class="voice-btn" id="voice-deep" onclick="introSetVoice('deep',this)">🔊 Deep</div>
-      <div class="voice-btn" id="voice-glitch" onclick="introSetVoice('glitch',this)">⚡ Glitch</div>
-      <div class="voice-btn" id="voice-demonic" onclick="introSetVoice('demonic',this)">👹 Demonic</div>
-      <div class="voice-btn" id="voice-chipmunk" onclick="introSetVoice('chipmunk',this)">🐿 Chipmunk</div>
-      <div class="voice-btn" id="voice-echo" onclick="introSetVoice('echo',this)">🌀 Echo</div>
-      <div class="voice-btn" id="voice-distort" onclick="introSetVoice('distort',this)">💥 Distorted</div>
-      <div class="voice-btn" id="voice-raw" onclick="introSetVoice('raw',this)">🎙 Raw / None</div>
+    <!-- Voice Effects -->
+    <div style="margin-top:16px">
+      <div style="font-size:.58rem;color:#777;font-family:var(--mono);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Voice Effects</div>
+      <div class="voice-grid">
+        <div class="voice-btn sel" id="voice-robot" onclick="introSetVoice('robot',this)" title="Ring modulation at 100Hz — classic cyborg/robot buzz">🤖 Robot</div>
+        <div class="voice-btn" id="voice-deep" onclick="introSetVoice('deep',this)" title="−8 semitones + sub-octave doubler + compression">🔊 Deep</div>
+        <div class="voice-btn" id="voice-glitch" onclick="introSetVoice('glitch',this)" title="Stutter chunks, bit-crush to 5-bit, random pitch jumps">⚡ Glitch</div>
+        <div class="voice-btn" id="voice-demonic" onclick="introSetVoice('demonic',this)" title="−12st + 50Hz ring mod + saturation + cave reverb">👹 Demonic</div>
+        <div class="voice-btn" id="voice-chipmunk" onclick="introSetVoice('chipmunk',this)" title="+10st + 1.65× speed — classic Alvin effect">🐿 Chipmunk</div>
+        <div class="voice-btn" id="voice-echo" onclick="introSetVoice('echo',this)" title="5-tap echo at 250ms intervals, 0.6 decay — valley echo">🌀 Echo</div>
+        <div class="voice-btn" id="voice-distort" onclick="introSetVoice('distort',this)" title="Fuzz waveshaper + 8-bit crush + slight flutter">💥 Distorted</div>
+        <div class="voice-btn" id="voice-raw" onclick="introSetVoice('raw',this)" title="No processing — clean neural TTS output">✨ Raw</div>
+      </div>
     </div>
 
     <!-- Fine tune -->
-    <div style="margin-top:14px">
-      <div style="font-size:.58rem;color:#777;font-family:var(--mono);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Fine Tune</div>
+    <div style="margin-top:12px">
+      <div style="font-size:.58rem;color:#777;font-family:var(--mono);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Fine Tune <span style="font-weight:400;opacity:.5;font-size:.48rem">(applied on top of the effect)</span></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-        <div class="srow" style="margin:0"><span class="label" style="min-width:70px;text-align:right">Speed</span><input type="range" id="tts-speed" min="0.3" max="2.5" step="0.05" value="0.85" oninput="$('tts-speed-v').textContent=this.value+'×'"><span class="sval" id="tts-speed-v">0.85×</span></div>
-        <div class="srow" style="margin:0"><span class="label" style="min-width:70px;text-align:right">Pitch</span><input type="range" id="tts-pitch" min="-12" max="12" step="0.5" value="-3" oninput="$('tts-pitch-v').textContent=this.value+'st'"><span class="sval" id="tts-pitch-v">-3st</span></div>
-        <div class="srow" style="margin:0"><span class="label" style="min-width:70px;text-align:right">Reverb</span><input type="range" id="tts-reverb" min="0" max="1" step="0.05" value="0.3" oninput="$('tts-reverb-v').textContent=parseFloat(this.value).toFixed(2)"><span class="sval" id="tts-reverb-v">0.30</span></div>
-        <div class="srow" style="margin:0"><span class="label" style="min-width:70px;text-align:right">Distort</span><input type="range" id="tts-distort" min="0" max="100" step="1" value="20" oninput="$('tts-distort-v').textContent=this.value"><span class="sval" id="tts-distort-v">20</span></div>
+        <div class="srow" style="margin:0"><span class="label" style="min-width:70px;text-align:right">Speed</span><input type="range" id="tts-speed" min="0.3" max="2.5" step="0.05" value="1.0" oninput="$('tts-speed-v').textContent=this.value+'×'"><span class="sval" id="tts-speed-v">1.0×</span></div>
+        <div class="srow" style="margin:0"><span class="label" style="min-width:70px;text-align:right">Pitch</span><input type="range" id="tts-pitch" min="-12" max="12" step="0.5" value="0" oninput="$('tts-pitch-v').textContent=this.value+'st'"><span class="sval" id="tts-pitch-v">0st</span></div>
+        <div class="srow" style="margin:0"><span class="label" style="min-width:70px;text-align:right">Reverb</span><input type="range" id="tts-reverb" min="0" max="1" step="0.05" value="0" oninput="$('tts-reverb-v').textContent=parseFloat(this.value).toFixed(2)"><span class="sval" id="tts-reverb-v">0.00</span></div>
+        <div class="srow" style="margin:0"><span class="label" style="min-width:70px;text-align:right">Distort</span><input type="range" id="tts-distort" min="0" max="100" step="1" value="0" oninput="$('tts-distort-v').textContent=this.value"><span class="sval" id="tts-distort-v">0</span></div>
       </div>
     </div>
   </div>
 
-  <!-- Step 3: Preview & Export -->
+  <!-- Step 3: Generate & Export -->
   <div class="intro-section">
     <div class="intro-step-header">
       <span class="intro-step-num">3</span>
-      <span class="intro-step-title">Preview & Export</span>
+      <span class="intro-step-title">Generate & Export</span>
     </div>
 
-    <!-- Sequence display -->
+    <!-- Sequence preview -->
     <div class="intro-seq" id="intro-seq-display">
       <span style="color:#333;font-size:.58rem;font-family:var(--mono)">sequence will appear here…</span>
     </div>
 
-    <div class="intro-wave-wrap" id="intro-wave-wrap">
-      <canvas id="intro-wave"></canvas>
+    <!-- Generate row -->
+    <div class="ap-row" style="margin-top:10px">
+      <button class="ap-run" id="intro-gen-btn" onclick="introGenerate()">▶ Generate Intro</button>
+      <span class="ap-stat" id="intro-stat">Ready — configure steps 1 and 2, then generate.</span>
     </div>
 
-    <div class="intro-export-row">
-      <button class="exp-btn" id="intro-gen-btn" style="flex:2;background:rgba(var(--accent-rgb),.08);border-color:rgba(var(--accent-rgb),.3);color:var(--accent)" onclick="introGenerate()">▶ Generate</button>
-      <button class="exp-btn" id="intro-export-btn" style="flex:1;opacity:.4;pointer-events:none" onclick="introExport()">↓ Export WAV</button>
-    </div>
-    <div id="intro-playback-row" style="display:none;margin-top:8px">
+    <!-- Progress bar -->
+    <div class="ap-progress" id="intro-prog"><div class="ap-progress-bar" id="intro-pbar"></div></div>
+
+    <!-- Player — identical to audio bypass cards -->
+    <div class="ap-prev" id="intro-prev">
+      <canvas id="intro-wave" class="ap-wave"></canvas>
       <div class="ap-row">
         <button id="intro-play-btn" class="ap-pbtn" onclick="introTogglePlay()">▶ Play</button>
         <button class="ap-pbtn" onclick="introExport()">↓ Export WAV</button>
       </div>
     </div>
-    <div style="font-size:.55rem;color:#555;font-family:var(--mono);margin-top:8px;line-height:1.7" id="intro-stat">Ready — fill in steps 1 and 2, then hit Generate.</div>
   </div>
 </div>
 
@@ -1878,7 +1940,51 @@ function filterMethods(query){
 
 
 // Accent
+let _rgbInterval=null;
+function stopRGB(){if(_rgbInterval){clearInterval(_rgbInterval);_rgbInterval=null;}}
+function setAccentRGB(el){
+  stopRGB();
+  document.querySelectorAll('.swatch').forEach(s=>s.classList.remove('sel'));
+  if(el)el.classList.add('sel');
+  let hue=0;
+  function applyRGB(){
+    hue=(hue+1)%360;
+    // Convert HSL(hue,100%,55%) to hex for --accent
+    const h=hue/360,s=1,l=0.55;
+    const q=l<0.5?l*(1+s):l+s-l*s,p=2*l-q;
+    const hue2rgb=(p,q,t)=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p;};
+    const r=Math.round(hue2rgb(p,q,h+1/3)*255);
+    const g=Math.round(hue2rgb(p,q,h)*255);
+    const b=Math.round(hue2rgb(p,q,h-1/3)*255);
+    const hex='#'+[r,g,b].map(v=>v.toString(16).padStart(2,'0')).join('');
+    document.documentElement.style.setProperty('--accent',hex);
+    document.documentElement.style.setProperty('--accent-rgb',`${r},${g},${b}`);
+    requestAnimationFrame(()=>{
+      if(introState&&introState.outBuf)introDrawWave(introState.outBuf);
+    });
+  }
+  applyRGB();
+  _rgbInterval=setInterval(applyRGB,16); // ~60fps hue cycle
+}
+
+// Auto-mark ap-cards that contain a best/rec badge so CSS can target them
+(function markHighlightedCards(){
+  document.querySelectorAll('.ap-card').forEach(card=>{
+    if(card.querySelector('.ap-badge.best'))card.classList.add('card-best');
+    else if(card.querySelector('.ap-badge.rec'))card.classList.add('card-rec');
+  });
+})();
+
 function setAccent(c,el){
+  stopRGB(); // stop RGB cycle if switching to solid colour
+  // Redraw waveforms with new accent color after DOM updates
+  requestAnimationFrame(()=>{
+    if(introState&&introState.outBuf)introDrawWave(introState.outBuf);
+    document.querySelectorAll('.ap-wave').forEach(cv=>{
+      const k=cv.id.replace('ap-','').replace('-wave','');
+      if(apS&&apS[k]&&apS[k].out)apDrawWave(k,apS[k].out);
+    });
+  });
   document.documentElement.style.setProperty('--accent',c);
   const r=parseInt(c.slice(1,3),16),g=parseInt(c.slice(3,5),16),b=parseInt(c.slice(5,7),16);
   document.documentElement.style.setProperty('--accent-rgb',`${r},${g},${b}`);
@@ -2189,7 +2295,7 @@ const methods={
     tc.width=tc.height=sz;ctx.drawImage(img,0,0,sz,sz);
     const src=ctx.getImageData(0,0,sz,sz);const s=src.data;
     const out=ctx.createImageData(sz,sz);const d=out.data;
-    const colMap={white:[255,255,255],orange:[255,133,0],cyan:[0,212,255],green:[68,255,136],red:[255,68,85]};
+    const colMap={white:[255,255,255],orange:[255,133,0],cyan:[0,212,255],green:[68,255,136],purple:[204,68,255],red:[255,68,85]};
     const [er,eg,eb]=colMap[col]||[255,255,255];
     // pre-compute luma map
     const lmap=new Float32Array(sz*sz);
@@ -2561,7 +2667,18 @@ function updatePH(){$('playhead').style.left=(pausedAt*pxPerSec)+'px'}
 function fmtT(s){return `${Math.floor(s/60)}:${(s%60).toFixed(1).padStart(4,'0')}`}
 $('audio-import').onchange=async e=>{for(const f of e.target.files){const buf=await audioCtx.decodeAudioData(await f.arrayBuffer());const clip={id:Math.random(),buffer:buf,name:f.name,startTime:pausedAt,volume:1,distortion:0,pitch:1,reverb:0,echo:0,pan:0,track:clips.length%4};clips.push(clip);renderDAW();selectClip(clip)}e.target.value='';notify(e.target.files.length+' clip(s) added')};
 function renderDAW(){const cont=$('daw-tl');Array.from(cont.getElementsByClassName('audio-clip')).forEach(el=>el.remove());clips.forEach(clip=>{const div=document.createElement('div');div.className=`audio-clip${selClip===clip?' sel':''}`;div.style.cssText=`width:${clip.buffer.duration*pxPerSec}px;left:${clip.startTime*pxPerSec}px;top:${clip.track*84+15}px`;div.innerHTML=`<span class="clip-name">${clip.name}</span><canvas class="clip-waveform"></canvas>`;div.onmousedown=me=>{me.stopPropagation();selectClip(clip);let sx=me.clientX,os=clip.startTime;const mm=m=>{clip.startTime=Math.max(0,os+(m.clientX-sx)/pxPerSec);div.style.left=(clip.startTime*pxPerSec)+'px'};const mu=()=>{document.removeEventListener('mousemove',mm);document.removeEventListener('mouseup',mu);renderDAW()};document.addEventListener('mousemove',mm);document.addEventListener('mouseup',mu)};cont.appendChild(div);drawWave(div.querySelector('canvas'),clip.buffer)});updatePH()}
-function drawWave(canvas,buf){canvas.width=canvas.parentElement.offsetWidth||200;canvas.height=76;const ctx=canvas.getContext('2d'),d=buf.getChannelData(0),step=Math.ceil(d.length/canvas.width);const g=ctx.createLinearGradient(0,0,canvas.width,0);g.addColorStop(0,'rgba(255,133,0,.55)');g.addColorStop(1,'rgba(255,200,0,.75)');ctx.fillStyle=g;for(let i=0;i<canvas.width;i++){let mn=1,mx=-1;for(let j=0;j<step;j++){const v=d[(i*step)+j]||0;if(v<mn)mn=v;if(v>mx)mx=v}ctx.fillRect(i,(1+mn)*38,1,Math.max(1,(mx-mn)*38))}}
+function drawWave(canvas,buf){
+  canvas.width=canvas.parentElement.offsetWidth||200;canvas.height=76;
+  const ctx=canvas.getContext('2d'),d=buf.getChannelData(0),step=Math.ceil(d.length/canvas.width);
+  const accent=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#ff8500';
+  ctx.fillStyle='#060606';ctx.fillRect(0,0,canvas.width,76);
+  ctx.strokeStyle='rgba(255,255,255,.04)';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(0,38);ctx.lineTo(canvas.width,38);ctx.stroke();
+  const g=ctx.createLinearGradient(0,0,canvas.width,0);
+  g.addColorStop(0,accent+'99');g.addColorStop(0.5,accent);g.addColorStop(1,accent+'99');
+  ctx.fillStyle=g;
+  for(let i=0;i<canvas.width;i++){let mn=0,mx=0;for(let j=0;j<step;j++){const v=d[(i*step)+j]||0;if(v<mn)mn=v;if(v>mx)mx=v}ctx.fillRect(i,(1+mn)*38,1,Math.max(1,(mx-mn)*38))}
+}
 function selectClip(c){selClip=c;$('mixer-panel').style.display='block';$('mx-name').textContent='▸ '+c.name;$('p-vol').value=c.volume;$('p-dist').value=c.distortion;$('p-pitch').value=c.pitch;$('p-rev').value=c.reverb;$('p-echo').value=c.echo;$('p-pan').value=c.pan;updateML();renderDAW()}
 function updateML(){$('v-vol').textContent=selClip.volume.toFixed(1);$('v-dist').textContent=selClip.distortion;$('v-pitch').textContent=selClip.pitch.toFixed(2);$('v-rev').textContent=selClip.reverb.toFixed(2);$('v-echo').textContent=selClip.echo.toFixed(2);const p=selClip.pan;$('v-pan').textContent=p===0?'C':p>0?`R${Math.round(p*100)}`:`L${Math.round(-p*100)}`}
 $('p-vol').oninput=e=>{if(selClip){selClip.volume=parseFloat(e.target.value);updateML()}};
@@ -2676,10 +2793,9 @@ function apDrawWave(k,buf){
     peaks.push([mn,mx]);
   }
   // filled waveform with gradient
+  const _accent=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#ff8500';
   const grad=c.createLinearGradient(0,0,W,0);
-  grad.addColorStop(0,'rgba(255,110,0,.75)');
-  grad.addColorStop(0.5,'rgba(255,180,0,.9)');
-  grad.addColorStop(1,'rgba(255,110,0,.75)');
+  grad.addColorStop(0,_accent+'bb');grad.addColorStop(0.5,_accent);grad.addColorStop(1,_accent+'bb');
   c.fillStyle=grad;
   const mid=H/2;
   for(let i=0;i<W;i++){
@@ -2689,7 +2805,8 @@ function apDrawWave(k,buf){
   }
   // rms line in brighter color
   const rmsPeaks=[];for(let i=0;i<W;i++){let s=0;for(let j=0;j<step;j++)s+=d[Math.min(d.length-1,i*step+j)]**2;rmsPeaks.push(Math.sqrt(s/step))}
-  c.strokeStyle='rgba(255,220,80,.5)';c.lineWidth=1;c.beginPath();
+  const _accentR=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#ff8500';
+  c.strokeStyle=_accentR+'66';c.lineWidth=1;c.beginPath();
   for(let i=0;i<W;i++){const r=rmsPeaks[i]*mid;c.moveTo(i,mid-r);c.lineTo(i,mid+r)}
   c.stroke();
 }
@@ -3369,16 +3486,24 @@ function introUpdateSeq(){
   seq.innerHTML=parts.length?parts.join(''):'<span style="color:#333;font-size:.58rem;font-family:var(--mono)">sequence will appear here…</span>';
 }
 
-// ── TTS source toggle ────────────────────────────────────────────────────
-let introTtsSrc='synth'; // 'synth' | 'upload'
+// ── TTS source toggle ─────────────────────────────────────────────────────
+let introTtsSrc='puter'; // 'puter' | 'synth' | 'upload'
 let introUploadedBuf=null;
+
+function introGetText(){
+  if(introTtsSrc==='puter') return ($('intro-tts-text')||{}).value||'';
+  if(introTtsSrc==='synth') return ($('intro-tts-text-synth')||{}).value||'';
+  return '';
+}
 
 function introSetTtsSrc(src,btn){
   introTtsSrc=src;
   document.querySelectorAll('[id^="tts-src-"]').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  $('tts-synth-panel').style.display=src==='synth'?'':'none';
-  $('tts-upload-panel').style.display=src==='upload'?'':'none';
+  if(btn)btn.classList.add('active');
+  const panels=['tts-puter-panel','tts-synth-panel','tts-upload-panel'];
+  const show={'puter':'tts-puter-panel','synth':'tts-synth-panel','upload':'tts-upload-panel'};
+  panels.forEach(id=>{const el=$(id);if(el)el.style.display='none';});
+  const target=$(show[src]);if(target)target.style.display='';
   introUpdateSeq();
 }
 
@@ -3388,13 +3513,12 @@ function introLoadTtsUpload(input){
   r.onload=async ev=>{
     try{
       const ctx=getIntroCtx();
-      const ab=ev.target.result.slice(0);
-      introUploadedBuf=await ctx.decodeAudioData(ab);
+      introUploadedBuf=await ctx.decodeAudioData(ev.target.result.slice(0));
       $('tts-upload-stat').textContent=`✓ Loaded: ${f.name} · ${introUploadedBuf.duration.toFixed(1)}s`;
       $('tts-upload-stat').style.color='#44ff88';
       introUpdateSeq();
     }catch(e){
-      $('tts-upload-stat').textContent='✗ Could not decode audio: '+e.message;
+      $('tts-upload-stat').textContent='✗ Decode error: '+e.message;
       $('tts-upload-stat').style.color='#ff4455';
     }
   };
@@ -3402,238 +3526,619 @@ function introLoadTtsUpload(input){
   input.value='';
 }
 
-// ── introProcBuf: like apProcBuf but uses getIntroCtx() — safe for intro ──
-async function introProcBuf(buf, fn){
-  const ctx = getIntroCtx();
-  const sr = buf.sampleRate, nc = buf.numberOfChannels;
-  const chs = []; let maxLen = 0;
-  for(let c = 0; c < nc; c++){
-    const r = fn(new Float32Array(buf.getChannelData(c)), sr);
-    chs.push(r); maxLen = Math.max(maxLen, r.length);
+// ══════════════════════════════════════════════════════════════════════════
+// WEB SPEECH API — browser built-in neural TTS, zero auth, zero internet
+// Chrome uses Google Neural voices; Edge uses Microsoft Neural voices.
+// Both are genuinely high quality and completely free.
+// ══════════════════════════════════════════════════════════════════════════
+let _wsVoices=[];
+let _wsCapStream=null; // cached tab capture stream (reused so user only shares tab once)
+
+// ── Populate voice dropdown ───────────────────────────────────────────────
+function wsPopulateVoices(){
+  const sel=$('puter-voice');if(!sel)return;
+  const all=window.speechSynthesis?window.speechSynthesis.getVoices():[];
+  _wsVoices=all.filter(v=>v.lang.startsWith('en'));
+  if(!_wsVoices.length)_wsVoices=all; // fallback: show all languages
+  if(!_wsVoices.length){sel.innerHTML='<option>No voices found</option>';return;}
+  // Sort: local high-quality voices first (Microsoft/Apple neural), then others
+  _wsVoices.sort((a,b)=>{
+    const q=v=>{
+      let s=0;
+      const n=v.name.toLowerCase();
+      if(n.includes('natural')||n.includes('neural')||n.includes('online'))s+=3;
+      if(v.localService)s+=1;
+      if(n.includes('microsoft')||n.includes('siri'))s+=2;
+      return -s;
+    };
+    return q(a)-q(b)||a.name.localeCompare(b.name);
+  });
+  sel.innerHTML=_wsVoices.map((v,i)=>{
+    const tag=v.localService?'💻':v.name.toLowerCase().includes('natural')||v.name.toLowerCase().includes('neural')?'⚡':'';
+    return `<option value="${i}">${tag?tag+' ':''}${v.name} (${v.lang})</option>`;
+  }).join('');
+}
+
+if(window.speechSynthesis){
+  wsPopulateVoices();
+  window.speechSynthesis.onvoiceschanged=wsPopulateVoices;
+}
+
+// ── Preview: speaks directly via Web Speech, no capture ──────────────────
+function wsGetSelectedVoice(){
+  const sel=$('puter-voice');
+  const idx=sel?parseInt(sel.value):0;
+  return _wsVoices[idx]||null;
+}
+
+function wsTogglePreview(){
+  const btn=$('ws-preview-btn'),stat=$('ws-preview-stat');
+  if(window.speechSynthesis&&window.speechSynthesis.speaking){
+    wsPreviewStop();return;
   }
-  const out = ctx.createBuffer(nc, maxLen, sr);
-  for(let c = 0; c < nc; c++) out.getChannelData(c).set(chs[c].subarray(0, maxLen));
+  const text=introGetText().trim();
+  if(!text){notify('Type something first!');return;}
+  const utt=new SpeechSynthesisUtterance(text);
+  const voice=wsGetSelectedVoice();
+  if(voice)utt.voice=voice;
+  utt.rate=parseFloat(($('ws-rate')||{value:1}).value)||1;
+  utt.pitch=parseFloat(($('ws-pitch')||{value:1}).value)||1;
+  utt.onstart=()=>{if(btn)btn.textContent='■ Stop';if(stat)stat.textContent='Speaking…';};
+  utt.onend=utt.onerror=()=>{if(btn)btn.textContent='▶ Preview Voice';if(stat)stat.textContent='';};
+  window.speechSynthesis.speak(utt);
+}
+
+function wsPreviewStop(){
+  if(window.speechSynthesis)window.speechSynthesis.cancel();
+  const btn=$('ws-preview-btn');
+  if(btn)btn.textContent='▶ Preview Voice';
+}
+
+// ── Capture: getDisplayMedia → record Web Speech → AudioBuffer ─────────────
+async function wsGetCaptureStream(){
+  // Reuse the stream if still active (user only shares tab once per session)
+  if(_wsCapStream&&_wsCapStream.active&&_wsCapStream.getAudioTracks().length>0&&
+     _wsCapStream.getAudioTracks()[0].readyState==='live'){
+    return _wsCapStream;
+  }
+  const stream=await navigator.mediaDevices.getDisplayMedia({
+    video:true,   // required by spec — we immediately stop and discard the video track
+    audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false},
+    preferCurrentTab:true,   // Chrome 109+: highlights current tab as top option
+  });
+  stream.getVideoTracks().forEach(t=>t.stop()); // discard video
+  _wsCapStream=stream;
+  // Auto-clear if user manually stops sharing
+  const at=stream.getAudioTracks()[0];
+  if(at)at.onended=()=>{_wsCapStream=null;};
+  return stream;
+}
+
+// ── Main Web Speech TTS pipeline → AudioBuffer ────────────────────────────
+async function puterTTS(text){
+  if(!text.trim()||!window.speechSynthesis)return null;
+  window.speechSynthesis.cancel();
+
+  // Step 1: get (or reuse) tab capture stream
+  let stream;
+  try{
+    stream=await wsGetCaptureStream();
+  }catch(e){
+    if(e.name==='NotAllowedError'||e.name==='NotFoundError'){
+      throw new Error('Tab sharing cancelled — hit "Share Tab" and tick "Share audio" to capture your voice. Or use Offline Synth instead.');
+    }
+    throw e;
+  }
+
+  const audioTrack=stream.getAudioTracks()[0];
+  if(!audioTrack||audioTrack.readyState!=='live'){
+    _wsCapStream=null;
+    throw new Error('No live audio track — please try again and make sure "Share audio" is ticked.');
+  }
+
+  // Step 2: record via MediaRecorder
+  const recStream=new MediaStream([audioTrack]);
+  const mimeType=['audio/webm;codecs=opus','audio/webm','audio/ogg'].find(m=>MediaRecorder.isTypeSupported(m))||'';
+  const rec=new MediaRecorder(recStream,mimeType?{mimeType}:{});
+  const chunks=[];
+  rec.ondataavailable=e=>{if(e.data&&e.data.size>0)chunks.push(e.data);};
+
+  // Step 3: build utterance
+  const utt=new SpeechSynthesisUtterance(text.slice(0,500));
+  const voice=wsGetSelectedVoice();
+  if(voice)utt.voice=voice;
+  utt.rate=parseFloat(($('ws-rate')||{value:1}).value)||1;
+  utt.pitch=parseFloat(($('ws-pitch')||{value:1}).value)||1;
+
+  // Step 4: start recording, then speak
+  rec.start(40); // 40ms chunks for smooth capture
+  window.speechSynthesis.speak(utt);
+
+  // Step 5: wait for speech to finish
+  await new Promise((resolve,reject)=>{
+    const timeout=setTimeout(()=>{
+      window.speechSynthesis.cancel();
+      reject(new Error('TTS timed out — text too long or synthesis stalled'));
+    },20000);
+    utt.onend=()=>{clearTimeout(timeout);resolve();};
+    utt.onerror=e=>{clearTimeout(timeout);reject(new Error('Speech error: '+(e.error||e.message)));};
+  });
+
+  // Step 6: small flush pause then stop
+  await new Promise(r=>setTimeout(r,250));
+  rec.stop();
+  await new Promise(r=>{rec.onstop=r;});
+
+  if(!chunks.length)throw new Error('No audio captured — make sure you ticked "Share audio" when sharing the tab.');
+
+  // Step 7: decode → AudioBuffer
+  const blob=new Blob(chunks,{type:mimeType||'audio/webm'});
+  const ab=await blob.arrayBuffer();
+  const ctx=getIntroCtx();
+  if(ctx.state==='suspended')await ctx.resume();
+  let buf;
+  try{buf=await ctx.decodeAudioData(ab);}
+  catch(e){throw new Error('Decode failed — '+e.message+'. Try again or use Offline Synth.');}
+
+  // Step 8: trim silence from start/end
+  return wsTrimSilence(buf);
+}
+
+// ── Trim leading/trailing silence from a buffer ───────────────────────────
+function wsTrimSilence(buf,threshold=0.004){
+  const d=buf.getChannelData(0),sr=buf.sampleRate,len=d.length;
+  let s=0,e=len-1;
+  while(s<len&&Math.abs(d[s])<threshold)s++;
+  while(e>s&&Math.abs(d[e])<threshold)e--;
+  s=Math.max(0,s-Math.floor(sr*0.06));   // 60ms pre-padding
+  e=Math.min(len-1,e+Math.floor(sr*0.12)); // 120ms tail
+  if(s>=e)return buf;
+  const ctx=getIntroCtx();
+  const out=ctx.createBuffer(1,e-s,sr);
+  out.getChannelData(0).set(d.subarray(s,e));
   return out;
 }
 
-// ── Synth robot voice via OfflineAudioContext ────────────────────────────
-async function synthRobotVoice(text, speedMul){
-  const sr = 44100;
-  const BASE = 130;
-  const charFreq = c => {
-    const code = c.toLowerCase().charCodeAt(0);
-    if(code < 97 || code > 122) return 300 + (code % 8) * 40;
-    const t = (code - 97) / 25;
-    return BASE * Math.pow(520 / BASE, t);
+// ── introSetVoice ─────────────────────────────────────────────────────────
+function introSetVoice(v,btn){
+  introState.voice=v;
+  document.querySelectorAll('.voice-btn').forEach(b=>b.classList.remove('sel'));
+  if(btn)btn.classList.add('sel');
+  // Set sliders to neutral — effects handle everything
+  const presets={
+    robot:   {speed:1.0, pitch:0,   reverb:0.15, distort:0},
+    deep:    {speed:1.0, pitch:0,   reverb:0.05, distort:0},
+    glitch:  {speed:1.0, pitch:0,   reverb:0,    distort:0},
+    demonic: {speed:1.0, pitch:0,   reverb:0,    distort:0},
+    chipmunk:{speed:1.0, pitch:0,   reverb:0,    distort:0},
+    echo:    {speed:1.0, pitch:0,   reverb:0,    distort:0},
+    distort: {speed:1.0, pitch:0,   reverb:0,    distort:0},
+    raw:     {speed:1.0, pitch:0,   reverb:0,    distort:0},
   };
+  const p=presets[v]||presets.raw;
+  $('tts-speed').value=p.speed; $('tts-speed-v').textContent=p.speed+'×';
+  $('tts-pitch').value=p.pitch; $('tts-pitch-v').textContent=p.pitch+'st';
+  $('tts-reverb').value=p.reverb; $('tts-reverb-v').textContent=p.reverb.toFixed(2);
+  $('tts-distort').value=p.distort; $('tts-distort-v').textContent=p.distort;
+}
 
-  const chars = text.replace(/\s+/g,' ').trim().split('');
-  const speed = Math.max(0.4, Math.min(2.2, speedMul));
-  const charDur = 0.13 / speed;
-  const gap = 0.018 / speed;
-  const totalSamples = Math.ceil((chars.length * (charDur + gap) + 0.5) * sr);
+function introUpdateSeq(){
+  const seq=$('intro-seq-display');if(!seq)return;
+  const tag=introGetText().trim();
+  const parts=[];
+  if(introState.sfxKey)parts.push(`<span class="seq-block sfx-block">🔊 ${introState.sfxKey}</span><span class="seq-arrow">→</span>`);
+  if(tag)parts.push(`<span class="seq-block tts-block">🎙 "${tag}"</span>`);
+  else parts.push(`<span class="seq-block tts-block" style="opacity:.4">🎙 [your tag here]</span>`);
+  if(introState.outroEnabled&&introState.outroKey)parts.push(`<span class="seq-arrow">→</span><span class="seq-block outro-block">🔊 ${introState.outroKey}</span>`);
+  seq.innerHTML=parts.join('');
+}
 
-  const offline = new OfflineAudioContext(1, totalSamples, sr);
-  let t = 0.08;
+// ══════════════════════════════════════════════════════════════════════════════
+// VOICE EFFECTS ENGINE — real per-mode DSP, no shortcuts
+// All processing on Float32Array at sample rate sr.
+// ══════════════════════════════════════════════════════════════════════════════
 
-  chars.forEach(ch => {
-    if(ch === ' '){ t += charDur * 0.7; return; }
-    const freq = charFreq(ch);
-    const dur = charDur;
+// Helper: fast integer resampler (linear interp)
+function _resample(s, factor){
+  if(Math.abs(factor-1)<0.01)return s;
+  const newLen=Math.round(s.length/factor);
+  const out=new Float32Array(newLen);
+  for(let i=0;i<newLen;i++){
+    const p=i*factor, lo=Math.floor(p), hi=Math.min(lo+1,s.length-1);
+    out[i]=s[lo]+(s[hi]-s[lo])*(p-lo);
+  }
+  return out;
+}
 
-    // Main square-wave carrier
-    const osc = offline.createOscillator();
-    osc.type = 'square';
-    osc.frequency.setValueAtTime(freq, t);
-    osc.frequency.linearRampToValueAtTime(freq * 1.025, t + dur * 0.5);
-    osc.frequency.linearRampToValueAtTime(freq, t + dur);
+// Helper: plate reverb — Schroeder allpass + comb filters
+function _reverb(s, sr, mix, roomSize=0.5){
+  if(mix<=0)return s;
+  // Comb filter delays (tuned to avoid metallic artifacts)
+  const combDelays=[1557,1617,1491,1422,1277,1356,1188,1116].map(d=>Math.floor(d*roomSize));
+  const combDecay=0.84;
+  // Allpass delays
+  const apDelays=[225,556,441,341].map(d=>Math.floor(d*roomSize));
+  const apG=0.5;
 
-    // Amplitude modulator for robotic "chopping"
-    const lfo = offline.createOscillator();
-    lfo.type = 'square';
-    lfo.frequency.value = 80;
-    const lfoGain = offline.createGain();
-    lfoGain.gain.value = 0.35;
-    const lfoBase = offline.createGain();
-    lfoBase.gain.value = 0.65;
-    lfo.connect(lfoGain);
+  let wet=new Float32Array(s.length+Math.max(...combDelays)+1000);
+  for(let i=0;i<s.length;i++) wet[i]=s[i];
 
-    // Envelope
-    const env = offline.createGain();
-    env.gain.setValueAtTime(0, t);
-    env.gain.linearRampToValueAtTime(0.6, t + 0.006);
-    env.gain.setValueAtTime(0.6, t + dur - 0.01);
-    env.gain.linearRampToValueAtTime(0, t + dur);
+  // Comb filters in parallel
+  const combOut=new Float32Array(wet.length);
+  for(const dl of combDelays){
+    const buf=new Float32Array(dl);let bi=0;
+    for(let i=0;i<wet.length;i++){
+      const delayed=buf[bi];
+      buf[bi]=wet[i]+delayed*combDecay;
+      bi=(bi+1)%dl;
+      combOut[i]+=delayed/combDelays.length;
+    }
+  }
+  // Allpass filters in series
+  let ap=combOut;
+  for(const dl of apDelays){
+    const buf=new Float32Array(dl);let bi=0;
+    const next=new Float32Array(ap.length);
+    for(let i=0;i<ap.length;i++){
+      const d=buf[bi];
+      const v=ap[i]-apG*d;
+      buf[bi]=v+apG*d;
+      bi=(bi+1)%dl;
+      next[i]=d+apG*v;
+    }
+    ap=next;
+  }
+  // Mix
+  const out=new Float32Array(Math.max(s.length,ap.length));
+  for(let i=0;i<s.length;i++) out[i]+=s[i]*(1-mix);
+  for(let i=0;i<ap.length;i++) out[i]+=ap[i]*mix*0.35;
+  return out;
+}
 
-    // Bandpass filter for that robot buzz
-    const bp = offline.createBiquadFilter();
-    bp.type = 'bandpass';
-    bp.frequency.value = freq * 2.2;
-    bp.Q.value = 3.5;
+// Helper: pitch shift via PSOLA-style phase vocoder (simple overlap-add)
+function _pitchShift(s, semitones){
+  if(semitones===0)return s;
+  const ratio=Math.pow(2,semitones/12);
+  // Time-scale first (OLA), then resample to correct pitch
+  const hopA=512, hopS=Math.round(hopA/ratio);
+  const winLen=2048;
+  const win=new Float32Array(winLen);
+  for(let i=0;i<winLen;i++) win[i]=0.5-0.5*Math.cos(2*Math.PI*i/winLen); // Hann
+  const outLen=Math.ceil(s.length*(hopS/hopA))+winLen;
+  const out=new Float32Array(outLen);
+  const div=new Float32Array(outLen);
+  let ia=0,is2=0;
+  while(ia+winLen<=s.length){
+    for(let j=0;j<winLen;j++){out[is2+j]+=s[ia+j]*win[j];div[is2+j]+=win[j]*win[j];}
+    ia+=hopA;is2+=hopS;
+  }
+  for(let i=0;i<out.length;i++) if(div[i]>1e-8) out[i]/=div[i];
+  // Resample back to original length
+  return _resample(out,outLen/s.length);
+}
 
-    // Low-pass after bp to remove harshness
-    const lp = offline.createBiquadFilter();
-    lp.type = 'lowpass';
-    lp.frequency.value = Math.min(8000, freq * 6);
+// Helper: normalize
+function _norm(s){
+  let pk=0;for(let i=0;i<s.length;i++)pk=Math.max(pk,Math.abs(s[i]));
+  if(pk<1e-9)return s;
+  const g=0.92/pk;return s.map(v=>v*g);
+}
 
-    osc.connect(bp); bp.connect(lp); lp.connect(env); env.connect(offline.destination);
-    lfo.start(t); lfo.stop(t + dur + 0.02);
-    osc.start(t); osc.stop(t + dur + 0.02);
-    t += charDur + gap;
+// ── introProcBuf: isolated from DAW audioCtx ─────────────────────────────
+async function introProcBuf(buf, fn){
+  const ctx=getIntroCtx();
+  const sr=buf.sampleRate, nc=buf.numberOfChannels;
+  const chs=[]; let maxLen=0;
+  for(let c=0;c<nc;c++){
+    const r=fn(new Float32Array(buf.getChannelData(c)),sr);
+    chs.push(r); maxLen=Math.max(maxLen,r.length);
+  }
+  const out=ctx.createBuffer(nc,maxLen,sr);
+  for(let c=0;c<nc;c++) out.getChannelData(c).set(chs[c].subarray(0,maxLen));
+  return out;
+}
+
+// ── Offline formant synthesizer (fallback when API unavailable) ───────────
+const FORMANTS={
+  a:[0.14,110,800,1200,2560,0.05], e:[0.12,120,400,2000,2850,0.05],
+  i:[0.11,130,280,2250,3000,0.04], o:[0.13,100,500,850,2600,0.05],
+  u:[0.12,95,310,870,2240,0.04],
+  b:[0.07,80,200,900,2000,0.4],   c:[0.07,0,4000,6000,8000,0.85],
+  d:[0.07,110,300,1700,2600,0.45],f:[0.08,0,3500,5500,8000,0.9],
+  g:[0.08,100,250,1500,2500,0.4], h:[0.06,0,800,1500,2500,0.75],
+  j:[0.08,110,300,1800,2600,0.4], k:[0.07,0,1000,1500,2500,0.8],
+  l:[0.07,110,300,1000,2800,0.2], m:[0.08,100,200,900,2200,0.15],
+  n:[0.07,110,280,1700,2700,0.15],p:[0.06,0,800,1200,2000,0.7],
+  q:[0.08,100,400,1000,2400,0.3], r:[0.08,120,310,1060,1660,0.15],
+  s:[0.07,0,5000,7000,9000,0.95], t:[0.06,0,2000,4000,6000,0.8],
+  v:[0.08,100,3000,5000,8000,0.5],w:[0.08,100,310,870,2240,0.15],
+  x:[0.07,0,2500,4000,6000,0.85], y:[0.07,110,280,2250,3000,0.2],
+  z:[0.07,100,4000,6000,8000,0.5],
+};
+const FDEF=[0.09,110,500,1500,2500,0.3];
+
+async function synthRobotVoice(text, speedMul){
+  const sr=44100;
+  const spd=Math.max(0.35,Math.min(2.5,speedMul||1));
+  const chars=text.toLowerCase().replace(/\s+/g,' ').trim().split('');
+  let totalDur=0.1;
+  chars.forEach(ch=>{
+    if(ch===' '){totalDur+=0.08/spd;return;}
+    const p=FORMANTS[ch]||FDEF;
+    totalDur+=p[0]/spd+0.015;
   });
-
-  const rendered = await offline.startRendering();
-  // Return as a buffer usable by getIntroCtx()
-  const ctx = getIntroCtx();
-  const out = ctx.createBuffer(1, rendered.length, sr);
+  totalDur+=0.2;
+  const totalSamples=Math.ceil(totalDur*sr);
+  const noiseLen=sr*2;
+  const noiseBuf=new Float32Array(noiseLen);
+  for(let i=0;i<noiseLen;i++) noiseBuf[i]=(Math.random()*2-1);
+  const offline=new OfflineAudioContext(1,totalSamples,sr);
+  const convBuf=offline.createBuffer(1,Math.floor(sr*0.06),sr);
+  const cvd=convBuf.getChannelData(0);
+  for(let i=0;i<cvd.length;i++) cvd[i]=(Math.random()*2-1)*Math.exp(-i/(sr*0.02));
+  const conv=offline.createConvolver();conv.buffer=convBuf;
+  const convGain=offline.createGain();convGain.gain.value=0.18;
+  const masterGain=offline.createGain();masterGain.gain.value=0.82;
+  conv.connect(convGain);convGain.connect(offline.destination);
+  masterGain.connect(offline.destination);masterGain.connect(conv);
+  let t=0.06;
+  chars.forEach(ch=>{
+    if(ch===' '){t+=0.08/spd;return;}
+    const p=FORMANTS[ch]||FDEF;
+    const[baseDur,F0,F1,F2,F3,nMix]=p;
+    const dur=baseDur/spd;
+    const atk=Math.min(0.012,dur*0.15),rel=Math.min(0.015,dur*0.18);
+    const env=offline.createGain();
+    env.gain.setValueAtTime(0,t);env.gain.linearRampToValueAtTime(0.9,t+atk);
+    env.gain.setValueAtTime(0.9,t+dur-rel);env.gain.linearRampToValueAtTime(0,t+dur);
+    env.connect(masterGain);
+    if(nMix<0.98&&F1>0){
+      const osc=offline.createOscillator();osc.type='sawtooth';
+      osc.frequency.setValueAtTime(F0,t);osc.frequency.linearRampToValueAtTime(F0*1.04,t+dur*0.4);osc.frequency.linearRampToValueAtTime(F0,t+dur);
+      const bp1=offline.createBiquadFilter();bp1.type='bandpass';bp1.frequency.value=F1;bp1.Q.value=9;
+      const bp2=offline.createBiquadFilter();bp2.type='bandpass';bp2.frequency.value=F2;bp2.Q.value=12;
+      const bp3=offline.createBiquadFilter();bp3.type='bandpass';bp3.frequency.value=Math.min(F3,sr/2-100);bp3.Q.value=14;
+      const fmix=offline.createGain();fmix.gain.value=1-nMix;
+      osc.connect(bp1);bp1.connect(fmix);osc.connect(bp2);bp2.connect(fmix);osc.connect(bp3);bp3.connect(fmix);fmix.connect(env);
+      osc.start(t);osc.stop(t+dur+0.02);
+    }
+    if(nMix>0.02&&F1>0){
+      const noiseSource=offline.createBufferSource();
+      const nbuf=offline.createBuffer(1,Math.min(noiseLen,Math.ceil(dur*sr)+100),sr);
+      const off2=Math.floor(Math.random()*(noiseLen-nbuf.length));
+      nbuf.getChannelData(0).set(noiseBuf.subarray(off2,off2+nbuf.length));
+      noiseSource.buffer=nbuf;
+      const nbp=offline.createBiquadFilter();nbp.type='bandpass';nbp.frequency.value=F1;nbp.Q.value=1.8;
+      const nhp=offline.createBiquadFilter();nhp.type='highpass';nhp.frequency.value=nMix>0.8?3000:500;nhp.Q.value=0.7;
+      const ngain=offline.createGain();ngain.gain.value=nMix*0.65;
+      noiseSource.connect(nbp);nbp.connect(nhp);nhp.connect(ngain);ngain.connect(env);
+      noiseSource.start(t);noiseSource.stop(t+dur+0.02);
+    }
+    t+=dur+0.015;
+  });
+  const rendered=await offline.startRendering();
+  const ctx=getIntroCtx();
+  const out=ctx.createBuffer(1,rendered.length,sr);
   out.getChannelData(0).set(rendered.getChannelData(0));
   return out;
 }
 
-// ── Apply per-preset voice effects — each mode has its own real processing ─
-async function applyVoiceEffects(buf, pitchSt, reverbAmt, distortAmt, speedMul, voiceMode){
-  return introProcBuf(buf,(ch, sr) => {
-    let s = Float32Array.from(ch);
+// ── Main effect dispatcher ─────────────────────────────────────────────────
+async function applyVoiceEffects(buf, pitchStSlider, reverbSlider, distortSlider, speedSlider, voiceMode){
+  return introProcBuf(buf,(ch,sr)=>{
+    let s=Float32Array.from(ch);
 
-    // ── Speed (resample) ──────────────────────────────────────────────
-    if(Math.abs(speedMul - 1) > 0.03){
-      const newLen = Math.round(s.length / speedMul);
-      const r = new Float32Array(newLen);
-      for(let i = 0; i < newLen; i++){
-        const p = i * speedMul, lo = Math.floor(p), hi = Math.min(lo + 1, s.length - 1);
-        r[i] = s[lo] + (s[hi] - s[lo]) * (p - lo);
-      }
-      s = r;
-    }
+    // Slider speed (applied after mode effects, for fine-tune)
+    const doSpeed=Math.abs(speedSlider-1)>0.03;
 
-    // ── Mode-specific effects FIRST ───────────────────────────────────
-    if(voiceMode === 'glitch'){
-      // Real glitch: random pitch jumps, stutter chunks, bit-crush
-      const chunkSize = Math.floor(sr * 0.04); // 40ms chunks
-      const out = new Float32Array(s.length);
-      let i = 0;
-      while(i < s.length){
-        const clen = Math.floor(chunkSize * (0.5 + Math.random()));
-        const end = Math.min(i + clen, s.length);
-        // Random: copy, silence, repeat previous, or pitch-shift chunk
-        const r = Math.random();
-        if(r < 0.15){
-          // silence/dropout
-        } else if(r < 0.35){
-          // repeat previous chunk
-          const src = Math.max(0, i - clen);
-          for(let j = i; j < end; j++) out[j] = out[Math.max(0, src + j - i)] || 0;
-        } else if(r < 0.55){
-          // micro pitch-shift: resample chunk at 0.5× or 2×
-          const factor = Math.random() < 0.5 ? 0.5 : 2.0;
-          for(let j = i; j < end; j++){
-            const src = Math.floor((j - i) * factor) + i;
-            out[j] = s[Math.min(src, s.length - 1)];
-          }
-        } else {
-          // normal copy
-          for(let j = i; j < end; j++) out[j] = s[j];
+    switch(voiceMode){
+
+      case 'robot':{
+        // ── Ring Vocoder at 100Hz square carrier
+        // Multiply signal by 100Hz square wave → doubles frequency spacing → robot timbre
+        // Then mix 55% ring-mod + 45% dry for intelligibility
+        const carrier=100;
+        const ring=new Float32Array(s.length);
+        for(let i=0;i<s.length;i++){
+          const sq=Math.sin(2*Math.PI*carrier*i/sr)>=0?1:-1;
+          ring[i]=s[i]*sq;
         }
-        i = end;
+        // Low-pass the ring signal to reduce harshness
+        const lp=new Float32Array(ring.length);
+        const alpha=1-Math.exp(-2*Math.PI*3500/sr);
+        let y=0;
+        for(let i=0;i<ring.length;i++){y+=alpha*(ring[i]-y);lp[i]=y;}
+        // Add pitch-down shift for robotic thickness
+        s=_pitchShift(s,-3);
+        const rr=new Float32Array(Math.max(s.length,lp.length));
+        for(let i=0;i<rr.length;i++) rr[i]=(s[i]||0)*0.45+(lp[i]||0)*0.55;
+        // Band-boost 1kHz for intelligibility
+        s=rr;
+        break;
       }
-      // Bit-crush: quantize to 4-bit
-      const steps = 16;
-      for(let j = 0; j < out.length; j++) out[j] = Math.round(out[j] * steps) / steps;
-      s = out;
-    }
 
-    else if(voiceMode === 'demonic'){
-      // Ring modulation: multiply by low sine → metallic underworld tone
-      const ringFreq = 55; // 55Hz ring mod = sub tone
-      const ringFreq2 = 110;
-      const out = new Float32Array(s.length);
-      for(let i = 0; i < s.length; i++){
-        const t = i / sr;
-        const ring = Math.sin(2 * Math.PI * ringFreq * t) * 0.6
-                   + Math.sin(2 * Math.PI * ringFreq2 * t) * 0.4;
-        out[i] = s[i] * ring;
+      case 'deep':{
+        // ── Sub-harmonic synthesiser + pitch shift
+        // 1. Pitch shift -8 semitones
+        s=_pitchShift(s,-8);
+        // 2. Generate sub-harmonic: half-wave rectify → low-pass → mix underneath
+        const sub=new Float32Array(s.length);
+        for(let i=0;i<s.length;i++) sub[i]=Math.max(0,s[i]);
+        // Low-pass at 180Hz (sub bass zone)
+        const co=1-Math.exp(-2*Math.PI*180/sr);
+        let y=0;
+        for(let i=0;i<sub.length;i++){y+=co*(sub[i]-y);sub[i]=y;}
+        // 3. Mix: dry 70% + sub 55%
+        for(let i=0;i<s.length;i++) s[i]=s[i]*0.7+sub[i]*0.55;
+        // 4. Soft compress
+        s=s.map(v=>Math.tanh(v*1.4)*0.85);
+        // 5. Plate reverb (small room)
+        s=_reverb(s,sr,0.18,0.3);
+        break;
       }
-      s = out;
-      // Heavy waveshaper
-      const k = 8;
-      s = s.map(v => (1 + k) * v / (1 + k * Math.abs(v)));
-    }
 
-    else if(voiceMode === 'chipmunk'){
-      // No extra processing — speed/pitch sliders handle it
-    }
-
-    else if(voiceMode === 'echo'){
-      // Multi-tap delay with long decay
-      const delays = [
-        {d: Math.floor(sr * 0.18), g: 0.7},
-        {d: Math.floor(sr * 0.36), g: 0.5},
-        {d: Math.floor(sr * 0.54), g: 0.35},
-        {d: Math.floor(sr * 0.72), g: 0.2},
-        {d: Math.floor(sr * 0.9),  g: 0.1},
-      ];
-      const maxD = delays[delays.length - 1].d;
-      const out = new Float32Array(s.length + maxD);
-      for(let i = 0; i < s.length; i++) out[i] += s[i];
-      for(const {d, g} of delays)
-        for(let i = 0; i < s.length; i++) out[i + d] += s[i] * g;
-      s = out;
-    }
-
-    else if(voiceMode === 'distort'){
-      // Hard waveshaper + odd harmonic enhancer
-      const k = distortAmt * 0.2;
-      s = s.map(v => {
-        const clipped = Math.tanh(v * (1 + k * 3));
-        // Add 3rd harmonic
-        return clipped * 0.7 + Math.sin(3 * Math.asin(Math.max(-0.999, Math.min(0.999, clipped)))) * 0.3;
-      });
-    }
-
-    else if(voiceMode === 'robot'){
-      // Ring modulation at carrier frequency → robot buzz
-      const carrier = 120;
-      const out = new Float32Array(s.length);
-      for(let i = 0; i < s.length; i++){
-        const t = i / sr;
-        out[i] = s[i] * (0.5 + 0.5 * Math.sign(Math.sin(2 * Math.PI * carrier * t)));
+      case 'glitch':{
+        // ── True granular glitch with multiple failure modes
+        const minChunk=Math.floor(sr*0.012); // 12ms
+        const maxChunk=Math.floor(sr*0.055); // 55ms
+        const out=new Float32Array(s.length);
+        let i=0;
+        while(i<s.length){
+          const clen=minChunk+Math.floor(Math.random()*(maxChunk-minChunk));
+          const end=Math.min(i+clen,s.length);
+          const roll=Math.random();
+          if(roll<0.14){
+            // Silence dropout — glitch artifact
+          } else if(roll<0.28){
+            // Stutter: repeat 2–4 times from a few chunks back
+            const srcOff=Math.max(0,i-minChunk*2-Math.floor(Math.random()*minChunk*3));
+            for(let j=i;j<end;j++) out[j]=s[Math.min(srcOff+(j-i),s.length-1)];
+          } else if(roll<0.40){
+            // Reverse chunk
+            for(let j=i;j<end;j++) out[j]=s[end-1-(j-i)];
+          } else if(roll<0.52){
+            // Pitch-shift chunk: resample at 0.5×, 0.667×, 1.5×, or 2×
+            const factors=[0.5,0.667,1.5,2.0];
+            const f=factors[Math.floor(Math.random()*factors.length)];
+            const chunk=s.slice(i,end);
+            const shifted=_resample(chunk,f);
+            for(let j=0;j<end-i;j++) out[i+j]=shifted[Math.min(j,shifted.length-1)];
+          } else if(roll<0.62){
+            // DC offset burst (digital clip artifact)
+            const dc=(Math.random()-0.5)*1.8;
+            for(let j=i;j<end;j++) out[j]=Math.max(-1,Math.min(1,s[j]+dc));
+          } else {
+            // Normal copy
+            for(let j=i;j<end;j++) out[j]=s[j];
+          }
+          i=end;
+        }
+        // 6-bit crush (64 steps)
+        const steps=64;
+        for(let j=0;j<out.length;j++) out[j]=Math.round(out[j]*steps)/steps;
+        // Random sample-rate reduction zones
+        for(let j=0;j<out.length;j+=Math.floor(sr*0.08+Math.random()*sr*0.1)){
+          const zonelen=Math.floor(sr*0.02+Math.random()*sr*0.02);
+          const hold=4+Math.floor(Math.random()*6); // S&H downsample factor
+          for(let k=j;k<Math.min(j+zonelen,out.length-hold);k+=hold){
+            const v=out[k];
+            for(let h=1;h<hold&&k+h<out.length;h++) out[k+h]=v;
+          }
+        }
+        s=out;
+        break;
       }
-      s = out;
-    }
 
-    else if(voiceMode === 'deep'){
-      // Sub-octave doubler: mix original with half-speed pitched-down copy
-      const half = new Float32Array(s.length);
-      for(let i = 0; i < s.length; i++){
-        const src = Math.floor(i * 0.5);
-        half[i] = s[Math.min(src, s.length - 1)] * 0.5;
+      case 'demonic':{
+        // ── Hell voice: ring mod + heavy pitch + saturation + cave reverb
+        // 1. Pitch shift -11 semitones first
+        s=_pitchShift(s,-11);
+        // 2. Dual ring modulation at 40Hz and 80Hz
+        const out=new Float32Array(s.length);
+        for(let i=0;i<s.length;i++){
+          const t=i/sr;
+          const rm=Math.sin(2*Math.PI*40*t)*0.7+Math.sin(2*Math.PI*80*t)*0.3;
+          out[i]=s[i]*rm;
+        }
+        s=out;
+        // 3. Extreme saturation (tanh drive at 5×)
+        s=s.map(v=>Math.tanh(v*5)*0.6);
+        // 4. Add sub-bass (rectified + LPF at 60Hz)
+        const sub=new Float32Array(s.length);
+        const co=1-Math.exp(-2*Math.PI*60/sr);
+        let yy=0;
+        for(let i=0;i<s.length;i++){yy+=co*(Math.abs(s[i])-yy);sub[i]=yy*0.5;}
+        for(let i=0;i<s.length;i++) s[i]=s[i]*0.8+sub[i];
+        // 5. Cave reverb (large room, long tail)
+        s=_reverb(s,sr,0.55,0.85);
+        break;
       }
-      s = s.map((v, i) => v * 0.7 + half[i] * 0.5);
-    }
 
-    // ── Pitch shift ───────────────────────────────────────────────────
-    if(pitchSt !== 0) s = pChangePitch(s, pitchSt);
-
-    // ── Reverb ────────────────────────────────────────────────────────
-    if(reverbAmt > 0){
-      const d1 = Math.floor(sr * 0.055), d2 = Math.floor(sr * 0.12), d3 = Math.floor(sr * 0.22);
-      const out = new Float32Array(s.length + Math.floor(sr * reverbAmt * 0.5));
-      for(let i = 0; i < s.length; i++){
-        out[i] += s[i];
-        if(i + d1 < out.length) out[i + d1] += s[i] * reverbAmt * 0.65;
-        if(i + d2 < out.length) out[i + d2] += s[i] * reverbAmt * 0.4;
-        if(i + d3 < out.length) out[i + d3] += s[i] * reverbAmt * 0.2;
+      case 'chipmunk':{
+        // ── True Alvin effect: speed-up then pitch-correct back, then pitch up
+        // Classic chipmunk = pitch shift +10st + speed up
+        // 1. Speed-up (time compress to 1/1.6) then pitch shift +10st
+        // Resample at 1.6× (faster, shorter) = time-stretch down
+        s=_resample(s,1.6);
+        // 2. Pitch shift +10st to compensate and go higher
+        s=_pitchShift(s,10);
+        // 3. Slight reverb for air
+        s=_reverb(s,sr,0.08,0.2);
+        break;
       }
-      s = out;
+
+      case 'echo':{
+        // ── True feedback delay echo (ping-pong style)
+        const delayMs=280, feedback=0.62, mix=0.7;
+        const delayS=Math.floor(sr*delayMs/1000);
+        const outLen=s.length+delayS*6;
+        const out=new Float32Array(outLen);
+        const delayBuf=new Float32Array(delayS);
+        let di=0;
+        for(let i=0;i<outLen;i++){
+          const dry=i<s.length?s[i]:0;
+          const delayed=delayBuf[di];
+          delayBuf[di]=dry+delayed*feedback;
+          di=(di+1)%delayS;
+          out[i]=dry*(1-mix)+delayed*mix;
+        }
+        // Second tap at 560ms for stereo width simulation
+        const delay2=Math.floor(sr*560/1000);
+        const out2=new Float32Array(out.length+delay2);
+        for(let i=0;i<out.length;i++){out2[i]+=out[i];}
+        for(let i=0;i<out.length;i++){if(i+delay2<out2.length)out2[i+delay2]+=out[i]*0.3;}
+        s=out2.subarray(0,out.length+Math.floor(sr*1.2));
+        break;
+      }
+
+      case 'distort':{
+        // ── Fuzz box: asymmetric hard clip + harmonic enhancer + bit-crush + flutter
+        // 1. Drive (asymmetric — different clipping top/bottom for odd harmonics)
+        s=s.map(v=>{
+          if(v>0) return Math.min(1,Math.tanh(v*4.5));
+          else return Math.max(-0.85,Math.tanh(v*3.2));
+        });
+        // 2. 7-bit crush (128 steps)
+        const steps=128;
+        s=s.map(v=>Math.round(v*steps)/steps);
+        // 3. Harmonic enhancer: add 2nd harmonic (v²) and 3rd (v³)
+        s=s.map(v=>v*0.65+v*v*0.22*Math.sign(v)+v*v*v*0.13);
+        // 4. Wow/flutter (subtle pitch wobble from "motor speed" variation)
+        const wobbleRate=3.8, wobbleDepth=0.003;
+        const flut=new Float32Array(s.length);
+        for(let i=0;i<s.length;i++){
+          const offset=Math.sin(2*Math.PI*wobbleRate*i/sr)*wobbleDepth*sr;
+          const src=i+offset;
+          const lo=Math.floor(src),hi=Math.min(lo+1,s.length-1);
+          const lo2=Math.max(0,lo);
+          flut[i]=(s[lo2]||0)+(((s[hi]||0)-(s[lo2]||0))*(src-lo));
+        }
+        s=flut;
+        // 5. Light reverb
+        s=_reverb(s,sr,0.12,0.25);
+        break;
+      }
+
+      case 'raw':
+      default:
+        // No processing — keep as-is
+        break;
     }
 
-    // ── Distort (slider) ──────────────────────────────────────────────
-    if(distortAmt > 0 && voiceMode !== 'distort'){
-      const k = distortAmt * 0.08;
-      s = s.map(v => (1 + k) * v / (1 + k * Math.abs(v)));
+    // ── Fine-tune sliders on top ───────────────────────────────────────
+    if(doSpeed) s=_resample(s,speedSlider);
+    if(pitchStSlider!==0) s=_pitchShift(s,pitchStSlider);
+
+    // Extra reverb from slider
+    if(reverbSlider>0) s=_reverb(s,sr,reverbSlider*0.5,0.4+reverbSlider*0.4);
+
+    // Extra distort from slider
+    if(distortSlider>0){
+      const k=distortSlider*0.04;
+      s=s.map(v=>Math.tanh(v*(1+k))*0.95);
     }
 
-    return pAutoNorm(s);
+    return _norm(s);
   });
 }
 
@@ -3664,87 +4169,112 @@ function concatBuffers(bufs,gapSamples=0){
 
 // ── Main generate ────────────────────────────────────────────────────────
 async function introGenerate(){
-  const tag=introTtsSrc==='synth'?$('intro-tts-text').value.trim():'';
+  const tag=introGetText().trim();
   const hasUpload=introTtsSrc==='upload'&&introUploadedBuf;
   if(!tag&&!introState.sfxKey&&!hasUpload){
-    notify('Add a tag, pick an SFX, or upload a voice clip first!');return;
+    notify('Add some text, pick an SFX, or upload a voice file!');return;
   }
-
-  const stat=$('intro-stat');
-  const genBtn=$('intro-gen-btn');
-  genBtn.textContent='⌛ Generating…';genBtn.style.opacity='.6';genBtn.style.pointerEvents='none';
-  stat.textContent='Generating…';
-
-  // Stop any current playback
+  const stat=$('intro-stat'),genBtn=$('intro-gen-btn');
+  const prog=$('intro-prog'),pbar=$('intro-pbar');
+  genBtn.textContent='⌛ Generating…';genBtn.disabled=true;
+  stat.textContent='Starting…';
+  if(prog){prog.classList.add('vis');if(pbar)pbar.style.width='0%';}
+  let pct=0;
+  const progInt=setInterval(()=>{pct=Math.min(88,pct+Math.random()*5+2);if(pbar)pbar.style.width=pct+'%';},100);
   if(introState.playNode){try{introState.playNode.stop()}catch(e){}introState.playNode=null;}
   introState.playing=false;
   const pb=$('intro-play-btn');if(pb)pb.textContent='▶ Play';
-
   try{
     const buffers=[];
     const gapSamples=Math.floor(44100*0.08);
-
-    // 1. Opening SFX
     if(introState.sfxKey){
       stat.textContent='Loading SFX…';
       const b=await sfxToBuffer(introState.sfxKey);
       if(b)buffers.push(b);
     }
-
-    // 2. Voice
-    const speed=parseFloat($('tts-speed').value);
-    const pitchSt=parseFloat($('tts-pitch').value);
-    const reverb=parseFloat($('tts-reverb').value);
-    const distort=parseInt($('tts-distort').value);
+    const speed=parseFloat($('tts-speed').value)||1;
+    const pitchSt=parseFloat($('tts-pitch').value)||0;
+    const reverb=parseFloat($('tts-reverb').value)||0;
+    const distort=parseInt($('tts-distort').value)||0;
     const isRaw=introState.voice==='raw';
+    const tag=introGetText().trim();
 
-    if(introTtsSrc==='synth'&&tag){
-      stat.textContent='Synthesising robot voice…';
-      let vbuf=await synthRobotVoice(tag,speed);
-      if(!isRaw){
-        stat.textContent='Applying voice effects…';
-        vbuf=await applyVoiceEffects(vbuf,pitchSt,reverb,distort,1,introState.voice);
+    if(introTtsSrc==='puter'&&tag){
+      stat.textContent='🎤 Synthesising with browser neural voice…';
+      let vbuf=null;
+      try{
+        vbuf=await puterTTS(tag);
+      }catch(puterErr){
+        stat.textContent='⚠ Browser TTS failed, using offline synth…';
+        console.warn('Web Speech TTS error:',puterErr);
+        await new Promise(r=>setTimeout(r,400));
+        const speed2=parseFloat($('tts-speed').value)||1;
+        vbuf=await synthRobotVoice(tag,speed2);
       }
+      if(vbuf){
+        if(!isRaw){stat.textContent='Applying voice effects…';vbuf=await applyVoiceEffects(vbuf,pitchSt,reverb,distort,speed,introState.voice);}
+        buffers.push(vbuf);
+      }
+    } else if(introTtsSrc==='synth'&&tag){
+      stat.textContent='Synthesising offline voice…';
+      let vbuf=await synthRobotVoice(tag,speed);
+      if(!isRaw){stat.textContent='Applying voice effects…';vbuf=await applyVoiceEffects(vbuf,pitchSt,reverb,distort,1,introState.voice);}
       buffers.push(vbuf);
-    } else if(hasUpload){
+    } else if(introTtsSrc==='upload'&&introUploadedBuf){
       stat.textContent='Applying effects to uploaded voice…';
       let vbuf=introUploadedBuf;
       if(!isRaw)vbuf=await applyVoiceEffects(vbuf,pitchSt,reverb,distort,speed,introState.voice);
       buffers.push(vbuf);
     }
-
-    // 3. Outro SFX
     if(introState.outroEnabled&&introState.outroKey){
       stat.textContent='Loading outro SFX…';
       const b=await sfxToBuffer(introState.outroKey);
       if(b)buffers.push(b);
     }
-
-    if(buffers.length===0){notify('Nothing to generate');return;}
-
+    if(buffers.length===0){clearInterval(progInt);if(prog)prog.classList.remove('vis');notify('Nothing to generate');genBtn.textContent='▶ Generate Intro';genBtn.disabled=false;return;}
     stat.textContent='Mixing…';
     const final=buffers.length===1?buffers[0]:concatBuffers(buffers,gapSamples);
     introState.outBuf=final;
-
-    // Draw waveform
-    const ww=$('intro-wave-wrap');ww.classList.add('vis');
-    const cv=$('intro-wave');cv.width=cv.offsetWidth||800;cv.height=60;
-    apDrawWaveRaw(cv,final.getChannelData(0));
-
-    // Show playback row + enable export
-    $('intro-playback-row').style.display='block';
-    const expBtn=$('intro-export-btn');
-    expBtn.style.opacity='1';expBtn.style.pointerEvents='auto';
-
+    clearInterval(progInt);if(pbar)pbar.style.width='100%';
+    // Draw waveform — same style as audio bypass cards
+    introDrawWave(final);
+    $('intro-prev').classList.add('vis');
     stat.textContent=`✓ ${final.duration.toFixed(1)}s · ${final.sampleRate/1000}kHz — ready to play or export.`;
-    notify('✓ Intro generated!');
-
+    notify('✓ Intro generated! Press Play to preview.');
+    setTimeout(()=>{if(prog)prog.classList.remove('vis');},600);
   }catch(e){
+    clearInterval(progInt);if(prog)prog.classList.remove('vis');
     stat.textContent='✗ Error: '+e.message;
-    notify('Error: '+e.message);
-    console.error(e);
+    notify('Error: '+e.message);console.error(e);
   }
-  genBtn.textContent='▶ Generate';genBtn.style.opacity='1';genBtn.style.pointerEvents='auto';
+  genBtn.textContent='▶ Generate Intro';genBtn.disabled=false;
+}
+
+// ── Draw waveform — matches audio bypass card style exactly ──────────────
+function introDrawWave(buf){
+  const cv=$('intro-wave');
+  const W=cv.offsetWidth||380,H=56;
+  cv.width=W;cv.height=H;
+  const c=cv.getContext('2d');
+  const d=buf.getChannelData(0);
+  c.fillStyle='#060606';c.fillRect(0,0,W,H);
+  c.strokeStyle='rgba(255,255,255,.04)';c.lineWidth=1;
+  c.beginPath();c.moveTo(0,H/2);c.lineTo(W,H/2);c.stroke();
+  const step=Math.max(1,Math.ceil(d.length/W));
+  const peaks=[];
+  for(let i=0;i<W;i++){let mn=0,mx=0;for(let j=0;j<step;j++){const v=d[Math.min(d.length-1,i*step+j)];if(v<mn)mn=v;if(v>mx)mx=v}peaks.push([mn,mx]);}
+  // Read current accent color from CSS var
+  const accent=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#ff8500';
+  const grad=c.createLinearGradient(0,0,W,0);
+  grad.addColorStop(0,accent+'bb');grad.addColorStop(0.5,accent);grad.addColorStop(1,accent+'bb');
+  c.fillStyle=grad;
+  const mid=H/2;
+  for(let i=0;i<W;i++){const[mn,mx]=peaks[i];c.fillRect(i,mid+mn*mid,1,Math.max(1,(mx-mn)*mid));}
+  // RMS brightness line
+  const rmsPeaks=[];for(let i=0;i<W;i++){let s2=0;for(let j=0;j<step;j++)s2+=d[Math.min(d.length-1,i*step+j)]**2;rmsPeaks.push(Math.sqrt(s2/step));}
+  c.strokeStyle=accent+'66';c.lineWidth=1;c.beginPath();
+  for(let i=0;i<W;i++){const r=rmsPeaks[i]*mid;c.moveTo(i,mid-r);c.lineTo(i,mid+r);}
+  c.stroke();
 }
 
 // ── Play / Stop ──────────────────────────────────────────────────────────
@@ -3753,41 +4283,18 @@ function introTogglePlay(){
   const btn=$('intro-play-btn');
   if(introState.playing){
     try{introState.playNode.stop()}catch(e){}
-    introState.playNode=null;
-    introState.playing=false;
-    btn.textContent='▶ Play';
-    return;
+    introState.playNode=null;introState.playing=false;
+    btn.textContent='▶ Play';return;
   }
   const ctx=getIntroCtx();
+  if(ctx.state==='suspended')ctx.resume();
   const src=ctx.createBufferSource();
   src.buffer=introState.outBuf;
   src.connect(ctx.destination);
   src.onended=()=>{introState.playing=false;introState.playNode=null;btn.textContent='▶ Play';};
   src.start();
-  introState.playNode=src;
-  introState.playing=true;
+  introState.playNode=src;introState.playing=true;
   btn.textContent='■ Stop';
-}
-
-// ── Waveform draw ────────────────────────────────────────────────────────
-function apDrawWaveRaw(cv,data){
-  const W=cv.width,H=cv.height;
-  const ctx=cv.getContext('2d');
-  ctx.fillStyle='#060606';ctx.fillRect(0,0,W,H);
-  ctx.strokeStyle='rgba(255,255,255,.04)';ctx.lineWidth=1;
-  ctx.beginPath();ctx.moveTo(0,H/2);ctx.lineTo(W,H/2);ctx.stroke();
-  const step=Math.max(1,Math.ceil(data.length/W));
-  const grad=ctx.createLinearGradient(0,0,W,0);
-  grad.addColorStop(0,'rgba(255,133,0,.7)');
-  grad.addColorStop(0.5,'rgba(200,176,255,.9)');
-  grad.addColorStop(1,'rgba(68,255,136,.7)');
-  ctx.fillStyle=grad;
-  const mid=H/2;
-  for(let i=0;i<W;i++){
-    let mn=0,mx=0;
-    for(let j=0;j<step;j++){const v=data[Math.min(data.length-1,i*step+j)];if(v<mn)mn=v;if(v>mx)mx=v;}
-    ctx.fillRect(i,mid+mn*mid,1,Math.max(1,(mx-mn)*mid));
-  }
 }
 
 // ── Export ───────────────────────────────────────────────────────────────
@@ -3795,9 +4302,9 @@ function introExport(){
   if(!introState.outBuf){notify('Generate first!');return;}
   const wav=audioToWav(introState.outBuf);
   const a=document.createElement('a');
-  const tag=(introTtsSrc==='synth'?($('intro-tts-text').value.trim().replace(/\s+/g,'_')||'Intro'):'Intro');
+  const tag2=(introGetText().trim().replace(/\s+/g,'_')||'Intro');
   const ts=new Date().toISOString().slice(0,10);
-  a.download=`${tag}_Intro_${ts}.wav`;
+  a.download=`${tag2}_Intro_${ts}.wav`;
   a.href=URL.createObjectURL(wav);a.click();
   notify('✓ Intro WAV exported!');
 }
